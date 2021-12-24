@@ -1,5 +1,6 @@
 import { DOCUMENT } from '@angular/common';
 import { Component, AfterViewInit, ViewChild, ElementRef, HostListener, Inject } from '@angular/core';
+import { AppComponent } from 'src/app/app.component';
 
 @Component({
   selector: 'app-header',
@@ -9,15 +10,6 @@ import { Component, AfterViewInit, ViewChild, ElementRef, HostListener, Inject }
 export class HeaderComponent implements AfterViewInit {
 
   menuAbierto: boolean = false;
-
-  @ViewChild('hero')
-  heroElement!: ElementRef;
-  @ViewChild('about')
-  aboutElement!: ElementRef;
-  @ViewChild('habilidades')
-  habElement!: ElementRef;  
-  @ViewChild('portfolio')
-  portfolioElement!: ElementRef;
 
   public currentActive = 1;
   public heroOffset: Number = 0;
@@ -30,14 +22,20 @@ export class HeaderComponent implements AfterViewInit {
  ) {}
 
   ngAfterViewInit() {  
-    this.heroOffset = this.heroElement.nativeElement.offsetTop;
-    this.portfolioOffset = this.portfolioElement.nativeElement.offsetTop;
-    this.habOffset = this.habElement.nativeElement.offsetTop;
-    this.aboutOffset = this.aboutElement.nativeElement.offsetTop;
+    
+    const heroElement = this.document.getElementById('hero');
+    const aboutElement = this.document.getElementById('about');
+    const habElement = this.document.getElementById('habilidades');
+    const portfolioElement = this.document.getElementById('portfolio');
+
+    this.heroOffset = heroElement.offsetTop;
+    this.aboutOffset = aboutElement.offsetTop;
+    this.habOffset = habElement.offsetTop;
+    this.portfolioOffset = portfolioElement.offsetTop; 
   }
 
   scrollToElement() {
-    // scrollToElement Code :)
+    // scrollToElement Code
   }
 
   /* ---===== Chequear la posicion para cambiar el cursor active del menu horizontal =====--- */
