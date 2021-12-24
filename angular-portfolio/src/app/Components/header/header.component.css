@@ -29,7 +29,7 @@
   # Navigation Menu
   --------------------------------------------------------------*/
   /**
-  * Desktop Navigation 
+  * Navigation Escritorio 
   */
   .nav-menu {
     padding: 0;
@@ -91,7 +91,7 @@
   }
   
   /**
-  * Mobile Navigation 
+  * Navigation Mobile 
   */
   .mobile-nav-toggle {
     position: fixed;
@@ -112,13 +112,7 @@
     color: #45505b;
   }
   
-  .mobile-nav-active {
-    overflow: hidden;
-  }
-  .mobile-nav-active #header {
-    left: 0 !important;
-  }
-  .mobile-nav-active .mobile-nav-toggle {
+  .mobile-nav-active{
     color: #fff;
     background-color: #0563bb !important;
   }

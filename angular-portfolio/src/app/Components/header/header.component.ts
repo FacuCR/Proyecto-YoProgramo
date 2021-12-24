@@ -59,7 +59,6 @@ export class HeaderComponent implements AfterViewInit {
   /* ---===== Cambiar el menu-toggle a menu-active de mobile =====--- */
   mobileNavActivar(): void {
     this.menuAbierto = !this.menuAbierto;
-    //this.document.body.classList.toggle('mobile-nav-active');
     this.document.querySelector('#header').classList.toggle('start-0');
   }
 }

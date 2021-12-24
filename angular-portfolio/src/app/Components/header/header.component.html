@@ -2,7 +2,10 @@
   <!-- <button type="button" class="mobile-nav-toggle d-xl-none"><i class="bi bi-list mobile-nav-toggle"></i></button> -->
   <i class="bi mobile-nav-toggle d-xl-none"
     (click)="mobileNavActivar()"
-    [ngClass]="{'bi-list': menuAbierto === false, 'bi-x': menuAbierto === true, 'bg-blue': menuAbierto === true}"></i>
+    [ngClass]="{'bi-list': menuAbierto === false,
+    'bi-x': menuAbierto === true,
+    'bg-blue': menuAbierto === true,
+    'mobile-nav-active': menuAbierto === true}"></i>
 
   <!-- ======= Header ======= -->
   <header id="header" class="d-flex flex-column justify-content-center">
@@ -19,8 +22,9 @@
 
   </header><!-- End Header -->
 
+<!-- ---===== Prueba en el componente local de la activacion del scroll menu =====---
   <div #hero id="hero" class="bg-primary vh-100"></div>
   <div #about id="about" class="bg-info vh-100"></div>
   <div #habilidades id="habilidades" class="bg-warning vh-100"></div>
   <div #portfolio id="portfolio" class="bg-secondary vh-100"></div>  
- 
+-->

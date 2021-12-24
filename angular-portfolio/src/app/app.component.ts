@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +7,21 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Facundo Castro';
+
+  @ViewChild('hero', {
+    read: ElementRef
+  })
+  public heroElement!: ElementRef;
+  @ViewChild('about', {
+    read: ElementRef
+  })
+  public aboutElement!: ElementRef;
+  @ViewChild('habilidades', {
+    read: ElementRef
+  })
+  public habElement!: ElementRef;
+  @ViewChild('portfolio', {
+    read: ElementRef
+  })
+  public portfolioElement!: ElementRef;
 }
