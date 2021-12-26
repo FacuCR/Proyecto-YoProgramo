@@ -1,11 +1,17 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+// ===== Angular Material =====
+import {MatTooltipModule} from '@angular/material/tooltip';
+
+import {NgxTypedJsModule} from 'ngx-typed-js';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './Components/header/header.component';
 import { HeroComponent } from './Components/hero/hero.component';
 import { AboutComponent } from './Components/about/about.component';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -16,7 +22,10 @@ import { AboutComponent } from './Components/about/about.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgxTypedJsModule,
+    NoopAnimationsModule,
+    MatTooltipModule
   ],
   providers: [],
   bootstrap: [AppComponent]
