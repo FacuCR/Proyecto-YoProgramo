@@ -1,30 +1,59 @@
 <!-- ======= Mobile nav toggle button ======= -->
   <!-- <button type="button" class="mobile-nav-toggle d-xl-none"><i class="bi bi-list mobile-nav-toggle"></i></button> -->
   <i class="bi mobile-nav-toggle d-xl-none"
-    (click)="mobileNavActivar()"
-    [ngClass]="{'bi-list': menuAbierto === false,
-    'bi-x': menuAbierto === true,
-    'bg-blue': menuAbierto === true,
-    'mobile-nav-active': menuAbierto === true}"></i>
+    (click)="activarMobileNav()"
+    [ngClass]="{
+      'bi-list': menuAbierto === false,
+      'bi-x': menuAbierto === true,
+      'bg-blue': menuAbierto === true,
+      'mobile-nav-active': menuAbierto === true
+    }"></i>
 
   <!-- ======= Header ======= -->
   <header id="header" class="d-flex flex-column justify-content-center">
 
     <nav id="navbar" class="navbar nav-menu">
       <ul>
-        <li><a href="#hero" class="nav-link scrollto" [ngClass]="{'active': currentActive === 1}"><i class="bx bx-home"></i> <span>Inicio</span></a></li>
-        <li><a href="#about" class="nav-link scrollto" [ngClass]="{'active': currentActive === 2}"><i class="bx bx-user"></i> <span>Acerca de mi</span></a></li>
-        <li><a href="#habilidades" class="nav-link scrollto" [ngClass]="{'active': currentActive === 3}"><i class="bx bx-award"></i> <span>Habilidades</span></a></li>
-        <li><a href="#portfolio" class="nav-link scrollto" [ngClass]="{'active': currentActive === 4}"><i class="bx bx-book-content"></i> <span>Portfolio</span></a></li>
-        <li><a href="#contacto" class="nav-link scrollto" [ngClass]="{'active': currentActive === 5}"><i class="bx bx-envelope"></i> <span>Hablame!</span></a></li>
+        <li><a
+          href="#hero"
+          class="nav-link scrollto"
+          [ngClass]="{'active': currentActive === 1}"
+          ><i class="bx bx-home"></i>
+          <span>Inicio</span>
+        </a></li>
+        
+        <li><a
+          href="#about"
+          class="nav-link scrollto"
+          [ngClass]="{'active': currentActive === 2}">
+          <i class="bx bx-user"></i>
+          <span>Acerca de mi</span>
+        </a></li>
+        
+        <li><a
+          href="#habilidades"
+          class="nav-link scrollto"
+          [ngClass]="{'active': currentActive === 3}">
+          <i class="bx bx-award"></i>
+          <span>Habilidades</span>
+        </a></li>
+        
+        <li><a
+          href="#portfolio"
+          class="nav-link scrollto"
+          [ngClass]="{'active': currentActive === 4}">
+          <i class="bx bx-book-content"></i>
+          <span>Portfolio</span>
+        </a></li>
+        
+        <li><a
+          href="#contacto"
+          class="nav-link scrollto"
+          [ngClass]="{'active': currentActive === 5}">
+          <i class="bx bx-envelope"></i>
+          <span>Hablame!</span>
+        </a></li>
       </ul>
     </nav><!-- .nav-menu -->
 
   </header><!-- End Header -->
-
-<!-- ---===== Prueba en el componente local de la activacion del scroll menu =====---
-  <div #hero id="hero" class="bg-primary vh-100"></div>
-  <div #about id="about" class="bg-info vh-100"></div>
-  <div #habilidades id="habilidades" class="bg-warning vh-100"></div>
-  <div #portfolio id="portfolio" class="bg-secondary vh-100"></div>  
--->

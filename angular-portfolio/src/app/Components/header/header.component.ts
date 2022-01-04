@@ -1,17 +1,16 @@
 import { DOCUMENT } from '@angular/common';
-import { Component, AfterViewInit, ViewChild, ElementRef, HostListener, Inject } from '@angular/core';
-import { AppComponent } from 'src/app/app.component';
+import { Component, OnInit, HostListener, Inject } from '@angular/core';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements AfterViewInit {
+export class HeaderComponent implements OnInit {
 
   menuAbierto: boolean = false;
 
-  public currentActive = 1;
+  public currentActive: Number = 1;
   public heroOffset: Number = 0;
   public portfolioOffset: Number = 0;
   public habOffset: Number = 0;
@@ -21,7 +20,7 @@ export class HeaderComponent implements AfterViewInit {
     @Inject(DOCUMENT) private document: any
  ) {}
 
-  ngAfterViewInit() {  
+  ngOnInit() {  
     
     const heroElement = this.document.getElementById('hero');
     const aboutElement = this.document.getElementById('about');
@@ -55,7 +54,7 @@ export class HeaderComponent implements AfterViewInit {
   }
 
   /* ---===== Cambiar el menu-toggle a menu-active de mobile =====--- */
-  mobileNavActivar(): void {
+  activarMobileNav(): void {
     this.menuAbierto = !this.menuAbierto;
     this.document.querySelector('#header').classList.toggle('start-0');
   }
