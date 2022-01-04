@@ -15,13 +15,15 @@ import { HeaderComponent } from './Components/header/header.component';
 import { HeroComponent } from './Components/hero/hero.component';
 import { AboutComponent } from './Components/about/about.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { HabilidadesComponent } from './Components/habilidades/habilidades.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     HeroComponent,
-    AboutComponent
+    AboutComponent,
+    HabilidadesComponent
   ],
   imports: [
     BrowserModule,
