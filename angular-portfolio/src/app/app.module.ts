@@ -1,9 +1,12 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-// ===== Angular Material =====
+// ===== Angular Material ===== //
 import {MatTooltipModule} from '@angular/material/tooltip';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
+
+// ===== ngx-typed.js ===== //
 import {NgxTypedJsModule} from 'ngx-typed-js';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -25,7 +28,8 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
     AppRoutingModule,
     NgxTypedJsModule,
     NoopAnimationsModule,
-    MatTooltipModule
+    MatTooltipModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
