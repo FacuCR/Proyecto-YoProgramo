@@ -16,6 +16,7 @@ import { HeroComponent } from './Components/hero/hero.component';
 import { AboutComponent } from './Components/about/about.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { HabilidadesComponent } from './Components/habilidades/habilidades.component';
+import { FooterComponent } from './Components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { HabilidadesComponent } from './Components/habilidades/habilidades.compo
     HeaderComponent,
     HeroComponent,
     AboutComponent,
-    HabilidadesComponent
+    HabilidadesComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
