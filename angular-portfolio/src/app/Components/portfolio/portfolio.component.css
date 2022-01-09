@@ -30,3 +30,7 @@
 .portfolio ul li img{
     max-height: 25rem;
 }
+
+.btn-demo {
+    float: right !important;
+}
