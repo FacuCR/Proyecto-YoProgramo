@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 // ===== Angular Material ===== //
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatButtonModule} from '@angular/material/button';
 
 
 // ===== ngx-typed.js ===== //
@@ -17,6 +18,7 @@ import { AboutComponent } from './Components/about/about.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { HabilidadesComponent } from './Components/habilidades/habilidades.component';
 import { FooterComponent } from './Components/footer/footer.component';
+import { PortfolioComponent } from './Components/portfolio/portfolio.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,8 @@ import { FooterComponent } from './Components/footer/footer.component';
     HeroComponent,
     AboutComponent,
     HabilidadesComponent,
-    FooterComponent
+    FooterComponent,
+    PortfolioComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +36,8 @@ import { FooterComponent } from './Components/footer/footer.component';
     NgxTypedJsModule,
     NoopAnimationsModule,
     MatTooltipModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,32 @@
+.portfolio {
+    display: block;
+}
+
+.portfolio ul {
+    list-style: none;
+}
+
+.portfolio ul li {
+    padding: 70px 20px 80px 20px;
+    transition: all ease-in-out 0.3s;
+    background: #fff;
+    box-shadow: 0px 5px 90px 0px rgba(110, 123, 131, 0.05);
+}
+
+.portfolio ul li:hover {
+    border-color: #fff;
+    box-shadow: 0px 0 35px 0 rgba(0, 0, 0, 0.08);
+}
+
+.portfolio ul li h3 {
+    font-weight: 700;
+    font-size: 26px;
+    color: #728394;
+}
+.portfolio ul li h3 .post-title {
+    color: #B5B9BD;
+}
+
+.portfolio ul li img{
+    max-height: 25rem;
+}
