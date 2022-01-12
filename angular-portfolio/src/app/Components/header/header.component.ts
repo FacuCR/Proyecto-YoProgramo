@@ -1,5 +1,5 @@
 import { DOCUMENT } from '@angular/common';
-import { Component, OnInit, HostListener, Inject, AfterViewChecked } from '@angular/core';
+import { Component, HostListener, Inject, AfterViewChecked } from '@angular/core';
 
 @Component({
   selector: 'app-header',
