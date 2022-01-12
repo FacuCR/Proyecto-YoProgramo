@@ -1,0 +1,61 @@
+<!-- ======= Contacto Section ======= -->
+<section class="contacto">
+  <div class="container" data-aos="fade-up">
+
+    <div class="section-title">
+      <h2>Contacto</h2>
+    </div>
+    <!-- Formulario Contacto -->
+    <form [formGroup]="contacto" (ngSubmit)="onSubmit()">
+
+      <div class="row">
+
+        <div class="col-md-4 info my-5">
+          <div class="email">
+            <i class="bi bi-envelope"></i>
+            <h4>Email:</h4>
+            <p>info@example.com</p>
+          </div>
+        </div>
+        
+        <div class="row col-md-8">
+
+            <div class="col-md-6 my-4">
+              <mat-form-field appearance="fill">
+                <mat-label>Nombre</mat-label>
+                <input matInput placeholder="ej: Facundo" formControlName="nombre" required>
+                <mat-hint>Hint</mat-hint>
+              </mat-form-field>
+            </div>
+
+            <div class="col-md-6 my-4">
+              <mat-form-field appearance="fill">
+                <mat-label>Email</mat-label>
+                <input matInput placeholder="ej: facucastro302@gmail.com" formControlName="email" required>
+                <mat-hint>Hint</mat-hint>
+              </mat-form-field>
+            </div>
+
+          <div class="row">
+            <mat-form-field appearance="fill" class="col-md-10 my-4">
+              <mat-label>Asunto</mat-label>
+              <input matInput placeholder="ej: Tu pag es genial :)" formControlName="asunto" required>
+              <mat-hint>Hint</mat-hint>
+            </mat-form-field>
+          </div>
+
+          <div class="row">
+            <mat-form-field appearance="fill" class="col-md-10 my-4">
+              <mat-label>Mensaje</mat-label>
+              <textarea matInput formControlName="mensaje"></textarea>
+              <mat-hint>Hint</mat-hint>
+            </mat-form-field>
+          </div>
+        
+        </div>
+      </div>
+      
+    </form>
+
+  </div>
+</section><!-- Fin Contacto Section -->
