@@ -8,6 +8,8 @@ import { Component, HostListener, Inject, AfterViewChecked } from '@angular/core
 })
 export class HeaderComponent implements AfterViewChecked {
 
+  public screenWidthXl!: boolean;
+
   menuAbierto: boolean = false;
 
   public currentActive: number = 1;
@@ -23,6 +25,8 @@ export class HeaderComponent implements AfterViewChecked {
  ) {}
 
  ngAfterViewChecked() {
+
+    this.screenWidthXl = window.innerWidth >= 1200;
     
     const heroElement = this.document.getElementById('hero');
     const aboutElement = this.document.getElementById('about');
@@ -54,6 +58,11 @@ export class HeaderComponent implements AfterViewChecked {
       this.currentActive = 0;
     }
   }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+  this.screenWidthXl = window.innerWidth >= 1200;
+}
 
   /* ---===== Cambiar el menu-toggle a menu-active de mobile =====--- */
   activarMobileNav(): void {
