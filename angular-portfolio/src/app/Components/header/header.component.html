@@ -1,3 +1,8 @@
+<nav class="d-flex justify-content-between align-items-center mt-2 me-4 ms-4">
+  <a class="text-uppercase" href="#"><strong class="logo">FC</strong></a>
+  <app-loginBtn *ngIf="screenXl"></app-loginBtn>
+</nav>
+
 <!-- ======= Mobile nav toggle button ======= -->
   <!-- <button type="button" class="mobile-nav-toggle d-xl-none"><i class="bi bi-list mobile-nav-toggle"></i></button> -->
   <i class="bi mobile-nav-toggle d-xl-none"
@@ -10,7 +15,7 @@
     }"></i>
 
   <!-- ======= Header ======= -->
-  <header id="header" class="d-flex flex-column justify-content-center">
+  <header id="header" class="d-flex flex-column justify-content-center pt-4">
 
     <nav id="navbar" class="navbar nav-menu">
       <ul>
@@ -54,6 +59,7 @@
           <span>Hablame!</span>
         </a></li>
       </ul>
+      <app-loginBtn *ngIf="!screenXl" class="d-flex justify-content-center"></app-loginBtn>
     </nav><!-- .nav-menu -->
 
   </header><!-- End Header -->

@@ -24,6 +24,7 @@ import { HabilidadesComponent } from './Components/habilidades/habilidades.compo
 import { PortfolioComponent } from './Components/portfolio/portfolio.component';
 import { ContactoComponent } from './Components/contacto/contacto.component';
 import { FooterComponent } from './Components/footer/footer.component';
+import { LoginBtnComponent } from './Components/loginBtn/loginBtn.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { FooterComponent } from './Components/footer/footer.component';
     HabilidadesComponent,
     PortfolioComponent,
     ContactoComponent,
-    FooterComponent
+    FooterComponent,
+    LoginBtnComponent
   ],
   imports: [
     BrowserModule,

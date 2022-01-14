@@ -1,14 +1,14 @@
 import { DOCUMENT } from '@angular/common';
-import { Component, HostListener, Inject, AfterViewChecked } from '@angular/core';
+import { Component, HostListener, Inject, AfterViewChecked, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements AfterViewChecked {
+export class HeaderComponent implements AfterViewChecked, OnInit {
 
-  public screenWidthXl!: boolean;
+  public screenXl!: boolean;
 
   menuAbierto: boolean = false;
 
@@ -23,10 +23,12 @@ export class HeaderComponent implements AfterViewChecked {
   constructor(
     @Inject(DOCUMENT) private document: any
  ) {}
+ 
+  ngOnInit(): void {
+    this.screenXl = window.innerWidth >= 1200;
+  }
 
  ngAfterViewChecked() {
-
-    this.screenWidthXl = window.innerWidth >= 1200;
     
     const heroElement = this.document.getElementById('hero');
     const aboutElement = this.document.getElementById('about');
@@ -58,11 +60,12 @@ export class HeaderComponent implements AfterViewChecked {
       this.currentActive = 0;
     }
   }
-
+  
+  /* ---===== Cambiar el valor de la variable cuando se cambien el tamaño de la ventana =====--- */
   @HostListener('window:resize', ['$event'])
   onResize(event: any) {
-  this.screenWidthXl = window.innerWidth >= 1200;
-}
+    this.screenXl = window.innerWidth >= 1200;
+  }
 
   /* ---===== Cambiar el menu-toggle a menu-active de mobile =====--- */
   activarMobileNav(): void {
