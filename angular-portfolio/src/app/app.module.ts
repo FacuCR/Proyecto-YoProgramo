@@ -1,15 +1,12 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // ===== Angular Material ===== //
-import {MatTooltipModule} from '@angular/material/tooltip';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatButtonModule} from '@angular/material/button';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatInputModule} from '@angular/material/input'; 
-
+import { MaterialModule } from './material.module';
 
 // ===== ngx-typed.js ===== //
 import {NgxTypedJsModule} from 'ngx-typed-js';
@@ -43,13 +40,10 @@ import { LoginBtnComponent } from './Components/loginBtn/loginBtn.component';
     AppRoutingModule,
     NgxTypedJsModule,
     NoopAnimationsModule,
-    MatTooltipModule,
     BrowserAnimationsModule,
-    MatButtonModule,
-    MatFormFieldModule,
     ReactiveFormsModule,
     FormsModule,
-    MatInputModule
+    MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]
