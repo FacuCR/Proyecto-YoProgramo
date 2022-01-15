@@ -22,6 +22,7 @@ import { PortfolioComponent } from './Components/portfolio/portfolio.component';
 import { ContactoComponent } from './Components/contacto/contacto.component';
 import { FooterComponent } from './Components/footer/footer.component';
 import { LoginBtnComponent } from './Components/loginBtn/loginBtn.component';
+import { FormularioLoginComponent } from './Components/formulario-login/formulario-login.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { LoginBtnComponent } from './Components/loginBtn/loginBtn.component';
     PortfolioComponent,
     ContactoComponent,
     FooterComponent,
-    LoginBtnComponent
+    LoginBtnComponent,
+    FormularioLoginComponent
   ],
   imports: [
     BrowserModule,

@@ -21,13 +21,13 @@
         <div class="row col-md-8">
 
           <div class="row">
-              <mat-form-field appearance="fill" class="col-md-5 my-4">
+              <mat-form-field appearance="fill" class="col-md-6 my-4">
                 <mat-label>Nombre</mat-label>
                 <input matInput placeholder="ej: Facundo" formControlName="nombre" required>
                 <mat-hint>Hint</mat-hint>
               </mat-form-field>
 
-              <mat-form-field appearance="fill" class="col-md-5 my-4">
+              <mat-form-field appearance="fill" class="col-md-6 my-4">
                 <mat-label>Email</mat-label>
                 <input matInput placeholder="ej: facucastro302@gmail.com" formControlName="email" required>
                 <mat-hint>Hint</mat-hint>
@@ -35,7 +35,7 @@
           </div>
 
           <div class="row">
-            <mat-form-field appearance="fill" class="col-md-10 my-4">
+            <mat-form-field appearance="fill" class="my-4">
               <mat-label>Asunto</mat-label>
               <input matInput placeholder="ej: Tu pag es genial :)" formControlName="asunto" required>
               <mat-hint>Hint</mat-hint>
@@ -43,15 +43,15 @@
           </div>
 
           <div class="row">
-            <mat-form-field appearance="fill" class="col-md-10 my-4">
+            <mat-form-field appearance="fill" class="my-4">
               <mat-label>Mensaje</mat-label>
               <textarea matInput formControlName="mensaje"></textarea>
               <mat-hint>Hint</mat-hint>
             </mat-form-field>
           </div>
 
-          <div class="row">
-            <button mat-raised-button class="col-3 ms-3"color="primary" [disabled]="!contacto.valid">Enviar</button>
+          <div class="row d-flex justify-content-center">
+            <button mat-raised-button class="col-6 ms-3 btn-lg"color="primary" [disabled]="!contacto.valid">Enviar</button>
           </div>
 
         </div>

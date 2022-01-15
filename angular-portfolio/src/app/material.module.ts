@@ -4,19 +4,22 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatButtonModule} from '@angular/material/button';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
+import {MatDialogModule} from '@angular/material/dialog'; 
 
 @NgModule({
     imports: [
         MatTooltipModule,
         MatButtonModule,
         MatFormFieldModule,
-        MatInputModule
+        MatInputModule,
+        MatDialogModule
     ],
     exports: [
         MatTooltipModule,
         MatButtonModule,
         MatFormFieldModule,
-        MatInputModule
+        MatInputModule,
+        MatDialogModule
     ]
 })
 
