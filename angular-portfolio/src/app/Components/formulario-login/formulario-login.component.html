@@ -1,3 +1,28 @@
-<p>
-  formulario-login works!
-</p>
+<article class="login">
+
+  <h1 class="h1 row mx-auto">Iniciar Sesion</h1>
+
+  <form [formGroup]="login" (ngSubmit)="onSubmit()" class="row p-3">
+    
+    <mat-form-field appearance="fill" class="row mt-4 gx-0">
+      <mat-label>Email</mat-label>
+      <input matInput placeholder="ej: facucastro302@gmail.com" formControlName="email" required>
+      <mat-error>{{ getEmailErrorMessage() }}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="row mt-4 gx-0">
+      <mat-label>Contraseña</mat-label>
+      <input matInput [type]="ocultar ? 'password' : 'text'" formControlName="contraseña" required>
+      <button mat-icon-button matSuffix (click)="ocultar = !ocultar" [attr.aria-label]="'ocultar contraseña'" [attr.aria-pressed]="ocultar">
+        <mat-icon>{{ocultar ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+      <mat-error>Ingresa una contraseña</mat-error>
+    </mat-form-field>
+
+    <div class="row mt-4 d-flex justify-content-around gx-0">
+      <button mat-stroked-button (click)="onVolverClick()" class="btn col-5" color="primary">VOLVER</button>
+      <button mat-raised-button class="btn col-5" color="primary" [disabled]="!login.valid">INICIAR</button>      
+    </div>
+
+  </form>
+</article>
