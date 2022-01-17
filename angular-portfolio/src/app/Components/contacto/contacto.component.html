@@ -24,13 +24,13 @@
               <mat-form-field appearance="fill" class="col-md-6 my-4">
                 <mat-label>Nombre</mat-label>
                 <input matInput placeholder="ej: Facundo" formControlName="nombre" required>
-                <mat-hint>Hint</mat-hint>
+                <mat-error>{{ getMensajeDeError('nombre') }}</mat-error>
               </mat-form-field>
 
               <mat-form-field appearance="fill" class="col-md-6 my-4">
                 <mat-label>Email</mat-label>
                 <input matInput placeholder="ej: facucastro302@gmail.com" formControlName="email" required>
-                <mat-hint>Hint</mat-hint>
+                <mat-error>{{ getMensajeDeError('email') }}</mat-error>
               </mat-form-field>
           </div>
 
@@ -38,7 +38,7 @@
             <mat-form-field appearance="fill" class="my-4">
               <mat-label>Asunto</mat-label>
               <input matInput placeholder="ej: Tu pag es genial :)" formControlName="asunto" required>
-              <mat-hint>Hint</mat-hint>
+              <mat-error>{{ getMensajeDeError('asunto') }}</mat-error>
             </mat-form-field>
           </div>
 
@@ -46,7 +46,7 @@
             <mat-form-field appearance="fill" class="my-4">
               <mat-label>Mensaje</mat-label>
               <textarea matInput formControlName="mensaje"></textarea>
-              <mat-hint>Hint</mat-hint>
+              <mat-error>{{ getMensajeDeError('mensaje') }}</mat-error>
             </mat-form-field>
           </div>
 

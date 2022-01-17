@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { AbstractControl, FormBuilder } from '@angular/forms';
 import { Validators } from '@angular/forms';
 
 @Component({
@@ -22,5 +22,14 @@ export class ContactoComponent implements OnInit {
   }
 
   onSubmit() {}
+
+  getMensajeDeError(input: string) {
+    if (this.contacto.controls['email'].hasError('email')) {
+      return 'Usa un mail valido!';
+    }
+
+    return this.contacto.controls[input].hasError('required') ? 'Debes ingresar algo!' : '';
+  }
+
 
 }
