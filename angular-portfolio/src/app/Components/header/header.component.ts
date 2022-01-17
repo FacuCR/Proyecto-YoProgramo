@@ -1,12 +1,14 @@
 import { DOCUMENT } from '@angular/common';
-import { Component, HostListener, Inject, AfterViewChecked } from '@angular/core';
+import { Component, HostListener, Inject, AfterViewChecked, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements AfterViewChecked {
+export class HeaderComponent implements AfterViewChecked, OnInit {
+
+  public screenXl!: boolean;
 
   menuAbierto: boolean = false;
 
@@ -21,6 +23,10 @@ export class HeaderComponent implements AfterViewChecked {
   constructor(
     @Inject(DOCUMENT) private document: any
  ) {}
+ 
+  ngOnInit(): void {
+    this.screenXl = window.innerWidth >= 1200;
+  }
 
  ngAfterViewChecked() {
     
@@ -54,10 +60,23 @@ export class HeaderComponent implements AfterViewChecked {
       this.currentActive = 0;
     }
   }
+  
+  /* ---===== Cambiar el valor de la variable cuando se cambien el tamaño de la ventana =====--- */
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.screenXl = window.innerWidth >= 1200;
+  }
 
   /* ---===== Cambiar el menu-toggle a menu-active de mobile =====--- */
   activarMobileNav(): void {
     this.menuAbierto = !this.menuAbierto;
     this.document.querySelector('#header').classList.toggle('start-0');
   }
+
+  /* Posible solucion para la posicion del active para cuando agregue elementos de forma dinamica *
+  @HostListener('window:resize', ['$event'])
+    onResize(event) {
+  * Aqui asigno el valor offset de los elementos de nuevo
+    }
+  */
 }
