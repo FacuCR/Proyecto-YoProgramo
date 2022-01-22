@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import * as AOS from 'aos';
 
 @Component({
@@ -7,7 +7,9 @@ import * as AOS from 'aos';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  
+
+  activarBackToTop: boolean = false;
+
   ngOnInit() {
     AOS.init({
       duration: 1000,
@@ -16,5 +18,10 @@ export class AppComponent {
       mirror: false
     });
  }
+
+ @HostListener('window:scroll', ['$event'])
+  onScroll(): void {
+    this.activarBackToTop = window.scrollY > 100;;
+  }
 
 }

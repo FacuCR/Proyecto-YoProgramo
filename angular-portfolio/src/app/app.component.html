@@ -7,3 +7,11 @@
     <app-contacto id="contacto"></app-contacto>
 </main><!-- Fin #main -->
 <app-footer></app-footer>
+<!-- btn volver arriba -->
+<a 
+#backToTop 
+href="#" 
+class="back-to-top d-flex align-items-center justify-content-center"
+[ngClass]=" {
+    'active': activarBackToTop === true
+}"><i class="bi bi-arrow-up-short"></i></a>
