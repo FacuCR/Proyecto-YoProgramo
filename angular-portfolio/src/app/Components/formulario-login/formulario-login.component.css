@@ -1,3 +1,11 @@
 .login .h1 {
     color: #0563bb;
 }
+
+.login img {
+    width: 14rem;
+}
+
+.login form {
+    width: 25rem
+}

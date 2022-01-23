@@ -15,7 +15,8 @@ export class FormularioLoginComponent implements OnInit {
 
   login = this.formBuilder.group({
     email:['', [Validators.required, Validators.email]],
-    contraseña:['', Validators.required]
+    contraseña:['', Validators.required],
+    recordarme: false
   })
 
   ocultar = true;
