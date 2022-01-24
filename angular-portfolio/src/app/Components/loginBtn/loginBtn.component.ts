@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Optional } from '@angular/core';
 
 import { MatDialog } from  '@angular/material/dialog';
 
@@ -13,7 +13,7 @@ import { FormularioLoginComponent } from '../formulario-login/formulario-login.c
 })
 export class LoginBtnComponent implements OnInit {
 
-  constructor(private  dialogRef : MatDialog) { }
+  constructor(@Optional() public  dialogRef : MatDialog) { }
 
   ngOnInit() {
   }

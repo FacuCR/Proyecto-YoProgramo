@@ -29,18 +29,27 @@ export class HeaderComponent implements AfterViewChecked, OnInit {
   }
 
  ngAfterViewChecked() {
-    
-    const heroElement = this.document.getElementById('hero');
-    const aboutElement = this.document.getElementById('about');
-    const habElement = this.document.getElementById('habilidades');
-    const portfolioElement = this.document.getElementById('portfolio');
-    const contactoElement = this.document.getElementById('contacto');
 
+  /*
+  * El test de creacion del componente está tratando de obtener el valor de html antes de renderizar por completo.
+  * El setTimeout es lo unico que me esta funcionando para el test de momento.
+  * No se necesita del setTimeout fuera del test, el componente se crea correctamente.
+  * Nota: si no funciona el test aumentar el tiempo de espera.
+  */
+  setTimeout(() => {
+    const heroElement: HTMLElement = this.document.getElementById('hero') as HTMLElement;
+    const aboutElement: HTMLElement = this.document.getElementById('about') as HTMLElement;
+    const habElement: HTMLElement = this.document.getElementById('habilidades') as HTMLElement;
+    const portfolioElement: HTMLElement = this.document.getElementById('portfolio') as HTMLElement;
+    const contactoElement: HTMLElement = this.document.getElementById('contacto') as HTMLElement;
+  
     this.heroOffset = heroElement.offsetTop;
     this.aboutOffset = aboutElement.offsetTop;
     this.habOffset = habElement.offsetTop;
     this.portfolioOffset = portfolioElement.offsetTop; 
     this.contactoOffset = contactoElement.offsetTop;
+  }, 0.00001);
+    
   }
 
   /* ---===== Chequear la posicion para cambiar el cursor active del menu horizontal =====--- */

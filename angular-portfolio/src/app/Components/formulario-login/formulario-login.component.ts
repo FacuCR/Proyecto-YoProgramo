@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, Optional } from '@angular/core';
 
 import { FormBuilder } from '@angular/forms';
 import { Validators } from '@angular/forms';
@@ -23,7 +23,7 @@ export class FormularioLoginComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    public dialogRef: MatDialogRef<LoginBtnComponent>
+    @Optional() public dialogRef: MatDialogRef<LoginBtnComponent>
   ) { }
 
   ngOnInit() {

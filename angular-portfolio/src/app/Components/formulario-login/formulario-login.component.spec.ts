@@ -4,6 +4,7 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
 import { FormularioLoginComponent } from './formulario-login.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 describe('FormularioLoginComponent', () => {
   let component: FormularioLoginComponent;
@@ -11,6 +12,9 @@ describe('FormularioLoginComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [
+        ReactiveFormsModule
+      ],
       declarations: [ FormularioLoginComponent ]
     })
     .compileComponents();
