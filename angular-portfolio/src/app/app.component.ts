@@ -21,7 +21,7 @@ export class AppComponent {
 
  @HostListener('window:scroll', ['$event'])
   onScroll(): void {
-    this.activarBackToTop = window.scrollY > 100;;
+    this.activarBackToTop = window.scrollY > 100;
   }
 
 }

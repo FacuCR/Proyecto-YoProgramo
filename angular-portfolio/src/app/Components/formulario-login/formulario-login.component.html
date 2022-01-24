@@ -14,6 +14,7 @@
       <mat-label>Email</mat-label>
       <input matInput placeholder="ej: facucastro302@gmail.com" formControlName="email" required>
       <mat-error>{{ getEmailErrorMessage() }}</mat-error>
+      <mat-icon matPrefix class="my-icon me-3">account_circle</mat-icon>
     </mat-form-field>
 
     <mat-form-field appearance="fill" class="row mt-3 gx-0">
@@ -23,6 +24,7 @@
         <mat-icon>{{ocultar ? 'visibility_off' : 'visibility'}}</mat-icon>
       </button>
       <mat-error>Ingresa una contraseña</mat-error>
+      <mat-icon matPrefix class="my-icon me-3">keyboard_hide</mat-icon>
     </mat-form-field>
     
     <mat-checkbox 
@@ -31,7 +33,7 @@
     formControlName="recordarme"
     >Recordarme!</mat-checkbox>
 
-    <div class="row mt-3 d-flex justify-content-around gx-0">
+    <div class="row mt-3 d-flex justify-content-between gx-0">
       <button mat-stroked-button (click)="onVolverClick()" class="btn col-5" color="primary">VOLVER</button>
       <button mat-raised-button class="btn col-5" color="primary" [disabled]="!login.valid">INICIAR</button>      
     </div>
