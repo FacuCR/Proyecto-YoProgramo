@@ -7,12 +7,12 @@ import { Component, HostListener, Inject, AfterViewChecked, OnInit } from '@angu
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements AfterViewChecked, OnInit {
-
+  
   public screenXl!: boolean;
 
   menuAbierto: boolean = false;
 
-  public currentActive: number = 1;
+  public currentActiveMenuItem: number = 0;
 
   public heroOffset: number = 0;
   public aboutOffset: number = 0;
@@ -55,23 +55,23 @@ export class HeaderComponent implements AfterViewChecked, OnInit {
   /* ---===== Chequear la posicion para cambiar el cursor active del menu horizontal =====--- */
   @HostListener('window:scroll', ['$event'])
   checkOffsetTop(): void {
-    if (this.ifContenidoEntre(this.heroOffset, this.aboutOffset)) {
-      this.currentActive = 1;
+    if (this.ifWindowEstaEntre(this.heroOffset, this.aboutOffset)) {
+      this.currentActiveMenuItem = 1;
     } 
-    else if (this.ifContenidoEntre(this.aboutOffset, this.habOffset)) {
-      this.currentActive = 2;
+    else if (this.ifWindowEstaEntre(this.aboutOffset, this.habOffset)) {
+      this.currentActiveMenuItem = 2;
     } 
-    else if (this.ifContenidoEntre(this.habOffset, this.portfolioOffset)) {
-      this.currentActive = 3;
+    else if (this.ifWindowEstaEntre(this.habOffset, this.portfolioOffset)) {
+      this.currentActiveMenuItem = 3;
     } 
-    else if (this.ifContenidoEntre(this.portfolioOffset, this.contactoOffset)) {
-      this.currentActive = 4;
+    else if (this.ifWindowEstaEntre(this.portfolioOffset, this.contactoOffset)) {
+      this.currentActiveMenuItem = 4;
     } 
-    else if (this.ifContenidoEntre(this.contactoOffset)) {
-      this.currentActive = 5;
+    else if (this.ifWindowEstaEntre(this.contactoOffset)) {
+      this.currentActiveMenuItem = 5;
     } 
     else {
-      this.currentActive = 0;
+      this.currentActiveMenuItem = 0;
     }
   }
   
@@ -82,14 +82,13 @@ export class HeaderComponent implements AfterViewChecked, OnInit {
 
   activarMobileNav(): void {
     this.menuAbierto = !this.menuAbierto;
-    this.document.querySelector('#header').classList.toggle('start-0');
   }
 
   getElementConId(elementId: string): HTMLElement {
     return this.document.getElementById(elementId) as HTMLElement;
   }
 
-  ifContenidoEntre(elementoDeArriba: number, elementoDeAbajo?: number): boolean {
+  ifWindowEstaEntre(elementoDeArriba: number, elementoDeAbajo?: number): boolean {
     if(elementoDeAbajo) return window.pageYOffset >= elementoDeArriba && window.pageYOffset < elementoDeAbajo;
 
     return window.pageYOffset >= elementoDeArriba;
