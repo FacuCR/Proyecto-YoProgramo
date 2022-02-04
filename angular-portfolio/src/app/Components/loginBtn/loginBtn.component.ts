@@ -11,12 +11,9 @@ import { FormularioLoginComponent } from '../formulario-login/formulario-login.c
     `,
   styleUrls: ['./loginBtn.component.css']
 })
-export class LoginBtnComponent implements OnInit {
+export class LoginBtnComponent {
 
   constructor(@Optional() public  dialogRef : MatDialog) { }
-
-  ngOnInit() {
-  }
 
   openDialog(){
     this.dialogRef.open(FormularioLoginComponent);
