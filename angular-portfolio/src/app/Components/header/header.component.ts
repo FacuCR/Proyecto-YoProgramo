@@ -8,7 +8,7 @@ import { Component, HostListener, Inject, AfterViewChecked, OnInit } from '@angu
 })
 export class HeaderComponent implements AfterViewChecked, OnInit {
   
-  public screenXl!: boolean;
+  public screenXl: boolean = false;
 
   menuAbierto: boolean = false;
 
@@ -19,13 +19,14 @@ export class HeaderComponent implements AfterViewChecked, OnInit {
   public habOffset: number = 0;
   public portfolioOffset: number = 0;
   public contactoOffset: number = 0;
+  winInnerWith: number = 0;
 
   constructor(
     @Inject(DOCUMENT) private document: any
  ) {}
  
   ngOnInit(): void {
-    this.screenXl = window.innerWidth >= 1200;
+    this.ifScreenXl(window.innerWidth);
   }
 
  ngAfterViewChecked() {
@@ -55,19 +56,19 @@ export class HeaderComponent implements AfterViewChecked, OnInit {
   /* ---===== Chequear la posicion para cambiar el cursor active del menu horizontal =====--- */
   @HostListener('window:scroll', ['$event'])
   checkOffsetTop(): void {
-    if (this.ifWindowEstaEntre(this.heroOffset, this.aboutOffset)) {
+    if (this.ifWindowEstaEntre(window.pageYOffset, this.heroOffset, this.aboutOffset)) {
       this.currentActiveMenuItem = 1;
     } 
-    else if (this.ifWindowEstaEntre(this.aboutOffset, this.habOffset)) {
+    else if (this.ifWindowEstaEntre(window.pageYOffset, this.aboutOffset, this.habOffset)) {
       this.currentActiveMenuItem = 2;
     } 
-    else if (this.ifWindowEstaEntre(this.habOffset, this.portfolioOffset)) {
+    else if (this.ifWindowEstaEntre(window.pageYOffset, this.habOffset, this.portfolioOffset)) {
       this.currentActiveMenuItem = 3;
     } 
-    else if (this.ifWindowEstaEntre(this.portfolioOffset, this.contactoOffset)) {
+    else if (this.ifWindowEstaEntre(window.pageYOffset, this.portfolioOffset, this.contactoOffset)) {
       this.currentActiveMenuItem = 4;
     } 
-    else if (this.ifWindowEstaEntre(this.contactoOffset)) {
+    else if (this.ifWindowEstaEntre(window.pageYOffset, this.contactoOffset)) {
       this.currentActiveMenuItem = 5;
     } 
     else {
@@ -76,8 +77,8 @@ export class HeaderComponent implements AfterViewChecked, OnInit {
   }
   
   @HostListener('window:resize', ['$event'])
-  onResize(event: any) {
-    this.screenXl = window.innerWidth >= 1200;
+  onResize() {
+    this.ifScreenXl(window.innerWidth);
   }
 
   activarMobileNav(): void {
@@ -88,10 +89,15 @@ export class HeaderComponent implements AfterViewChecked, OnInit {
     return this.document.getElementById(elementId) as HTMLElement;
   }
 
-  ifWindowEstaEntre(elementoDeArriba: number, elementoDeAbajo?: number): boolean {
-    if(elementoDeAbajo) return window.pageYOffset >= elementoDeArriba && window.pageYOffset < elementoDeAbajo;
+  ifScreenXl(windowInnerWidth: number) {
+    this.screenXl = windowInnerWidth >= 1200;
+  }
 
-    return window.pageYOffset >= elementoDeArriba;
+  ifWindowEstaEntre(windowPageYOffset: number,elementoDeArriba: number, elementoDeAbajo?: number): boolean {
+    if(elementoDeAbajo){
+      return windowPageYOffset >= elementoDeArriba && windowPageYOffset < elementoDeAbajo;}
+
+    return windowPageYOffset >= elementoDeArriba;
   }
 
   /* Posible solucion para la posicion del active para cuando agregue elementos de forma dinamica *
