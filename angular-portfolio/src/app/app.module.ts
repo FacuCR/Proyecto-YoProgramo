@@ -7,6 +7,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // ===== Angular Material ===== //
 import { MaterialModule } from './material.module';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 // ===== ngx-typed.js ===== //
 import {NgxTypedJsModule} from 'ngx-typed-js';
@@ -47,7 +48,9 @@ import { FormularioLoginComponent } from './Components/formulario-login/formular
     FormsModule,
     MaterialModule
   ],
-  providers: [],
+  providers: [
+    { provide:MatDialogRef , useValue:{} },
+    { provide: MAT_DIALOG_DATA, useValue: {} }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
