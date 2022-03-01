@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit, Optional } from '@angular/core';
+import { Component, Optional } from '@angular/core';
 
 import { FormBuilder } from '@angular/forms';
 import { Validators } from '@angular/forms';
@@ -11,7 +11,7 @@ import { LoginBtnComponent } from '../loginBtn/loginBtn.component';
   templateUrl: './formulario-login.component.html',
   styleUrls: ['./formulario-login.component.css']
 })
-export class FormularioLoginComponent implements OnInit {
+export class FormularioLoginComponent {
 
   login = this.formBuilder.group({
     email:['', [Validators.required, Validators.email]],
@@ -25,9 +25,6 @@ export class FormularioLoginComponent implements OnInit {
     private formBuilder: FormBuilder,
     @Optional() public dialogRef: MatDialogRef<LoginBtnComponent>
   ) { }
-
-  ngOnInit() {
-  }
 
   onSubmit() {}
 

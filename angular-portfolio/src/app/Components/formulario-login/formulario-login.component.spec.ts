@@ -5,6 +5,7 @@ import { DebugElement } from '@angular/core';
 
 import { FormularioLoginComponent } from './formulario-login.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 
 describe('FormularioLoginComponent', () => {
   let component: FormularioLoginComponent;
@@ -15,7 +16,15 @@ describe('FormularioLoginComponent', () => {
       imports: [
         ReactiveFormsModule
       ],
-      declarations: [ FormularioLoginComponent ]
+      declarations: [ FormularioLoginComponent ],
+      providers: [
+        {
+          provide: MatDialog,
+          useValue: {
+            close: () => { }
+          }
+        },
+      ]
     })
     .compileComponents();
   }));
@@ -26,7 +35,7 @@ describe('FormularioLoginComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('debe crearse el FormularioLoginComponent', () => {
     expect(component).toBeTruthy();
   });
 });
