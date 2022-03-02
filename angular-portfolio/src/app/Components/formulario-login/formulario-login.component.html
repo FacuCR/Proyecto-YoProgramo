@@ -19,11 +19,11 @@
 
     <mat-form-field appearance="fill" class="row mt-3 gx-0">
       <mat-label>Contraseña</mat-label>
-      <input matInput [type]="ocultar ? 'password' : 'text'" formControlName="contraseña" required>
+      <input matInput [type]="ocultar ? 'password' : 'text'" formControlName="contraseña" minlength="6" required>
       <button mat-icon-button matSuffix (click)="ocultar = !ocultar" [attr.aria-label]="'ocultar contraseña'" [attr.aria-pressed]="ocultar">
         <mat-icon>{{ocultar ? 'visibility_off' : 'visibility'}}</mat-icon>
       </button>
-      <mat-error>Ingresa una contraseña</mat-error>
+      <mat-error>{{ getContraseniaErrorMessage() }}</mat-error>
       <mat-icon matPrefix class="my-icon me-3">keyboard_hide</mat-icon>
     </mat-form-field>
     
