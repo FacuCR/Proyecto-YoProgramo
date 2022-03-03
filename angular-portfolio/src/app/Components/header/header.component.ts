@@ -1,14 +1,20 @@
 import { DOCUMENT } from '@angular/common';
-import { Component, HostListener, Inject, AfterViewChecked, OnInit } from '@angular/core';
+import {
+  Component,
+  HostListener,
+  Inject,
+  AfterViewChecked,
+  OnInit,
+} from '@angular/core';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements AfterViewChecked, OnInit {
-  public isLogin: boolean = false;
+  public authenticated: boolean = false;
   public screenXl: boolean = false;
 
   menuAbierto: boolean = false;
@@ -25,60 +31,79 @@ export class HeaderComponent implements AfterViewChecked, OnInit {
   constructor(
     @Inject(DOCUMENT) private document: any,
     private tokenStorage: TokenStorageService
- ) {}
- 
+  ) {}
+
   ngOnInit(): void {
     this.ifScreenXl(window.innerWidth);
-    this.isLogin = this.tokenStorage.getToken() != null;
+    this.isAuthenticated();
   }
 
- ngAfterViewChecked() {
-
+  ngAfterViewChecked() {
     const heroElement: HTMLElement = this.getElementConId('hero');
     const aboutElement: HTMLElement = this.getElementConId('about');
     const habElement: HTMLElement = this.getElementConId('habilidades');
     const portfolioElement: HTMLElement = this.getElementConId('portfolio');
     const contactoElement: HTMLElement = this.getElementConId('contacto');
-    
+
     /*
-    * El test de creacion del componente está tratando de obtener el valor de html antes de renderizar por completo.
-    * El setTimeout es lo unico que me esta funcionando para el test de momento.
-    * No se necesita del setTimeout fuera del test, el componente se crea correctamente.
-    * Nota: si no funciona el test aumentar el tiempo de espera.
-    */
-    setTimeout(() => {    
+     * El test de creacion del componente está tratando de obtener el valor de html antes de renderizar por completo.
+     * El setTimeout es lo unico que me esta funcionando para el test de momento.
+     * No se necesita del setTimeout fuera del test, el componente se crea correctamente.
+     * Nota: si no funciona el test aumentar el tiempo de espera.
+     */
+    setTimeout(() => {
       this.heroOffset = heroElement.offsetTop;
       this.aboutOffset = aboutElement.offsetTop;
       this.habOffset = habElement.offsetTop;
-      this.portfolioOffset = portfolioElement.offsetTop; 
+      this.portfolioOffset = portfolioElement.offsetTop;
       this.contactoOffset = contactoElement.offsetTop;
     });
-    
   }
 
   /* ---===== Chequear la posicion para cambiar el cursor active del menu horizontal =====--- */
   @HostListener('window:scroll', ['$event'])
   checkOffsetTop(): void {
-    if (this.ifWindowEstaEntre(window.pageYOffset, this.heroOffset, this.aboutOffset)) {
+    if (
+      this.ifWindowEstaEntre(
+        window.pageYOffset,
+        this.heroOffset,
+        this.aboutOffset
+      )
+    ) {
       this.currentActiveMenuItem = 1;
-    } 
-    else if (this.ifWindowEstaEntre(window.pageYOffset, this.aboutOffset, this.habOffset)) {
+    } else if (
+      this.ifWindowEstaEntre(
+        window.pageYOffset,
+        this.aboutOffset,
+        this.habOffset
+      )
+    ) {
       this.currentActiveMenuItem = 2;
-    } 
-    else if (this.ifWindowEstaEntre(window.pageYOffset, this.habOffset, this.portfolioOffset)) {
+    } else if (
+      this.ifWindowEstaEntre(
+        window.pageYOffset,
+        this.habOffset,
+        this.portfolioOffset
+      )
+    ) {
       this.currentActiveMenuItem = 3;
-    } 
-    else if (this.ifWindowEstaEntre(window.pageYOffset, this.portfolioOffset, this.contactoOffset)) {
+    } else if (
+      this.ifWindowEstaEntre(
+        window.pageYOffset,
+        this.portfolioOffset,
+        this.contactoOffset
+      )
+    ) {
       this.currentActiveMenuItem = 4;
-    } 
-    else if (this.ifWindowEstaEntre(window.pageYOffset, this.contactoOffset)) {
+    } else if (
+      this.ifWindowEstaEntre(window.pageYOffset, this.contactoOffset)
+    ) {
       this.currentActiveMenuItem = 5;
-    } 
-    else {
+    } else {
       this.currentActiveMenuItem = 0;
     }
   }
-  
+
   @HostListener('window:resize', ['$event'])
   onResize() {
     this.ifScreenXl(window.innerWidth);
@@ -96,11 +121,29 @@ export class HeaderComponent implements AfterViewChecked, OnInit {
     this.screenXl = windowInnerWidth >= 1200;
   }
 
-  ifWindowEstaEntre(windowPageYOffset: number,elementoDeArriba: number, elementoDeAbajo?: number): boolean {
-    if(elementoDeAbajo){
-      return windowPageYOffset >= elementoDeArriba && windowPageYOffset < elementoDeAbajo;}
+  ifWindowEstaEntre(
+    windowPageYOffset: number,
+    elementoDeArriba: number,
+    elementoDeAbajo?: number
+  ): boolean {
+    if (elementoDeAbajo) {
+      return (
+        windowPageYOffset >= elementoDeArriba &&
+        windowPageYOffset < elementoDeAbajo
+      );
+    }
 
     return windowPageYOffset >= elementoDeArriba;
+  }
+
+  onClickSignout(): void {
+    this.tokenStorage.signOut();
+    this.isAuthenticated();
+    window.location.reload();
+  }
+
+  isAuthenticated(): void {
+    this.authenticated = this.tokenStorage.isAuthenticated();
   }
 
   /* Posible solucion para la posicion del active para cuando agregue elementos de forma dinamica *

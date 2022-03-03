@@ -1,6 +1,15 @@
 <nav class="d-flex justify-content-between align-items-center mt-2 me-4 ms-4">
   <a class="text-uppercase" href="#"><strong class="logo">FC</strong></a>
-  <app-loginBtn *ngIf="screenXl && !isLogin"></app-loginBtn>
+  <app-loginBtn *ngIf="screenXl && !authenticated"></app-loginBtn>
+  <button
+    *ngIf="screenXl && authenticated"
+    mat-stroked-button
+    (click)="onClickSignout()"
+    class="btn"
+    color="primary"
+  >
+    Cerrar Sesion
+  </button>
 </nav>
 
 <!-- ======= Mobile nav toggle button ======= -->
@@ -80,10 +89,21 @@
     </ul>
 
     <app-loginBtn
-      *ngIf="!screenXl"
+      *ngIf="!screenXl && !authenticated"
       class="d-flex justify-content-center"
       (click)="activarMobileNav()"
     ></app-loginBtn>
+    <div class="d-flex justify-content-center">
+      <button
+        *ngIf="!screenXl && authenticated"
+        mat-stroked-button
+        (click)="onClickSignout()"
+        class="btn p-1"
+        color="primary"
+      >
+        Cerrar Sesion
+      </button>
+    </div>
   </nav>
   <!-- .nav-menu -->
 </header>
