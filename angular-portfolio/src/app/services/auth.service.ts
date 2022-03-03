@@ -14,11 +14,11 @@ export class AuthService {
   constructor(private http: HttpClient) {}
 
   login(email: string, contrasenia: string): Observable<any> {
-    return this.http.post(
+    return this.http.post<any>(
       AUTH_API + 'signin',
       {
         email,
-        contrasenia,
+        contrasenia
       },
       httpOptions
     );

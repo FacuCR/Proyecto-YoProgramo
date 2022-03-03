@@ -1,66 +1,90 @@
 <nav class="d-flex justify-content-between align-items-center mt-2 me-4 ms-4">
   <a class="text-uppercase" href="#"><strong class="logo">FC</strong></a>
-  <app-loginBtn *ngIf="screenXl"></app-loginBtn>
+  <app-loginBtn *ngIf="screenXl && !isLogin"></app-loginBtn>
 </nav>
 
 <!-- ======= Mobile nav toggle button ======= -->
-  <i class="bi mobile-nav-toggle d-xl-none"
-    (click)="activarMobileNav()"
-    [ngClass]="{
-      'bi-list': !menuAbierto,
-      'bi-x': menuAbierto,
-      'bg-blue': menuAbierto,
-      'mobile-nav-active': menuAbierto
-    }"></i>
+<i
+  class="bi mobile-nav-toggle d-xl-none"
+  (click)="activarMobileNav()"
+  [ngClass]="{
+    'bi-list': !menuAbierto,
+    'bi-x': menuAbierto,
+    'bg-blue': menuAbierto,
+    'mobile-nav-active': menuAbierto
+  }"
+></i>
 
-  <!-- ======= Header ======= -->
-  <header id="header" #header class="d-flex flex-column justify-content-center pt-4" [class.start-0]="menuAbierto">
-
-    <nav id="navbar" class="navbar nav-menu">
-      <ul>
-        <li><a
+<!-- ======= Header ======= -->
+<header
+  id="header"
+  #header
+  class="d-flex flex-column justify-content-center pt-4"
+  [class.start-0]="menuAbierto"
+>
+  <nav id="navbar" class="navbar nav-menu">
+    <ul>
+      <li>
+        <a
           href="#hero"
           class="nav-link scrollto"
-          [ngClass]="{'active': currentActiveMenuItem === 1}"
+          [ngClass]="{ active: currentActiveMenuItem === 1 }"
           ><i class="bx bx-home"></i>
           <span>Inicio</span>
-        </a></li>
-        
-        <li><a
+        </a>
+      </li>
+
+      <li>
+        <a
           href="#about"
           class="nav-link scrollto"
-          [ngClass]="{'active': currentActiveMenuItem === 2}">
+          [ngClass]="{ active: currentActiveMenuItem === 2 }"
+        >
           <i class="bx bx-user"></i>
           <span>Acerca de mi</span>
-        </a></li>
-        
-        <li><a
+        </a>
+      </li>
+
+      <li>
+        <a
           href="#habilidades"
           class="nav-link scrollto"
-          [ngClass]="{'active': currentActiveMenuItem === 3}">
+          [ngClass]="{ active: currentActiveMenuItem === 3 }"
+        >
           <i class="bx bx-award"></i>
           <span>Habilidades</span>
-        </a></li>
-        
-        <li><a
+        </a>
+      </li>
+
+      <li>
+        <a
           href="#portfolio"
           class="nav-link scrollto"
-          [ngClass]="{'active': currentActiveMenuItem === 4}">
+          [ngClass]="{ active: currentActiveMenuItem === 4 }"
+        >
           <i class="bx bx-book-content"></i>
           <span>Portfolio</span>
-        </a></li>
-        
-        <li><a
+        </a>
+      </li>
+
+      <li>
+        <a
           href="#contacto"
           class="nav-link scrollto"
-          [ngClass]="{'active': currentActiveMenuItem === 5}">
+          [ngClass]="{ active: currentActiveMenuItem === 5 }"
+        >
           <i class="bx bx-envelope"></i>
           <span>Hablame!</span>
-        </a></li>
-      </ul>
+        </a>
+      </li>
+    </ul>
 
-      <app-loginBtn *ngIf="!screenXl" class="d-flex justify-content-center" (click)="activarMobileNav()"></app-loginBtn>
-      
-    </nav><!-- .nav-menu -->
-
-  </header><!-- End Header -->
+    <app-loginBtn
+      *ngIf="!screenXl"
+      class="d-flex justify-content-center"
+      (click)="activarMobileNav()"
+    ></app-loginBtn>
+  </nav>
+  <!-- .nav-menu -->
+</header>
+<!-- End Header -->

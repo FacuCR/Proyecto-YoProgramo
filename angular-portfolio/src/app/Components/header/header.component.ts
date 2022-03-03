@@ -1,5 +1,6 @@
 import { DOCUMENT } from '@angular/common';
 import { Component, HostListener, Inject, AfterViewChecked, OnInit } from '@angular/core';
+import { TokenStorageService } from 'src/app/services/token-storage.service';
 
 @Component({
   selector: 'app-header',
@@ -7,7 +8,7 @@ import { Component, HostListener, Inject, AfterViewChecked, OnInit } from '@angu
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements AfterViewChecked, OnInit {
-  
+  public isLogin: boolean = false;
   public screenXl: boolean = false;
 
   menuAbierto: boolean = false;
@@ -22,11 +23,13 @@ export class HeaderComponent implements AfterViewChecked, OnInit {
   winInnerWith: number = 0;
 
   constructor(
-    @Inject(DOCUMENT) private document: any
+    @Inject(DOCUMENT) private document: any,
+    private tokenStorage: TokenStorageService
  ) {}
  
   ngOnInit(): void {
     this.ifScreenXl(window.innerWidth);
+    this.isLogin = this.tokenStorage.getToken() != null;
   }
 
  ngAfterViewChecked() {
