@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormularioLoginComponent } from '../formulario-login/formulario-login.component';
 
 @Component({
   selector: 'app-hero',
@@ -11,4 +12,5 @@ export class HeroComponent implements OnInit {
 
   ngOnInit(): void { }
 
+  formularioLoginComponent!: FormularioLoginComponent;
 }

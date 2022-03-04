@@ -26,6 +26,8 @@ import { HeaderComponent } from './Components/header/header.component';
 import { HeroComponent } from './Components/hero/hero.component';
 import { LoginBtnComponent } from './Components/loginBtn/loginBtn.component';
 import { PortfolioComponent } from './Components/portfolio/portfolio.component';
+import { EditarBtnComponent } from './Components/editar-btn/editar-btn.component';
+import { BorrarBtnComponent } from './Components/borrar-btn/borrar-btn.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +41,8 @@ import { PortfolioComponent } from './Components/portfolio/portfolio.component';
     HeroComponent,
     LoginBtnComponent,
     PortfolioComponent,
+    EditarBtnComponent,
+    BorrarBtnComponent,
   ],
   imports: [
     AppRoutingModule,
