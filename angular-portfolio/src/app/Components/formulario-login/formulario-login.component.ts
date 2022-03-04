@@ -38,17 +38,30 @@ export class FormularioLoginComponent implements OnInit {
     if (this.tokenStorage.getToken()) {
       this.dialogRef.close();
     }
+    if(localStorage.getItem('email'))
+      this.login.setValue({
+        'email': localStorage.getItem('email'),
+        'contraseña': localStorage.getItem('contraseña'),
+        'recordarme': true
+      });
   }
 
   onSubmit(): void {
     const email: string = this.login.get('email')?.value;
     const contrasenia: string = this.login.get('contraseña')?.value;
+    const checkboxValue: boolean = this.login.get('recordarme')?.value;
 
     this.authService.login(email, contrasenia).subscribe({
       next: (data) => {
         this.tokenStorage.saveToken(data.accessToken);
         this.tokenStorage.saveUser(data);
-        this.roles = this.tokenStorage.getUser().roles;       
+        this.roles = this.tokenStorage.getUser().roles;
+        if(checkboxValue){
+          localStorage.setItem('email', email);
+          localStorage.setItem('contraseña', '');
+        }
+        else
+          localStorage.clear();
         this.reloadPage();
       },
       error: (err: Error) => {
