@@ -1,43 +1,81 @@
 <article class="login">
-
   <div class="d-flex justify-content-center">
     <h1 class="h1">Iniciar Sesion</h1>
   </div>
 
   <div class="d-flex justify-content-center">
-    <img src="../../../assets/img/login.png" alt="" class="img-fluid">
+    <img src="../../../assets/img/login.png" alt="" class="img-fluid" />
   </div>
 
   <form [formGroup]="login" (ngSubmit)="onSubmit()" class="row p-3">
-    
-    <mat-form-field appearance="fill" class="row mt-3 gx-0">
+    <mat-form-field
+      [ngClass]="{ 'mat-form-field-invalid': isInvalido }"
+      appearance="fill"
+      class="row mt-3 gx-0"
+    >
       <mat-label>Email</mat-label>
-      <input matInput placeholder="ej: facucastro302@gmail.com" formControlName="email" required>
+      <input
+        matInput
+        placeholder="ej: facucastro302@gmail.com"
+        formControlName="email"
+        required
+      />
       <mat-error>{{ getEmailErrorMessage() }}</mat-error>
       <mat-icon matPrefix class="my-icon me-3">account_circle</mat-icon>
     </mat-form-field>
 
-    <mat-form-field appearance="fill" class="row mt-3 gx-0">
+    <mat-form-field
+      [ngClass]="{ 'mat-form-field-invalid': isInvalido }"
+      appearance="fill"
+      class="row mt-3 gx-0"
+    >
       <mat-label>Contraseña</mat-label>
-      <input matInput [type]="ocultar ? 'password' : 'text'" formControlName="contraseña" required>
-      <button mat-icon-button matSuffix (click)="ocultar = !ocultar" [attr.aria-label]="'ocultar contraseña'" [attr.aria-pressed]="ocultar">
-        <mat-icon>{{ocultar ? 'visibility_off' : 'visibility'}}</mat-icon>
+      <input
+        matInput
+        [type]="ocultar ? 'password' : 'text'"
+        formControlName="contraseña"
+        minlength="6"
+        required
+      />
+      <button
+        mat-icon-button
+        matSuffix
+        (click)="ocultar = !ocultar"
+        [attr.aria-label]="'ocultar contraseña'"
+        [attr.aria-pressed]="ocultar"
+      >
+        <mat-icon>{{ ocultar ? "visibility_off" : "visibility" }}</mat-icon>
       </button>
-      <mat-error>Ingresa una contraseña</mat-error>
+      <mat-error>{{ getContraseniaErrorMessage() }}</mat-error>
       <mat-icon matPrefix class="my-icon me-3">keyboard_hide</mat-icon>
     </mat-form-field>
-    
-    <mat-checkbox 
-    class="mt-1 gx-0"
-    color="primary"
-    formControlName="recordarme"
-    ngDefaultControl
-    >Recordarme!</mat-checkbox>
+
+    <mat-checkbox
+      class="my-2 gx-0"
+      color="primary"
+      formControlName="recordarme"
+      ngDefaultControl
+      >Recordarme!</mat-checkbox
+    >
 
     <div class="row mt-4 d-flex justify-content-between gx-0">
-      <button mat-stroked-button (click)="onVolverClick()" class="btn col-5" color="primary">VOLVER</button>
-      <button mat-raised-button class="btn col-5" color="primary" [disabled]="!login.valid">INICIAR</button>      
+      <button
+        mat-stroked-button
+        (click)="onVolverClick()"
+        class="btn col-5"
+        color="primary"
+      >
+        Volver
+      </button>
+      <button
+        mat-raised-button
+        type="submit"
+        class="btn col-5"
+        color="primary"
+        [disabled]="!login.valid"
+      >
+        Iniciar
+      </button>
     </div>
-
   </form>
 </article>
