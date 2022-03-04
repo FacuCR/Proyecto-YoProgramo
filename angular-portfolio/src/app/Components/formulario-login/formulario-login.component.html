@@ -8,7 +8,11 @@
   </div>
 
   <form [formGroup]="login" (ngSubmit)="onSubmit()" class="row p-3">
-    <mat-form-field appearance="fill" class="row mt-3 gx-0">
+    <mat-form-field
+      [ngClass]="{ 'mat-form-field-invalid': isInvalido }"
+      appearance="fill"
+      class="row mt-3 gx-0"
+    >
       <mat-label>Email</mat-label>
       <input
         matInput
@@ -20,7 +24,11 @@
       <mat-icon matPrefix class="my-icon me-3">account_circle</mat-icon>
     </mat-form-field>
 
-    <mat-form-field appearance="fill" class="row mt-3 gx-0">
+    <mat-form-field
+      [ngClass]="{ 'mat-form-field-invalid': isInvalido }"
+      appearance="fill"
+      class="row mt-3 gx-0"
+    >
       <mat-label>Contraseña</mat-label>
       <input
         matInput

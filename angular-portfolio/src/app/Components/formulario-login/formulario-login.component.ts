@@ -4,6 +4,7 @@ import { FormBuilder } from '@angular/forms';
 import { Validators } from '@angular/forms';
 
 import { MatDialogRef } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { AuthService } from 'src/app/services/auth.service';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { LoginBtnComponent } from '../loginBtn/loginBtn.component';
@@ -23,12 +24,14 @@ export class FormularioLoginComponent implements OnInit {
   ocultar = true;
   roles: string[] = [];
   errorMessage: string = '';
+  isInvalido: boolean = false;
 
   constructor(
     private authService: AuthService,
     private tokenStorage: TokenStorageService,
     private formBuilder: FormBuilder,
-    @Optional() public dialogRef: MatDialogRef<LoginBtnComponent>
+    @Optional() public dialogRef: MatDialogRef<LoginBtnComponent>,
+    private _snackBar: MatSnackBar
   ) {}
 
   ngOnInit(): void {
@@ -45,11 +48,14 @@ export class FormularioLoginComponent implements OnInit {
       next: (data) => {
         this.tokenStorage.saveToken(data.accessToken);
         this.tokenStorage.saveUser(data);
-        this.roles = this.tokenStorage.getUser().roles;
+        this.roles = this.tokenStorage.getUser().roles;       
         this.reloadPage();
       },
       error: (err: Error) => {
         this.errorMessage = err.message;
+        this.login.reset();
+        this.isInvalido = true;
+        this.openSnackBar("Ocurrio un error, vuelve a intentarlo!", "OK");
       },
     });
   }
@@ -60,17 +66,17 @@ export class FormularioLoginComponent implements OnInit {
 
   getEmailErrorMessage() {
     if (this.login.controls['email'].hasError('required')) {
-      return 'Debes ingresar tu email!';
+      return 'Ingresa un email valido!';
     }
 
     return this.login.controls['email'].hasError('email')
-      ? 'Ingresa un mail valido!'
+      ? 'Formato de email incorrecto'
       : '';
   }
 
   getContraseniaErrorMessage() {
     if (this.login.controls['contraseña'].hasError('required')) {
-      return 'Debes ingresar tu contraseña!';
+      return 'Ingresar una contraseña valida!';
     }
 
     return this.login.controls['contraseña'].hasError('minLength')
@@ -80,5 +86,9 @@ export class FormularioLoginComponent implements OnInit {
 
   onVolverClick(): void {
     this.dialogRef.close();
+  }
+
+  openSnackBar(message: string, action = '') {
+    this._snackBar.open(message, action, { duration: 5000 , });
   }
 }
