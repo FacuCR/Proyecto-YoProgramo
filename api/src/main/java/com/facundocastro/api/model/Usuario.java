@@ -16,6 +16,8 @@ public class Usuario {
     private String email;
     @NotNull
     private String contrasenia;
+    @Embedded
+    private Persona persona;
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "usuario_roles",
             joinColumns = @JoinColumn(name = "usuario_id"),

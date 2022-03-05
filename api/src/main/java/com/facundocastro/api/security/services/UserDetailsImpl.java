@@ -1,5 +1,6 @@
 package com.facundocastro.api.security.services;
 
+import com.facundocastro.api.model.Persona;
 import com.facundocastro.api.model.Usuario;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.security.core.GrantedAuthority;
@@ -17,12 +18,14 @@ public class UserDetailsImpl implements UserDetails {
     private String email;
     @JsonIgnore
     private String contrasenia;
+    private Persona persona;
     private Collection<? extends GrantedAuthority> authorities;
-    public UserDetailsImpl(Long id, String email, String contrasenia,
+    public UserDetailsImpl(Long id, String email, String contrasenia, Persona persona,
                            Collection<? extends GrantedAuthority> authorities) {
         this.id = id;
         this.email = email;
         this.contrasenia = contrasenia;
+        this.persona = persona;
         this.authorities = authorities;
     }
     public static UserDetailsImpl build(Usuario usuario) {
@@ -33,6 +36,7 @@ public class UserDetailsImpl implements UserDetails {
                 usuario.getId(),
                 usuario.getEmail(),
                 usuario.getContrasenia(),
+                usuario.getPersona(),
                 authorities);
     }
 
@@ -48,6 +52,8 @@ public class UserDetailsImpl implements UserDetails {
     public String getEmail() {
         return email;
     }
+
+    public Persona getPersona() { return persona; }
 
     @Override
     public String getPassword() {
