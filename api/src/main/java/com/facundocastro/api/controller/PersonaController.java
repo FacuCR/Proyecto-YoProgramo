@@ -1,23 +1,23 @@
 package com.facundocastro.api.controller;
 
-import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.facundocastro.api.model.Usuario;
+import com.facundocastro.api.repository.UsuarioRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/api/persona")
 public class PersonaController {
-    @GetMapping("/datos")
-    public String allAccess() {
-        return "Public Content.";
-    }
+    @Autowired
+    UsuarioRepository usuarioRepository;
 
-    @GetMapping("/admin")
-    @PreAuthorize("hasAuthority('ADMIN') or hasRole('ADMIN')")
-    public String adminAccess() {
-        return "Admin Board.";
+    @GetMapping("/obtener")
+    public Optional<Usuario> obtenerDatosDelUsuario()
+    {
+        Optional<Usuario> usuario = usuarioRepository.findById(Long.valueOf(2));
+        return usuario;
     }
 }
