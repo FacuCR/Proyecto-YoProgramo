@@ -1,4 +1,4 @@
-class Redes {
+export class Redes {
     protected _url: string = '';
     protected _nombre: string = '';
 

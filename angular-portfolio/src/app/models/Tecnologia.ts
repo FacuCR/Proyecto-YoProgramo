@@ -1,4 +1,4 @@
-class Tecnologia {
+export class Tecnologia {
     protected _id: number = -1;
     protected _nombre: string = '';
     protected _color: string = '';

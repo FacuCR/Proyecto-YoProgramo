@@ -1,4 +1,4 @@
-class Imagen {
+export class Imagen {
     protected _ruta: string = '';
     protected _archivo: string = '';
 

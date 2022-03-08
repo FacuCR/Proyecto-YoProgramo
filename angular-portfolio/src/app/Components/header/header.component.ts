@@ -6,7 +6,10 @@ import {
   AfterViewChecked,
   OnInit,
 } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Persona } from 'src/app/models/Persona';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-header',
@@ -14,24 +17,44 @@ import { TokenStorageService } from 'src/app/services/token-storage.service';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements AfterViewChecked, OnInit {
-  public authenticated: boolean = false;
-  public screenXl: boolean = false;
+  authenticated: boolean = false;
+  screenXl: boolean = false;
 
   menuAbierto: boolean = false;
 
-  public currentActiveMenuItem: number = 0;
+  currentActiveMenuItem: number = 0;
 
-  public heroOffset: number = 0;
-  public aboutOffset: number = 0;
-  public habOffset: number = 0;
-  public portfolioOffset: number = 0;
-  public contactoOffset: number = 0;
+  heroOffset: number = 0;
+  aboutOffset: number = 0;
+  habOffset: number = 0;
+  portfolioOffset: number = 0;
+  contactoOffset: number = 0;
   winInnerWith: number = 0;
+
+  datosPersona: Persona = new Persona();
+  iniciales: string = '';
 
   constructor(
     @Inject(DOCUMENT) private document: any,
-    private tokenStorage: TokenStorageService
-  ) {}
+    private tokenStorage: TokenStorageService,
+    private userService: UserService,
+    private _snackBar: MatSnackBar
+  ) {
+    this.userService.getPersona().subscribe({
+      next: (data) => {
+        this.datosPersona.nombre = data.persona.nombre;
+        this.datosPersona.apellido = data.persona.apellido;
+        this.iniciales =
+          this.datosPersona.nombre[0] + this.datosPersona.apellido[0];
+      },
+      error: (err: Error) => {
+        this.openSnackBar(
+          'Ocurrio un error al mostrar los datos, vuelve mas tarde.',
+          'OK'
+        );
+      },
+    });
+  }
 
   ngOnInit(): void {
     this.ifScreenXl(window.innerWidth);
@@ -144,6 +167,10 @@ export class HeaderComponent implements AfterViewChecked, OnInit {
 
   isAuthenticated(): void {
     this.authenticated = this.tokenStorage.isAuthenticated();
+  }
+
+  openSnackBar(message: string, action = '') {
+    this._snackBar.open(message, action, { duration: 5000 });
   }
 
   /* Posible solucion para la posicion del active para cuando agregue elementos de forma dinamica *

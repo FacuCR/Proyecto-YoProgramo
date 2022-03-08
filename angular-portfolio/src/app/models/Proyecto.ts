@@ -1,4 +1,6 @@
-class Proyecto {
+import { Imagen } from "./Imagen";
+
+export class Proyecto {
     protected _id: number = -1;
     protected _titulo: string = '';
     protected _descripcion: string = '';
