@@ -52,6 +52,7 @@ export class HeaderComponent implements AfterViewChecked, OnInit {
           'Ocurrio un error al mostrar los datos, vuelve mas tarde.',
           'OK'
         );
+        console.log(err.message);
       },
     });
   }

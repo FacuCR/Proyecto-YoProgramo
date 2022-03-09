@@ -28,6 +28,7 @@ import { LoginBtnComponent } from './Components/loginBtn/loginBtn.component';
 import { PortfolioComponent } from './Components/portfolio/portfolio.component';
 import { EditarBtnComponent } from './Components/editar-btn/editar-btn.component';
 import { BorrarBtnComponent } from './Components/borrar-btn/borrar-btn.component';
+import { EditarHeroComponent } from './Components/editar-hero/editar-hero.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { BorrarBtnComponent } from './Components/borrar-btn/borrar-btn.component
     PortfolioComponent,
     EditarBtnComponent,
     BorrarBtnComponent,
+    EditarHeroComponent,
   ],
   imports: [
     AppRoutingModule,

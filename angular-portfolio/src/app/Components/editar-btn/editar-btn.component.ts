@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, Optional } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { FormularioLoginComponent } from '../formulario-login/formulario-login.component';
+import { EditarHeroComponent } from '../editar-hero/editar-hero.component';
 
 @Component({
   selector: 'app-editar-btn',
@@ -23,7 +23,7 @@ export class EditarBtnComponent {
   openDialog(component: number){
     switch (component) {
       case 1:
-        this.dialogRef.open(FormularioLoginComponent);
+        this.dialogRef.open(EditarHeroComponent, { width: '25rem' });
         break;
     
       default:
