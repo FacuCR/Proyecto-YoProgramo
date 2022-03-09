@@ -18,7 +18,7 @@ export class AuthService {
       AUTH_API + 'signin',
       {
         email,
-        contrasenia
+        contrasenia,
       },
       httpOptions
     );

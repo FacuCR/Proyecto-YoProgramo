@@ -2,7 +2,8 @@
 <section id="hero" class="d-flex flex-column justify-content-center">
   <div class="container my-auto" data-aos="zoom-in" data-aos-delay="100">
     <h1>
-      {{ nombre + ' ' + apellido }} <app-editar-btn [componentToOpen]="1"></app-editar-btn>
+      {{ nombre + " " + apellido }}
+      <app-editar-btn *ngIf="authenticated" [componentToOpen]="1"></app-editar-btn>
     </h1>
     <ngx-typed-js
       [strings]="[nombre + '.', ocupacion + '.', 'Creativo.']"

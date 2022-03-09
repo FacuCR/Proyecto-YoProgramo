@@ -10,7 +10,7 @@ import { EditarBtnComponent } from '../editar-btn/editar-btn.component';
   templateUrl: './editar-hero.component.html',
   styleUrls: ['./editar-hero.component.css'],
 })
-export class EditarHeroComponent {
+export class EditarHeroComponent implements OnInit {
   heroForm = this.formBuilder.group({
     nombre: '',
     apellido: '',
@@ -28,8 +28,10 @@ export class EditarHeroComponent {
     @Optional() public dialogRef: MatDialogRef<EditarBtnComponent>,
     private _snackBar: MatSnackBar,
     private userService: UserService
-  ) {
-    userService.getPersona().subscribe({
+  ) {}
+
+  ngOnInit(): void {
+    this.userService.getPersona().subscribe({
       next: (data) => {
         this.apellidoActual = data.persona.apellido;
         this.nombreActual = data.persona.nombre;
@@ -41,7 +43,19 @@ export class EditarHeroComponent {
     });
   }
 
-  onSubmit(): void {}
+  onSubmit(): void {
+    const nombre: string = this.heroForm.get('nombre')?.value;
+    const apellido: string = this.heroForm.get('apellido')?.value;
+    const ocupacion: string = this.heroForm.get('ocupacion')?.value;
+
+    this.userService.editarPrincipal(nombre, apellido, ocupacion).subscribe({
+      next: (data) => {
+        this.reloadPage();
+      },
+      error: (err: Error) => {
+      }, //voy a intetar usar data de mat dialog para devolver el error
+    });
+  }
 
   onCancelarClick(): void {
     this.dialogRef.close();
@@ -49,5 +63,9 @@ export class EditarHeroComponent {
 
   openSnackBar(message: string, action = '') {
     this._snackBar.open(message, action, { duration: 5000 });
+  }
+
+  reloadPage(): void {
+    window.location.reload();
   }
 }

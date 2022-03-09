@@ -1,21 +1,25 @@
 import { Component, OnInit } from '@angular/core';
 import { Redes } from 'src/app/models/Redes';
+import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { UserService } from 'src/app/services/user.service';
-import { FormularioLoginComponent } from '../formulario-login/formulario-login.component';
 
 @Component({
   selector: 'app-hero',
   templateUrl: './hero.component.html',
   styleUrls: ['./hero.component.css'],
 })
-export class HeroComponent {
+export class HeroComponent implements OnInit {
   apellido: string = '';
   nombre: string = '';
   ocupacion: string = '';
   redes: Redes[] = [];
   red: Redes = new Redes();
+  authenticated: boolean = false;
 
-  constructor(private userService: UserService) {
+  constructor(
+    private userService: UserService,
+    private tokenStorage: TokenStorageService
+  ) {
     this.userService.getPersona().subscribe({
       next: (data) => {
         this.apellido = data.persona.apellido;
@@ -24,7 +28,6 @@ export class HeroComponent {
         console.log(data.persona.redes);
         data.persona.redes.forEach((red: Redes) => {
           this.redes.push(red);
-          console.log(red);
         });
       },
       error: (err: Error) => {
@@ -33,5 +36,7 @@ export class HeroComponent {
     });
   }
 
-  formularioLoginComponent!: FormularioLoginComponent;
+  ngOnInit(): void {
+    this.authenticated = this.tokenStorage.isAuthenticated();
+  }
 }

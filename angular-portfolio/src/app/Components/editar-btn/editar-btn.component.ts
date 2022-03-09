@@ -23,7 +23,7 @@ export class EditarBtnComponent {
   openDialog(component: number){
     switch (component) {
       case 1:
-        this.dialogRef.open(EditarHeroComponent, { width: '25rem' });
+        this.dialogRef.open(EditarHeroComponent, { maxWidth: '25rem' });
         break;
     
       default:
