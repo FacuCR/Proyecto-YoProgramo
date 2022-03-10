@@ -46,6 +46,14 @@
       />
     </mat-form-field>
 
+    <div>
+      <input (change)="capturarFile($event)" type="file" name="" id="" />
+    </div>
+    <!--previsualizacion de la imagen-->
+    <div *ngIf="previsualizacion">
+      <img [src]="previsualizacion" width="100px" alt="" />
+    </div>
+
     <div class="row mt-4 d-flex justify-content-between gx-0">
       <button
         mat-stroked-button

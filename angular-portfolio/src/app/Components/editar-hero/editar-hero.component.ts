@@ -1,7 +1,8 @@
 import { Component, OnInit, Optional } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { DomSanitizer } from '@angular/platform-browser';
 import { UserService } from 'src/app/services/user.service';
 import { EditarBtnComponent } from '../editar-btn/editar-btn.component';
 
@@ -12,9 +13,9 @@ import { EditarBtnComponent } from '../editar-btn/editar-btn.component';
 })
 export class EditarHeroComponent implements OnInit {
   heroForm = this.formBuilder.group({
-    nombre: '',
-    apellido: '',
-    ocupacion: '',
+    nombre: ['', Validators.required],
+    apellido: ['', Validators.required],
+    ocupacion: ['', Validators.required],
   });
 
   apellidoActual: string = '';
@@ -23,11 +24,15 @@ export class EditarHeroComponent implements OnInit {
 
   isInvalido: boolean = false;
 
+  archivo: any;
+  previsualizacion: string = '';
+
   constructor(
     private formBuilder: FormBuilder,
     @Optional() public dialogRef: MatDialogRef<EditarBtnComponent>,
     private _snackBar: MatSnackBar,
-    private userService: UserService
+    private userService: UserService,
+    private sanitizer: DomSanitizer
   ) {}
 
   ngOnInit(): void {
@@ -52,8 +57,7 @@ export class EditarHeroComponent implements OnInit {
       next: (data) => {
         this.reloadPage();
       },
-      error: (err: Error) => {
-      }, //voy a intetar usar data de mat dialog para devolver el error
+      error: (err: Error) => {}, //voy a intetar usar data de mat dialog para devolver el error
     });
   }
 
@@ -68,4 +72,33 @@ export class EditarHeroComponent implements OnInit {
   reloadPage(): void {
     window.location.reload();
   }
+
+  capturarFile(event: any): any {
+    const archivoCapturado = event.target.files[0];
+    this.archivo = archivoCapturado;
+    this.extraerBase64(archivoCapturado).then((imagen: any) => {
+      this.previsualizacion = imagen.base;
+    });
+  }
+
+  extraerBase64 = async ($event: any) =>
+    new Promise((resolve) => {
+      try {
+        const reader = new FileReader();
+        reader.readAsDataURL($event);
+        reader.onload = () => {
+          resolve({
+            base: reader.result,
+          });
+        };
+        reader.onerror = (error) => {
+          resolve({
+            base: null,
+          });
+        };
+        return null;
+      } catch (e) {
+        return null;
+      }
+    });
 }

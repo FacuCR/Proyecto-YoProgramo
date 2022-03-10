@@ -8,10 +8,6 @@ import javax.persistence.Embeddable;
 @Data
 @Embeddable
 public class Imagenes {
-    @NotNull
-    private String ruta;
-    @NotNull
     private String bg;
-    @NotNull
     private String perfil;
 }

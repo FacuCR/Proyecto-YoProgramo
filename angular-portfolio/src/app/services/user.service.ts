@@ -23,7 +23,7 @@ export class UserService {
     ocupacion: string
   ): Observable<any> {
     return this.http.put<any>(
-      API_URL + 'editar_hero',
+      API_URL + 'editar/hero',
       {
         nombre,
         apellido,
