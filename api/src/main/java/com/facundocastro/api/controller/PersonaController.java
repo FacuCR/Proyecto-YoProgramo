@@ -7,7 +7,6 @@ import com.facundocastro.api.payload.request.EditarHeroRequest;
 import com.facundocastro.api.payload.response.MessageResponse;
 import com.facundocastro.api.repository.UsuarioRepository;
 import com.facundocastro.api.service.IImgStorageService;
-import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
@@ -32,14 +31,13 @@ public class PersonaController {
     @GetMapping("/obtener")
     public Optional<Usuario> obtenerDatosDelUsuario()
     {
-        Optional<Usuario> usuario = usuarioRepository.findById(Long.valueOf(2));
-        return usuario;
+        return usuarioRepository.findById(2L);
     }
 
     @PutMapping("/editar/hero")
     @PreAuthorize("hasRole('ADMIN')")
     public void editarNombreYApellido(@Valid @RequestBody EditarHeroRequest editarHeroRequest) {
-        Usuario usuario = usuarioRepository.findById(Long.valueOf(2)).get();
+        Usuario usuario = usuarioRepository.findById(2L).get();
         Persona persona = usuario.getPersona();
 
         persona.setNombre(editarHeroRequest.getNombre());
@@ -54,7 +52,7 @@ public class PersonaController {
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<MessageResponse> editarBG(@RequestParam MultipartFile file) {
         String mensaje;
-        Usuario usuario = usuarioRepository.findById(Long.valueOf(2)).get();
+        Usuario usuario = usuarioRepository.findById(2L).get();
         Persona persona = usuario.getPersona();
         Imagenes fotos = new Imagenes();
         try {
