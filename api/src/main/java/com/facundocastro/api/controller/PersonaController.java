@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
+import java.util.Objects;
 import java.util.Optional;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
@@ -57,7 +58,9 @@ public class PersonaController {
         Imagenes fotos = new Imagenes();
         try {
             fotos.setPerfil(persona.getFotos().getPerfil());
-            fotos.setBg("bg.jpg");
+            int index = Objects.requireNonNull(file.getOriginalFilename()).lastIndexOf('.');
+            String extension = file.getOriginalFilename().substring(index + 1);
+            fotos.setBg("bg." + extension);
             storageService.save(file);
             persona.setFotos(fotos);
             usuario.setPersona(persona);
@@ -73,7 +76,8 @@ public class PersonaController {
     @GetMapping("/files/bg")
     @ResponseBody
     public ResponseEntity<Resource> getFile() {
-        Resource file = storageService.load("bg.jpg");
+        Persona persona = usuarioRepository.getById(2L).getPersona();
+        Resource file = storageService.load(persona.getFotos().getBg());
         return ResponseEntity.ok()
                 .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + file.getFilename() + "\"").body(file);
     }

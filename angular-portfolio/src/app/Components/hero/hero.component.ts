@@ -15,6 +15,7 @@ export class HeroComponent implements OnInit {
   redes: Redes[] = [];
   red: Redes = new Redes();
   authenticated: boolean = false;
+  urlBgImg: string = '../../../assets/img/hero-bg.png';
 
   constructor(
     private userService: UserService,

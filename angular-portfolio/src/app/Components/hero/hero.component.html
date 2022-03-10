@@ -1,9 +1,16 @@
 <!-- ======= Hero Section ======= -->
-<section id="hero" class="d-flex flex-column justify-content-center">
+<section
+  id="hero"
+  class="d-flex flex-column justify-content-center"
+  [style.background-image]="'url(' + urlBgImg + ')'"
+>
   <div class="container my-auto" data-aos="zoom-in" data-aos-delay="100">
     <h1>
       {{ nombre + " " + apellido }}
-      <app-editar-btn *ngIf="authenticated" [componentToOpen]="1"></app-editar-btn>
+      <app-editar-btn
+        *ngIf="authenticated"
+        [componentToOpen]="1"
+      ></app-editar-btn>
     </h1>
     <ngx-typed-js
       [strings]="[nombre + '.', ocupacion + '.', 'Creativo.']"

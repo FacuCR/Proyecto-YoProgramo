@@ -23,7 +23,7 @@ export class EditarBtnComponent {
   openDialog(component: number){
     switch (component) {
       case 1:
-        this.dialogRef.open(EditarHeroComponent, { maxWidth: '25rem' });
+        this.dialogRef.open(EditarHeroComponent, { panelClass: ['animate__animated','animate__bounceIn'], maxWidth: '25rem' });
         break;
     
       default:
