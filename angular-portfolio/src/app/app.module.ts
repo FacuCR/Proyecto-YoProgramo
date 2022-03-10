@@ -29,6 +29,7 @@ import { PortfolioComponent } from './Components/portfolio/portfolio.component';
 import { EditarBtnComponent } from './Components/editar-btn/editar-btn.component';
 import { BorrarBtnComponent } from './Components/borrar-btn/borrar-btn.component';
 import { EditarHeroComponent } from './Components/editar-hero/editar-hero.component';
+import { InicialesPipe } from './pipes/iniciales.pipe';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { EditarHeroComponent } from './Components/editar-hero/editar-hero.compon
     EditarBtnComponent,
     BorrarBtnComponent,
     EditarHeroComponent,
+    InicialesPipe,
   ],
   imports: [
     AppRoutingModule,

@@ -32,7 +32,6 @@ export class HeaderComponent implements AfterViewChecked, OnInit {
   winInnerWith: number = 0;
 
   datosPersona: Persona = new Persona();
-  iniciales: string = '';
 
   constructor(
     @Inject(DOCUMENT) private document: any,
@@ -44,8 +43,6 @@ export class HeaderComponent implements AfterViewChecked, OnInit {
       next: (data) => {
         this.datosPersona.nombre = data.persona.nombre;
         this.datosPersona.apellido = data.persona.apellido;
-        this.iniciales =
-          this.datosPersona.nombre[0] + this.datosPersona.apellido[0];
       },
       error: (err: Error) => {
         this.openSnackBar(
