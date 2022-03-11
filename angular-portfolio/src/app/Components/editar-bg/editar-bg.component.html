@@ -1,0 +1,54 @@
+<article class="editar-hero-form">
+  <div class="d-flex justify-content-center">
+    <h1 class="h1 text-center">Cambiar Imagen de Fondo</h1>
+  </div>
+
+  <form [formGroup]="bgForm" (ngSubmit)="onSubmit()" class="row p-3">
+    <div class="row gx-0">
+      <input
+        (change)="capturarFile($event)"
+        type="file"
+        formControlName="imagen"
+        accept="image/*"
+      />
+    </div>
+    <!--previsualizacion de la imagen-->
+    <div *ngIf="previsualizacion" class="row gx-0">
+      <img
+        [src]="previsualizacion"
+        width="10rem"
+        [style.max-height]="'16rem'"
+      />
+    </div>
+    <div class="row mt-4 d-flex justify-content-between gx-0">
+      <button
+        mat-stroked-button
+        (click)="onCancelarClick()"
+        class="btn col-5"
+        color="primary"
+      >
+        Volver
+      </button>
+
+      <div class="button-container col-5">
+        <div class="spinner-container" *ngIf="enviando">
+          <mat-spinner color="primary" diameter="24"></mat-spinner>
+        </div>
+        <button
+          [disabled]="enviando"
+          mat-raised-button
+          type="submit"
+          class="btn"
+          color="primary"
+          [disabled]="!bgForm.valid"
+        >
+          <span>Guardar</span>
+        </button>
+      </div>
+    </div>
+    <!--<mat-toolbar *ngIf="archivoCapturado" >
+      <mat-progress-bar color="accent" [value]="progress"></mat-progress-bar>
+      <span class="progress">{{ progress }}%</span>
+    </mat-toolbar>-->
+  </form>
+</article>

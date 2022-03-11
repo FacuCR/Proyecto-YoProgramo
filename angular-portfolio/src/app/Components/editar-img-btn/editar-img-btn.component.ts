@@ -1,9 +1,9 @@
 import { Component, Input, OnInit, Optional } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { EditarHeroComponent } from '../editar-hero/editar-hero.component';
+import { EditarBgComponent } from '../editar-bg/editar-bg.component';
 
 @Component({
-  selector: 'app-editar-btn',
+  selector: 'app-editar-img-btn',
   template: `
     <button
       (click)="openDialog(componentToOpen)"
@@ -11,22 +11,19 @@ import { EditarHeroComponent } from '../editar-hero/editar-hero.component';
       color="secondary"
       aria-label="Boton con un icono de edit"
     >
-      <mat-icon>edit</mat-icon>
+      <mat-icon>photo</mat-icon>
     </button>
   `,
-  styleUrls: ['./editar-btn.component.css'],
+  styleUrls: ['./editar-img-btn.component.css'],
 })
-export class EditarBtnComponent {
+export class EditarImgBtnComponent {
   @Input() public componentToOpen: number = 0;
   constructor(@Optional() public dialogRef: MatDialog) {}
 
   openDialog(component: number) {
     switch (component) {
       case 1:
-        this.dialogRef.open(EditarHeroComponent, {
-          panelClass: ['animate__animated', 'animate__bounceIn'],
-          maxWidth: '19rem',
-        });
+        this.dialogRef.open(EditarBgComponent, { panelClass: ['animate__animated','animate__bounceIn'], maxWidth: '19rem' });
         break;
 
       default:

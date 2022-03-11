@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable, observable } from 'rxjs';
 import { Redes } from 'src/app/models/Redes';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { UserService } from 'src/app/services/user.service';
@@ -15,7 +16,7 @@ export class HeroComponent implements OnInit {
   redes: Redes[] = [];
   red: Redes = new Redes();
   authenticated: boolean = false;
-  urlBgImg: string = '../../../assets/img/hero-bg.png';
+  backgroundUrl: string = '';
 
   constructor(
     private userService: UserService,
@@ -39,5 +40,14 @@ export class HeroComponent implements OnInit {
 
   ngOnInit(): void {
     this.authenticated = this.tokenStorage.isAuthenticated();
+    this.userService.getBg().subscribe({
+      next: (data) => {
+        this.backgroundUrl = data.url;
+        console.log(this.backgroundUrl);
+      },
+      error: (err: Error) => {
+        console.log(err.message);
+      }
+    });
   }
 }

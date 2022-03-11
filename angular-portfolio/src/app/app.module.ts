@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http'
 import { NgModule } from '@angular/core';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 // ===== Angular Material ===== //
 import { MaterialModule } from './material.module';
@@ -30,6 +29,8 @@ import { EditarBtnComponent } from './Components/editar-btn/editar-btn.component
 import { BorrarBtnComponent } from './Components/borrar-btn/borrar-btn.component';
 import { EditarHeroComponent } from './Components/editar-hero/editar-hero.component';
 import { InicialesPipe } from './pipes/iniciales.pipe';
+import { EditarImgBtnComponent } from './Components/editar-img-btn/editar-img-btn.component';
+import { EditarBgComponent } from './Components/editar-bg/editar-bg.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,8 @@ import { InicialesPipe } from './pipes/iniciales.pipe';
     BorrarBtnComponent,
     EditarHeroComponent,
     InicialesPipe,
+    EditarImgBtnComponent,
+    EditarBgComponent,
   ],
   imports: [
     AppRoutingModule,
@@ -55,7 +58,6 @@ import { InicialesPipe } from './pipes/iniciales.pipe';
     FormsModule,
     HttpClientModule,
     MaterialModule,
-    NoopAnimationsModule,
     NgxTypedJsModule,
     ReactiveFormsModule,
   ],

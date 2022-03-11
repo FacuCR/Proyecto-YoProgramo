@@ -24,15 +24,11 @@ export class EditarHeroComponent implements OnInit {
 
   isInvalido: boolean = false;
 
-  archivo: any;
-  previsualizacion: string = '';
-
   constructor(
     private formBuilder: FormBuilder,
     @Optional() public dialogRef: MatDialogRef<EditarBtnComponent>,
     private _snackBar: MatSnackBar,
-    private userService: UserService,
-    private sanitizer: DomSanitizer
+    private userService: UserService
   ) {}
 
   ngOnInit(): void {
@@ -72,33 +68,4 @@ export class EditarHeroComponent implements OnInit {
   reloadPage(): void {
     window.location.reload();
   }
-
-  capturarFile(event: any): any {
-    const archivoCapturado = event.target.files[0];
-    this.archivo = archivoCapturado;
-    this.extraerBase64(archivoCapturado).then((imagen: any) => {
-      this.previsualizacion = imagen.base;
-    });
-  }
-
-  extraerBase64 = async ($event: any) =>
-    new Promise((resolve) => {
-      try {
-        const reader = new FileReader();
-        reader.readAsDataURL($event);
-        reader.onload = () => {
-          resolve({
-            base: reader.result,
-          });
-        };
-        reader.onerror = (error) => {
-          resolve({
-            base: null,
-          });
-        };
-        return null;
-      } catch (e) {
-        return null;
-      }
-    });
 }

@@ -1,5 +1,6 @@
 package com.facundocastro.api.controller;
 
+import com.facundocastro.api.model.FileInfo;
 import com.facundocastro.api.model.Imagenes;
 import com.facundocastro.api.model.Persona;
 import com.facundocastro.api.model.Usuario;
@@ -15,10 +16,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
 
 import javax.validation.Valid;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
@@ -60,7 +64,7 @@ public class PersonaController {
             fotos.setPerfil(persona.getFotos().getPerfil());
             int index = Objects.requireNonNull(file.getOriginalFilename()).lastIndexOf('.');
             String extension = file.getOriginalFilename().substring(index + 1);
-            fotos.setBg("bg." + extension);
+            fotos.setBg("hero-bg." + extension);
             storageService.save(file);
             persona.setFotos(fotos);
             usuario.setPersona(persona);
@@ -74,10 +78,27 @@ public class PersonaController {
     }
 
     @GetMapping("/files/bg")
+    public ResponseEntity<FileInfo> getListFiles() {
+        FileInfo fileBg = null;
+        String bgActual = usuarioRepository.findById(2L).get().getPersona().getFotos().getBg();
+        List<FileInfo> fileInfos = storageService.loadAll().map(path -> {
+            String filename = path.getFileName().toString();
+            String url = MvcUriComponentsBuilder
+                    .fromMethodName(PersonaController.class, "getFile", path.getFileName().toString()).build().toString();
+            return new FileInfo(filename, url);
+        }).collect(Collectors.toList());
+
+        for (FileInfo file : fileInfos) {
+            if (file.getName().equalsIgnoreCase(bgActual))
+                fileBg = file;
+        }
+
+        return ResponseEntity.status(HttpStatus.OK).body(fileBg);
+    }
+    @GetMapping("/files/{filename:.+}")
     @ResponseBody
-    public ResponseEntity<Resource> getFile() {
-        Persona persona = usuarioRepository.getById(2L).getPersona();
-        Resource file = storageService.load(persona.getFotos().getBg());
+    public ResponseEntity<Resource> getFile(@PathVariable String filename) {
+        Resource file = storageService.load(filename);
         return ResponseEntity.ok()
                 .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + file.getFilename() + "\"").body(file);
     }

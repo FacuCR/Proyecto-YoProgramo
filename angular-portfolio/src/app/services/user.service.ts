@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpEvent, HttpHeaders, HttpParams, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -31,5 +31,19 @@ export class UserService {
       },
       httpOptions
     );
+  }
+
+  uploadBg(img: File): Observable<HttpEvent<any>> {
+    const formData: FormData = new FormData();
+    formData.append('file', img);
+    const req = new HttpRequest('POST', `${API_URL}upload/bg`, formData, {
+      reportProgress: true,
+      responseType: 'json'
+    });
+    return this.http.request(req);
+  }
+
+  getBg(): Observable<any> {
+    return this.http.get(`${API_URL}files/bg`);
   }
 }

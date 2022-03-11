@@ -11,6 +11,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.util.Objects;
+import java.util.stream.Stream;
 
 @Service
 public class ImgStorageService implements IImgStorageService{
@@ -28,7 +30,9 @@ public class ImgStorageService implements IImgStorageService{
     @Override
     public void save(MultipartFile file) {
         try {
-            Files.copy(file.getInputStream(), this.root.resolve("bg.jpg"), StandardCopyOption.REPLACE_EXISTING);
+            int index = Objects.requireNonNull(file.getOriginalFilename()).lastIndexOf('.');
+            String extension = file.getOriginalFilename().substring(index + 1);
+            Files.copy(file.getInputStream(), this.root.resolve("hero-bg."+extension), StandardCopyOption.REPLACE_EXISTING);
         } catch(Exception e) {
             throw new RuntimeException("No se pudo guardar la imagen. Error: " + e.getMessage());
         }
@@ -46,6 +50,15 @@ public class ImgStorageService implements IImgStorageService{
             }
         } catch(MalformedURLException e) {
             throw new RuntimeException("Error: " + e.getMessage());
+        }
+    }
+
+    @Override
+    public Stream<Path> loadAll() {
+        try {
+            return Files.walk(this.root, 1).filter(path -> !path.equals(this.root)).map(this.root::relativize);
+        } catch (IOException e) {
+            throw new RuntimeException("Could not load the files!");
         }
     }
 }
