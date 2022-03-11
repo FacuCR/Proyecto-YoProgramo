@@ -10,9 +10,9 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./hero.component.css'],
 })
 export class HeroComponent implements OnInit {
-  apellido: string = '';
-  nombre: string = '';
-  ocupacion: string = '';
+  apellido: string = 'Doe';
+  nombre: string = 'Jonh';
+  ocupacion: string = 'Desconocido';
   redes: Redes[] = [];
   red: Redes = new Redes();
   authenticated: boolean = false;

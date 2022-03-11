@@ -31,7 +31,7 @@ export class HeaderComponent implements AfterViewChecked, OnInit {
   contactoOffset: number = 0;
   winInnerWith: number = 0;
 
-  datosPersona: Persona = new Persona();
+  nombre: string = "Cargando...";
 
   constructor(
     @Inject(DOCUMENT) private document: any,
@@ -41,8 +41,7 @@ export class HeaderComponent implements AfterViewChecked, OnInit {
   ) {
     this.userService.getPersona().subscribe({
       next: (data) => {
-        this.datosPersona.nombre = data.persona.nombre;
-        this.datosPersona.apellido = data.persona.apellido;
+        this.nombre = data.persona.nombre + " " + data.persona.apellido;
       },
       error: (err: Error) => {
         this.openSnackBar(
