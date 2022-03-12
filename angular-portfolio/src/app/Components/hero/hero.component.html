@@ -43,7 +43,7 @@
         [matTooltipHideDelay]="200"
         aria-label="Boton que muestra un tooltip con un delay para mostrar y ocultar"
       >
-        <i class="bx bxl-github"></i>
+        <i class="fab fa-github"></i>
       </a>
       <a
         href="#"
@@ -53,9 +53,16 @@
         [matTooltipHideDelay]="200"
         aria-label="Boton que muestra un tooltip con un delay para mostrar y ocultar"
       >
-        <i class="bx bxl-linkedin"></i>
+        <i class="fab fa-linkedin-in"></i>
       </a>
     </div>
+    <app-add-btn
+      *ngIf="authenticated"
+      [componentToOpen]="1"
+      matTooltip="agregar una red social"
+      [matTooltipShowDelay]="100"
+      [matTooltipHideDelay]="200"
+    ></app-add-btn>
   </div>
 
   <!-- Scroll Down Mouse -->
