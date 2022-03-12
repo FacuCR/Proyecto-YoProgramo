@@ -1,25 +1,32 @@
 <article class="editar-hero-form">
-  <div class="d-flex justify-content-center">
-    <h1 class="h1">Cambiar Imagen de Fondo</h1>
-  </div>
+  <h1 class="h1">Cambiar Imagen de Fondo</h1>
 
   <form [formGroup]="bgForm" (ngSubmit)="onSubmit()" class="row p-3">
-    <div class="row gx-0">
-      <input
-        (change)="capturarFile($event)"
-        type="file"
-        formControlName="imagen"
-        accept="image/*"
-      />
-    </div>
-    <!--previsualizacion de la imagen-->
-    <div *ngIf="previsualizacion" class="row gx-0">
-      <img
-        [src]="previsualizacion"
-        width="10rem"
-        [style.max-height]="'16rem'"
-      />
-    </div>
+    <article class="dropzone" appDnd (onFileDropped)="capturarFile($event)">
+      <div class="row gx-0">
+        <input
+          (change)="capturarFile($event)"
+          type="file"
+          formControlName="imagen"
+          accept="image/*"
+          id="imagenUpload"
+        />
+      </div>
+      <mat-icon>move_to_inbox</mat-icon>
+      <h3>Arrasta tu imagen aqui</h3>
+      <h3>o</h3>
+      <label for="imagenUpload">Buscar una imagen</label>
+      <div class="files-list">
+        <div *ngIf="previsualizacion" class="row gx-0">
+          <img [src]="previsualizacion" width="45px" />
+          <div class="info">
+            <h4 class="name">
+              {{ archivoCapturado?.name }}
+            </h4>
+          </div>
+        </div>
+      </div>
+    </article>
     <div class="row mt-4 d-flex justify-content-between gx-0">
       <button
         mat-stroked-button

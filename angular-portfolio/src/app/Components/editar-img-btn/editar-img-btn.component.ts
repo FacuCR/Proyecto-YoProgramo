@@ -23,7 +23,11 @@ export class EditarImgBtnComponent {
   openDialog(component: number) {
     switch (component) {
       case 1:
-        this.dialogRef.open(EditarBgComponent, { panelClass: ['animate__animated','animate__bounceIn'], maxWidth: '19rem' });
+        this.dialogRef.open(EditarBgComponent, {
+          panelClass: ['animate__animated', 'animate__bounceIn'],
+          maxWidth: '19rem',
+          height: '90%',
+        });
         break;
 
       default:

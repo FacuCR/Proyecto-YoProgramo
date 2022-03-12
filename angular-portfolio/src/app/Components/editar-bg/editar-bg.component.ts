@@ -15,7 +15,7 @@ import { EditarImgBtnComponent } from '../editar-img-btn/editar-img-btn.componen
 })
 export class EditarBgComponent implements OnInit {
   bgForm = this.formBuilder.group({
-    imagen: [, Validators.required],
+    imagen: [],
   });
 
   archivo: any;
@@ -49,7 +49,11 @@ export class EditarBgComponent implements OnInit {
   }
 
   capturarFile(event: any): any {
-    this.archivoCapturado = event.target.files[0];
+    if (event[0]) {
+      this.archivoCapturado = event[0];
+    } else {
+      this.archivoCapturado = event.target.files[0];
+    }
     this.archivo = this.archivoCapturado;
     this.extraerBase64(this.archivoCapturado).then((imagen: any) => {
       this.previsualizacion = imagen.base;
@@ -84,7 +88,7 @@ export class EditarBgComponent implements OnInit {
       this.userService.uploadBg(this.archivoCapturado).subscribe(
         (event: any) => {
           if (event.type === HttpEventType.UploadProgress) {
-            if(Math.round((100 * event.loaded) / event.total) == 100)
+            if (Math.round((100 * event.loaded) / event.total) == 100)
               this.enviando = false;
           } else if (event instanceof HttpResponse) {
             this.mensaje = event.body.mensaje;

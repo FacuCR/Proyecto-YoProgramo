@@ -26,6 +26,7 @@ export class EditarBtnComponent {
         this.dialogRef.open(EditarHeroComponent, {
           panelClass: ['animate__animated', 'animate__bounceIn'],
           maxWidth: '19rem',
+          height: '90%',
         });
         break;
 
