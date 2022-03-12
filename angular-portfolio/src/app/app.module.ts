@@ -32,6 +32,7 @@ import { InicialesPipe } from './pipes/iniciales.pipe';
 import { EditarImgBtnComponent } from './Components/editar-img-btn/editar-img-btn.component';
 import { EditarBgComponent } from './Components/editar-bg/editar-bg.component';
 import { DndDirective } from './directives/dnd.directive';
+import { AddBtnComponent } from './Components/add-btn/add-btn.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { DndDirective } from './directives/dnd.directive';
     EditarImgBtnComponent,
     EditarBgComponent,
     DndDirective,
+    AddBtnComponent,
   ],
   imports: [
     AppRoutingModule,

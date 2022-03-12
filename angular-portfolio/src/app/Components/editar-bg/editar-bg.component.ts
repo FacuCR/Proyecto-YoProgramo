@@ -88,8 +88,10 @@ export class EditarBgComponent implements OnInit {
       this.userService.uploadBg(this.archivoCapturado).subscribe(
         (event: any) => {
           if (event.type === HttpEventType.UploadProgress) {
-            if (Math.round((100 * event.loaded) / event.total) == 100)
+            if (Math.round((100 * event.loaded) / event.total) == 100) {
               this.enviando = false;
+              this.reloadPage();
+            }
           } else if (event instanceof HttpResponse) {
             this.mensaje = event.body.mensaje;
           }

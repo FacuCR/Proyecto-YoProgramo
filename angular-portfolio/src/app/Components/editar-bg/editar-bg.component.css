@@ -21,9 +21,10 @@
   border: dashed .0625rem #979797;
   position: relative;
   margin: 0 auto;
+  word-wrap: break-word;
 }
 
-article {
+section {
   background-color: #fbfeff00 !important;
 }
 
@@ -35,14 +36,14 @@ input {
   height: 100%;
   top: 0;
   left: 0;
+  cursor: pointer;
 }
 
 label {
   color: white;
-  width: 11.4375rem;
-  height: 2.75rem;
   border-radius: 1.3438rem;
-  background-color: #db202f;
+  background-color: #27a1f6;
+  box-shadow: 10px 16px 40px 0 #4b8def60;
   padding: .5rem 1rem;
 }
 
