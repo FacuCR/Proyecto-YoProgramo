@@ -18,4 +18,6 @@ public class Redes {
     private String nombre;
     @NotNull
     private String url;
+    @NotNull
+    private String clase;
 }
