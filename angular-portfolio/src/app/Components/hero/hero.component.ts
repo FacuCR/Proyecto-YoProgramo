@@ -27,7 +27,6 @@ export class HeroComponent implements OnInit {
         this.apellido = data.persona.apellido;
         this.nombre = data.persona.nombre;
         this.ocupacion = data.persona.ocupacion;
-        console.log(data.persona.redes);
         data.persona.redes.forEach((red: Redes) => {
           this.redes.push(red);
         });
@@ -43,7 +42,6 @@ export class HeroComponent implements OnInit {
     this.userService.getBg().subscribe({
       next: (data) => {
         this.backgroundUrl = data.url;
-        console.log(this.backgroundUrl);
       },
       error: (err: Error) => {
         console.log(err.message);

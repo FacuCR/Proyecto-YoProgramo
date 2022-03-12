@@ -1,6 +1,6 @@
 import { Component, Input, Optional } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { EditarHeroComponent } from '../editar-hero/editar-hero.component';
+import { AddRedSocialComponent } from '../add-red-social/add-red-social.component';
 
 @Component({
   selector: 'app-add-btn',
@@ -14,17 +14,16 @@ import { EditarHeroComponent } from '../editar-hero/editar-hero.component';
       <mat-icon>add</mat-icon>
     </button>
   `,
-  styleUrls: ['./add-btn.component.css']
+  styleUrls: ['./add-btn.component.css'],
 })
 export class AddBtnComponent {
-
   @Input() public componentToOpen: number = 0;
   constructor(@Optional() public dialogRef: MatDialog) {}
 
   openDialog(component: number) {
     switch (component) {
       case 1:
-        this.dialogRef.open(EditarHeroComponent, {
+        this.dialogRef.open(AddRedSocialComponent, {
           panelClass: ['animate__animated', 'animate__bounceIn'],
           maxWidth: '19rem',
           height: '90%',
@@ -35,5 +34,4 @@ export class AddBtnComponent {
         break;
     }
   }
-
 }
