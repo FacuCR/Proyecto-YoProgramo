@@ -1,6 +1,13 @@
-import { HttpClient, HttpEvent, HttpHeaders, HttpParams, HttpRequest } from '@angular/common/http';
+import {
+  HttpClient,
+  HttpEvent,
+  HttpHeaders,
+  HttpParams,
+  HttpRequest,
+} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { RedesService } from './redes.service';
 
 const API_URL = 'http://localhost:8080/api/persona/';
 const httpOptions = {
@@ -38,12 +45,24 @@ export class UserService {
     formData.append('file', img);
     const req = new HttpRequest('POST', `${API_URL}upload/bg`, formData, {
       reportProgress: true,
-      responseType: 'json'
+      responseType: 'json',
     });
     return this.http.request(req);
   }
 
   getBg(): Observable<any> {
     return this.http.get(`${API_URL}files/bg`);
+  }
+
+  uploadRedSocial(
+    nombre: string,
+    url: string,
+    clase: string
+  ): Observable<HttpEvent<any>> {
+    return this.http.post<any>(
+      API_URL + 'redes/add',
+      { nombre, url, clase },
+      httpOptions
+    );
   }
 }
