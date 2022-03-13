@@ -1,9 +1,6 @@
 package com.facundocastro.api.controller;
 
-import com.facundocastro.api.model.FileInfo;
-import com.facundocastro.api.model.Imagenes;
-import com.facundocastro.api.model.Persona;
-import com.facundocastro.api.model.Usuario;
+import com.facundocastro.api.model.*;
 import com.facundocastro.api.payload.request.EditarHeroRequest;
 import com.facundocastro.api.payload.response.MessageResponse;
 import com.facundocastro.api.repository.UsuarioRepository;
@@ -102,4 +99,25 @@ public class PersonaController {
         return ResponseEntity.ok()
                 .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + file.getFilename() + "\"").body(file);
     }
+
+    /*@PostMapping("/redes/add")
+    @PreAuthorize("hasRole('ADMIN')")
+    @ResponseBody
+    public  ResponseEntity<MessageResponse> uploadRedSocial(@RequestBody Redes red) {
+        String mensaje;
+        try {
+            Usuario usuario = usuarioRepository.findById(2L).get();
+            Persona persona = usuario.getPersona();
+            List<Redes> redesActuales = persona.getRedes();
+            redesActuales.add(red);
+            persona.setRedes(redesActuales);
+            usuario.setPersona(persona);
+            usuarioRepository.save(usuario);
+            mensaje = "La red se añadio: " + red.getNombre();
+            return ResponseEntity.status(HttpStatus.OK).body(new MessageResponse(mensaje));
+        } catch (Exception e) {
+            mensaje = "No se pudo añadir la red: " + red.getNombre() + '!';
+            return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(new MessageResponse(mensaje));
+        }
+    }*/
 }
