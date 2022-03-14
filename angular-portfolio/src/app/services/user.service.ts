@@ -60,7 +60,7 @@ export class UserService {
     clase: string
   ): Observable<HttpEvent<any>> {
     return this.http.post<any>(
-      API_URL + 'redes/add',
+      API_URL + 'redes/crear',
       { nombre, url, clase },
       httpOptions
     );

@@ -10,5 +10,5 @@ public interface RedesPersonaRepository extends JpaRepository<Redes, Long> {
     List<Redes> findByUsuarioId(Long usuarioId);
 
     @Transactional
-    void deleteByUsuarioId(long usuarioId);
+    void deleteByUsuarioId(Long usuarioId);
 }

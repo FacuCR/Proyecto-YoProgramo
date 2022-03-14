@@ -1,6 +1,9 @@
 export class Redes {
+    protected _id: number = -1;
+    protected _usuario_id: number = -1;
     protected _url: string = '';
     protected _nombre: string = '';
+    protected _clase: string = '';
 
     public constructor() {}
 
@@ -16,5 +19,26 @@ export class Redes {
     }
     public set nombre(value: string) {
         this._nombre = value;
+    }
+
+    public get clase(): string {
+        return this._clase;
+    }
+    public set clase(value: string) {
+        this._clase = value;
+    }
+
+    public get id(): number {
+        return this._id;
+    }
+    public set id(value: number) {
+        this._id = value;
+    }
+
+    public get usuario_id(): number {
+        return this._usuario_id;
+    }
+    public set usuario_id(value: number) {
+        this._usuario_id = value;
     }
 }

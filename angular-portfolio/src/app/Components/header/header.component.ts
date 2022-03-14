@@ -7,7 +7,6 @@ import {
   OnInit,
 } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Persona } from 'src/app/models/Persona';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { UserService } from 'src/app/services/user.service';
 

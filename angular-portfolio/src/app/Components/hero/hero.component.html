@@ -34,7 +34,7 @@
     >
       <p>Hola! bienvenido a mi portfolio soy <span class="typing"></span></p>
     </ngx-typed-js>
-    <div class="social-links">
+    <section class="p-0 pb-2 social-links">
       <a
         href="#"
         class="github"
@@ -55,14 +55,14 @@
       >
         <i class="fa-brands fa-linkedin-in"></i>
       </a>
-    </div>
-    <app-add-btn
-      *ngIf="authenticated"
-      [componentToOpen]="1"
-      matTooltip="agregar una red social"
-      [matTooltipShowDelay]="100"
-      [matTooltipHideDelay]="200"
-    ></app-add-btn>
+      <app-add-btn
+        *ngIf="authenticated"
+        [componentToOpen]="1"
+        matTooltip="agregar una red social"
+        [matTooltipShowDelay]="100"
+        [matTooltipHideDelay]="200"
+      ></app-add-btn>
+    </section>
   </div>
 
   <!-- Scroll Down Mouse -->
