@@ -35,26 +35,16 @@
       <p>Hola! bienvenido a mi portfolio soy <span class="typing"></span></p>
     </ngx-typed-js>
     <section class="p-0 pb-2 social-links">
-      <a
-        href="#"
-        class="github"
-        matTooltip="github"
-        [matTooltipShowDelay]="100"
-        [matTooltipHideDelay]="200"
-        aria-label="Boton que muestra un tooltip con un delay para mostrar y ocultar"
-      >
-        <i class="fa-brands fa-github"></i>
-      </a>
-      <a
-        href="#"
-        class="linkedin"
-        matTooltip="linkedin"
-        [matTooltipShowDelay]="100"
-        [matTooltipHideDelay]="200"
-        aria-label="Boton que muestra un tooltip con un delay para mostrar y ocultar"
-      >
-        <i class="fa-brands fa-linkedin-in"></i>
-      </a>
+      <a *ngFor="let red of redes"
+          href="{{ red.url }}"
+          class="{{ red.nombre }}"
+          matTooltip="{{ red.nombre }}"
+          [matTooltipShowDelay]="100"
+          [matTooltipHideDelay]="200"
+          aria-label="Boton que muestra un tooltip con un delay para mostrar y ocultar"
+        >
+          <i class="fa-brands {{ red.clase }}"></i
+        ></a>
       <app-add-btn
         *ngIf="authenticated"
         [componentToOpen]="1"

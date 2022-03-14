@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable, observable } from 'rxjs';
 import { Redes } from 'src/app/models/Redes';
+import { RedSocialService } from 'src/app/services/red-social.service';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { UserService } from 'src/app/services/user.service';
 
@@ -14,12 +15,12 @@ export class HeroComponent implements OnInit {
   nombre: string = 'Jonh';
   ocupacion: string = 'Desconocido';
   redes: Redes[] = [];
-  red: Redes = new Redes();
   authenticated: boolean = false;
   backgroundUrl: string = '';
 
   constructor(
     private userService: UserService,
+    private redSocialesService: RedSocialService,
     private tokenStorage: TokenStorageService
   ) {
     this.userService.getPersona().subscribe({
@@ -27,9 +28,15 @@ export class HeroComponent implements OnInit {
         this.apellido = data.persona.apellido;
         this.nombre = data.persona.nombre;
         this.ocupacion = data.persona.ocupacion;
-        data.persona.redes.forEach((red: Redes) => {
-          this.redes.push(red);
-        });
+      },
+      error: (err: Error) => {
+        console.log(err.message);
+      },
+    });
+
+    this.redSocialesService.traerTodasLasRedes().subscribe({
+      next: (data) => {
+        this.redes = data;
       },
       error: (err: Error) => {
         console.log(err.message);
@@ -45,7 +52,7 @@ export class HeroComponent implements OnInit {
       },
       error: (err: Error) => {
         console.log(err.message);
-      }
+      },
     });
   }
 }

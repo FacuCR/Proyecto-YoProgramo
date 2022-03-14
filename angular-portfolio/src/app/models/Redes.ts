@@ -1,6 +1,5 @@
 export class Redes {
     protected _id: number = -1;
-    protected _usuario_id: number = -1;
     protected _url: string = '';
     protected _nombre: string = '';
     protected _clase: string = '';
@@ -33,12 +32,5 @@ export class Redes {
     }
     public set id(value: number) {
         this._id = value;
-    }
-
-    public get usuario_id(): number {
-        return this._usuario_id;
-    }
-    public set usuario_id(value: number) {
-        this._usuario_id = value;
     }
 }
