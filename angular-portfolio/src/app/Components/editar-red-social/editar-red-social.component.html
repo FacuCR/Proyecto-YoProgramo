@@ -1,0 +1,52 @@
+<section class="editar-red-social">
+  <h1 class="title">Editar redes sociales</h1>
+
+  <mat-accordion>
+    <mat-expansion-panel
+      *ngFor="let red of redesActuales"
+      (click)="idSeleccionada = red.id"
+    >
+      <mat-expansion-panel-header class="d-flex align-items-center">
+        <mat-panel-title> {{ red.nombre }} </mat-panel-title>
+        <mat-panel-description> Url: {{ red.url }} </mat-panel-description>
+        <i class="fa-brands {{ red.clase }} pe-3"></i>
+      </mat-expansion-panel-header>
+
+      <form
+        [formGroup]="redActualizarForm"
+        (ngSubmit)="onSubmit()"
+        class="row p-3"
+      >
+        <mat-form-field appearance="fill">
+          <mat-label>Nombre</mat-label>
+          <mat-select formControlName="nombre">
+            <mat-option *ngFor="let red of redes" [value]="red">
+              {{ red }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="row mt-3 gx-0">
+          <mat-label>URL</mat-label>
+          <input matInput formControlName="url" required />
+        </mat-form-field>
+
+        <button
+          mat-raised-button
+          type="submit"
+          class="btn col-5"
+          color="primary"
+          [disabled]="!redActualizarForm.valid"
+        >
+          Guardar
+        </button>
+      </form>
+    </mat-expansion-panel>
+  </mat-accordion>
+
+  <mat-dialog-actions>
+    <button mat-stroked-button class="btn" color="primary" mat-dialog-close>
+      Cancelar
+    </button>
+  </mat-dialog-actions>
+</section>

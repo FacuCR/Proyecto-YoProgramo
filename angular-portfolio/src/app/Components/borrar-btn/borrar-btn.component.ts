@@ -1,0 +1,51 @@
+import { Component, Input } from '@angular/core';
+import { Redes } from 'src/app/models/Redes';
+import { RedSocialService } from 'src/app/services/red-social.service';
+import { UserService } from 'src/app/services/user.service';
+
+@Component({
+  selector: 'app-borrar-btn',
+  template: `
+    <button
+      class="position-absolute top-0 start-100 translate-middle"
+      (click)="onBorrar($event)"
+      mat-icon-button
+      color="warn"
+      aria-label="Example icon button with a heart icon"
+    >
+      <mat-icon>delete</mat-icon>
+    </button>
+  `,
+  styleUrls: ['./borrar-btn.component.css'],
+})
+export class BorrarBtnComponent {
+  @Input() public red: Redes = new Redes();
+
+  constructor(private userService: UserService) {}
+
+  onBorrar(event: any): void {
+    event.stopPropagation();
+    event.preventDefault();
+
+    if (this.red) {
+      const borrar: boolean = confirm(
+        'seguro que deseas borrar tu red social de ' + this.red.nombre
+      );
+
+      if (borrar) {
+        this.userService
+          .borrarUnaRedSocialDeLaPersona(this.red.id)
+          .subscribe({
+            next: () => this.reloadPage(),
+            error: (err: Error) => {
+              console.log(err.message);
+            },
+          });
+      }
+    }
+  }
+
+  reloadPage(): void {
+    window.location.reload();
+  }
+}

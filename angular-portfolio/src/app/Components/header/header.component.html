@@ -1,5 +1,7 @@
 <nav class="d-flex justify-content-between align-items-center mt-2 me-4 ms-4">
-  <a class="text-uppercase" href="#"><strong class="logo">FC</strong></a>
+  <a class="text-uppercase" href="#"
+    ><strong class="logo">{{ nombre | iniciales }}</strong></a
+  >
   <app-loginBtn *ngIf="screenXl && !authenticated"></app-loginBtn>
   <button
     *ngIf="screenXl && authenticated"
@@ -38,7 +40,7 @@
           href="#hero"
           class="nav-link scrollto"
           [ngClass]="{ active: currentActiveMenuItem === 1 }"
-          ><i class="bx bx-home"></i>
+          ><i class="fa-solid fa-house"></i>
           <span>Inicio</span>
         </a>
       </li>
@@ -49,7 +51,7 @@
           class="nav-link scrollto"
           [ngClass]="{ active: currentActiveMenuItem === 2 }"
         >
-          <i class="bx bx-user"></i>
+          <i class="fa-solid fa-user"></i>
           <span>Acerca de mi</span>
         </a>
       </li>
@@ -60,7 +62,7 @@
           class="nav-link scrollto"
           [ngClass]="{ active: currentActiveMenuItem === 3 }"
         >
-          <i class="bx bx-award"></i>
+          <i class="fa-solid fa-person-hiking"></i>
           <span>Habilidades</span>
         </a>
       </li>
@@ -71,7 +73,7 @@
           class="nav-link scrollto"
           [ngClass]="{ active: currentActiveMenuItem === 4 }"
         >
-          <i class="bx bx-book-content"></i>
+          <i class="fa-solid fa-briefcase"></i>
           <span>Portfolio</span>
         </a>
       </li>
@@ -82,7 +84,7 @@
           class="nav-link scrollto"
           [ngClass]="{ active: currentActiveMenuItem === 5 }"
         >
-          <i class="bx bx-envelope"></i>
+          <i class="fa-solid fa-envelope-open-text"></i>
           <span>Hablame!</span>
         </a>
       </li>

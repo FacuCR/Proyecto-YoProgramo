@@ -1,0 +1,69 @@
+<article class="editar-hero-form">
+  <div class="d-flex justify-content-center">
+    <h1 class="h1">Editar Principal</h1>
+  </div>
+
+  <form [formGroup]="heroForm" (ngSubmit)="onSubmit()" class="row p-3">
+    <mat-form-field
+      [ngClass]="{ 'mat-form-field-invalid': isInvalido }"
+      appearance="fill"
+      class="row mt-3 gx-0"
+    >
+      <mat-label>Nombre</mat-label>
+      <input
+        matInput
+        [value]="nombreActual"
+        formControlName="nombre"
+        required
+      />
+    </mat-form-field>
+
+    <mat-form-field
+      [ngClass]="{ 'mat-form-field-invalid': isInvalido }"
+      appearance="fill"
+      class="row mt-3 gx-0"
+    >
+      <mat-label>Apellido</mat-label>
+      <input
+        matInput
+        [value]="apellidoActual"
+        formControlName="apellido"
+        required
+      />
+    </mat-form-field>
+
+    <mat-form-field
+      [ngClass]="{ 'mat-form-field-invalid': isInvalido }"
+      appearance="fill"
+      class="row mt-3 gx-0"
+    >
+      <mat-label>Ocupacion</mat-label>
+      <input
+        matInput
+        [value]="ocupacionActual"
+        formControlName="ocupacion"
+        required
+      />
+    </mat-form-field>
+
+    <div class="row mt-4 d-flex justify-content-between gx-0">
+      <button
+        mat-stroked-button
+        (click)="onCancelarClick()"
+        class="btn col-5"
+        color="primary"
+      >
+        Cancelar
+      </button>
+      <button
+        mat-raised-button
+        type="submit"
+        class="btn col-5"
+        color="primary"
+        [disabled]="!heroForm.valid"
+      >
+        Guardar
+      </button>
+    </div>
+  </form>
+</article>

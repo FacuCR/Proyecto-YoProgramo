@@ -53,7 +53,7 @@ export class FormularioLoginComponent implements OnInit {
 
     this.authService.login(email, contrasenia).subscribe({
       next: (data) => {
-        this.tokenStorage.saveToken(data.accessToken);
+        this.tokenStorage.saveToken(data.token);
         this.tokenStorage.saveUser(data);
         this.roles = this.tokenStorage.getUser().roles;
         if(checkboxValue){
