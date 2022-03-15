@@ -7,7 +7,7 @@ import { EditarBgComponent } from '../editar-bg/editar-bg.component';
   template: `
     <button
       (click)="openDialog(componentToOpen)"
-      mat-fab
+      mat-mini-fab
       color="secondary"
       aria-label="Boton con un icono de edit"
     >

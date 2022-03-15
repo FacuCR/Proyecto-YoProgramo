@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Redes } from 'src/app/models/Redes';
 import { RedSocialService } from 'src/app/services/red-social.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-borrar-btn',
@@ -20,7 +21,7 @@ import { RedSocialService } from 'src/app/services/red-social.service';
 export class BorrarBtnComponent {
   @Input() public red: Redes = new Redes();
 
-  constructor(private redSocialService: RedSocialService) {}
+  constructor(private userService: UserService) {}
 
   onBorrar(event: any): void {
     event.stopPropagation();
@@ -32,7 +33,7 @@ export class BorrarBtnComponent {
       );
 
       if (borrar) {
-        this.redSocialService
+        this.userService
           .borrarUnaRedSocialDeLaPersona(this.red.id)
           .subscribe({
             next: () => this.reloadPage(),

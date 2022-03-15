@@ -35,7 +35,7 @@
       <p>Hola! bienvenido a mi portfolio soy <span class="typing"></span></p>
     </ngx-typed-js>
 
-    <section class="p-0 pb-2 social-links">
+    <section class="p-0 py-3 social-links">
       <a
         *ngFor="let red of redes"
         href="{{ red.url }}"
@@ -62,7 +62,8 @@
         *ngIf="authenticated"
         class="mx-3"
         [componentToOpen]="2"
-        matTooltip="editar el contenido principal"
+        [redesActuales]="redes"
+        matTooltip="editar una red social"
         [matTooltipShowDelay]="100"
         [matTooltipHideDelay]="200"
       ></app-editar-btn>

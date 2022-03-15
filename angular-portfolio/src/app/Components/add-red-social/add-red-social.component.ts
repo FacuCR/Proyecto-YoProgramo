@@ -48,7 +48,7 @@ export class AddRedSocialComponent implements OnInit {
       next: (data) => {
         clase = data.clase;
 
-        this.userService.uploadRedSocial(nombre, url, clase).subscribe({
+        this.userService.agregarRedSocial(nombre, url, clase).subscribe({
           next: () => this.reloadPage(),
           error: (err: Error) => {
             console.log(err.message);

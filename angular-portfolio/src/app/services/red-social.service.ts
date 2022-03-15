@@ -17,8 +17,4 @@ export class RedSocialService {
   traerTodasLasRedes(): Observable<any> {
     return this.http.get(API_URL + 'traer/todas');
   }
-
-  borrarUnaRedSocialDeLaPersona(id: number): Observable<any> {
-    return this.http.delete(API_URL + 'borrar/' + id);
-  }
 }

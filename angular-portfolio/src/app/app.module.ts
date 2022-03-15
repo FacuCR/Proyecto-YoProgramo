@@ -35,6 +35,7 @@ import { DndDirective } from './directives/dnd.directive';
 import { AddBtnComponent } from './Components/add-btn/add-btn.component';
 import { AddRedSocialComponent } from './Components/add-red-social/add-red-social.component';
 import { EditarRedesComponent } from './Components/editar-redes/editar-redes.component';
+import { EditarRedSocialComponent } from './Components/editar-red-social/editar-red-social.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import { EditarRedesComponent } from './Components/editar-redes/editar-redes.com
     AddBtnComponent,
     AddRedSocialComponent,
     EditarRedesComponent,
+    EditarRedSocialComponent,
   ],
   imports: [
     AppRoutingModule,

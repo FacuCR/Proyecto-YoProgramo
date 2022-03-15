@@ -7,7 +7,7 @@ import { AddRedSocialComponent } from '../add-red-social/add-red-social.componen
   template: `
     <button
       (click)="openDialog(componentToOpen)"
-      mat-fab
+      mat-mini-fab
       color="accent"
       aria-label="Boton con un icono de edit"
     >

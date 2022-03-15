@@ -7,6 +7,7 @@ import {
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Redes } from '../models/Redes';
 import { RedesService } from './redes.service';
 
 const API_URL = 'http://localhost:8080/api/persona/';
@@ -54,7 +55,7 @@ export class UserService {
     return this.http.get(`${API_URL}files/bg`);
   }
 
-  uploadRedSocial(
+  agregarRedSocial(
     nombre: string,
     url: string,
     clase: string
@@ -62,6 +63,25 @@ export class UserService {
     return this.http.post<any>(
       API_URL + 'redes/crear',
       { nombre, url, clase },
+      httpOptions
+    );
+  }
+
+  borrarUnaRedSocialDeLaPersona(id: number): Observable<any> {
+    return this.http.delete(API_URL + 'redes/borrar/' + id);
+  }
+
+  actualizarRedSocial(redAActualizar: Redes): Observable<any> {
+    const nombre: string = redAActualizar.nombre;
+    const url: string = redAActualizar.url;
+    const clase: string = redAActualizar.clase;
+    return this.http.put(
+      API_URL + 'redes/actualizar/' + redAActualizar.id,
+      {
+        nombre,
+        url,
+        clase,
+      },
       httpOptions
     );
   }
