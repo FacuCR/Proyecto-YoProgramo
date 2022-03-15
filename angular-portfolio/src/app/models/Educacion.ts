@@ -1,4 +1,4 @@
-class Educacion {
+export class Educacion {
     protected _id: number = -1;
     protected _institucion: string = '';
     protected _descripcion: string = '';

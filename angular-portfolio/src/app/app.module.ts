@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http'
 import { NgModule } from '@angular/core';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 // ===== Angular Material ===== //
 import { MaterialModule } from './material.module';
@@ -28,6 +27,15 @@ import { LoginBtnComponent } from './Components/loginBtn/loginBtn.component';
 import { PortfolioComponent } from './Components/portfolio/portfolio.component';
 import { EditarBtnComponent } from './Components/editar-btn/editar-btn.component';
 import { BorrarBtnComponent } from './Components/borrar-btn/borrar-btn.component';
+import { EditarHeroComponent } from './Components/editar-hero/editar-hero.component';
+import { InicialesPipe } from './pipes/iniciales.pipe';
+import { EditarImgBtnComponent } from './Components/editar-img-btn/editar-img-btn.component';
+import { EditarBgComponent } from './Components/editar-bg/editar-bg.component';
+import { DndDirective } from './directives/dnd.directive';
+import { AddBtnComponent } from './Components/add-btn/add-btn.component';
+import { AddRedSocialComponent } from './Components/add-red-social/add-red-social.component';
+import { EditarRedesComponent } from './Components/editar-redes/editar-redes.component';
+import { EditarRedSocialComponent } from './Components/editar-red-social/editar-red-social.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +51,15 @@ import { BorrarBtnComponent } from './Components/borrar-btn/borrar-btn.component
     PortfolioComponent,
     EditarBtnComponent,
     BorrarBtnComponent,
+    EditarHeroComponent,
+    InicialesPipe,
+    EditarImgBtnComponent,
+    EditarBgComponent,
+    DndDirective,
+    AddBtnComponent,
+    AddRedSocialComponent,
+    EditarRedesComponent,
+    EditarRedSocialComponent,
   ],
   imports: [
     AppRoutingModule,
@@ -51,7 +68,6 @@ import { BorrarBtnComponent } from './Components/borrar-btn/borrar-btn.component
     FormsModule,
     HttpClientModule,
     MaterialModule,
-    NoopAnimationsModule,
     NgxTypedJsModule,
     ReactiveFormsModule,
   ],

@@ -1,0 +1,61 @@
+<section class="editar-hero-form">
+  <h1 class="h1">Cambiar Imagen de Fondo</h1>
+
+  <form [formGroup]="bgForm" (ngSubmit)="onSubmit()" class="row p-3">
+    <section class="dropzone" appDnd (onFileDropped)="capturarFile($event)">
+      <div class="row gx-0">
+        <input
+          (change)="capturarFile($event)"
+          type="file"
+          formControlName="imagen"
+          accept="image/*"
+          id="imagenUpload"
+        />
+      </div>
+      <mat-icon>move_to_inbox</mat-icon>
+      <h3>Arrasta tu imagen aqui</h3>
+      <h3>o</h3>
+      <label for="imagenUpload">Busca una imagen</label>
+      <article class="files-list mt-1">
+        <div *ngIf="previsualizacion" class="row gx-0">
+          <img [src]="previsualizacion" width="45px" />
+          <div class="info">
+            <h4 class="name">
+              {{ archivoCapturado?.name }}
+            </h4>
+          </div>
+        </div>
+      </article>
+    </section>
+    <section class="row mt-4 d-flex justify-content-between gx-0">
+      <button
+        mat-stroked-button
+        (click)="onCancelarClick()"
+        class="btn col-5"
+        color="primary"
+      >
+        Volver
+      </button>
+
+      <div class="button-container col-5">
+        <div class="spinner-container" *ngIf="enviando">
+          <mat-spinner color="primary" diameter="24"></mat-spinner>
+        </div>
+        <button
+          [disabled]="enviando"
+          mat-raised-button
+          type="submit"
+          class="btn"
+          color="primary"
+          [disabled]="!bgForm.valid"
+        >
+          <span>Guardar</span>
+        </button>
+      </div>
+    </section>
+    <!--<mat-toolbar *ngIf="archivoCapturado" >
+      <mat-progress-bar color="accent" [value]="progress"></mat-progress-bar>
+      <span class="progress">{{ progress }}%</span>
+    </mat-toolbar>-->
+  </form>
+</section>

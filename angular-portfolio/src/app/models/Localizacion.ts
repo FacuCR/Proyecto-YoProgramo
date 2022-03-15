@@ -1,4 +1,4 @@
-class Localizacion {
+export class Localizacion {
     protected _pais: string = '';
     protected _ciudad: string = '';
 

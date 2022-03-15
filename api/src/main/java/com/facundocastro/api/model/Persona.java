@@ -24,8 +24,6 @@ public class Persona {
     @Embedded
     private Localizacion localizacion;
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<Redes> redes;
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Proyecto> proyects;
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Educacion> educaciones;

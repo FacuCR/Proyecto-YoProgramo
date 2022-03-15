@@ -1,0 +1,41 @@
+<article class="agregar-red-form">
+  <div class="d-flex justify-content-center">
+    <h1 class="h1">Agregar nueva red social</h1>
+  </div>
+
+  <form [formGroup]="redForm" (ngSubmit)="onSubmit()" class="row p-3">
+    <mat-form-field appearance="fill">
+      <mat-label>Nombre</mat-label>
+      <mat-select formControlName="nombre">
+        <mat-option *ngFor="let red of redes" [value]="red">
+          {{ red }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="row mt-3 gx-0">
+      <mat-label>URL</mat-label>
+      <input matInput formControlName="url" required />
+    </mat-form-field>
+
+    <div class="row mt-4 d-flex justify-content-between gx-0">
+      <button
+        mat-stroked-button
+        (click)="onCancelarClick()"
+        class="btn col-5"
+        color="primary"
+      >
+        Cancelar
+      </button>
+      <button
+        mat-raised-button
+        type="submit"
+        class="btn col-5"
+        color="primary"
+        [disabled]="!redForm.valid"
+      >
+        Guardar
+      </button>
+    </div>
+  </form>
+</article>

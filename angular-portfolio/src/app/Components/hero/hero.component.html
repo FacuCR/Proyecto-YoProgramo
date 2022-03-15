@@ -1,34 +1,76 @@
 <!-- ======= Hero Section ======= -->
-<section id="hero" class="d-flex flex-column justify-content-center">
-    <div class="container my-auto" data-aos="zoom-in" data-aos-delay="100">
-      <h1>Facundo Castro <app-editar-btn [componentToOpen]="1"></app-editar-btn></h1>
-      <ngx-typed-js
-        [strings]="['Facundo.', 'Creativo.', 'Desarrollador.']" 
-        [loop]="true" 
-        [typeSpeed]="100" 
-        [backSpeed]="50"
-        [backDelay]="2000">
-        <p>Hola! bienvenido a mi portfolio soy <span class="typing"></span></p>
-      </ngx-typed-js>
-      <div class="social-links">
-        <a href="#" class="github" 
-            matTooltip="Mi github" 
-            [matTooltipShowDelay]="100"
-            [matTooltipHideDelay]="200"
-            aria-label="Boton que muestra un tooltip con un delay para mostrar y ocultar">
-            <i class="bx bxl-github"></i>
-        </a>
-        <a href="#" class="linkedin" 
-            matTooltip="Mi linkedin"
-            [matTooltipShowDelay]="100"
-            [matTooltipHideDelay]="200"
-            aria-label="Boton que muestra un tooltip con un delay para mostrar y ocultar">
-            <i class="bx bxl-linkedin"></i>
-        </a>
-      </div>
-    </div>
+<section
+  id="hero"
+  class="d-flex flex-column justify-content-center"
+  [style.background-image]="'url(' + backgroundUrl + ')'"
+>
+  <div class="container my-auto" data-aos="zoom-in" data-aos-delay="100">
+    <h1>
+      {{ nombre + " " + apellido }}
 
-    <!-- Scroll Down Mouse -->
-    <div class="mouse mx-auto"></div>
+      <app-editar-btn
+        *ngIf="authenticated"
+        [componentToOpen]="1"
+        matTooltip="editar el contenido principal"
+        [matTooltipShowDelay]="100"
+        [matTooltipHideDelay]="200"
+      ></app-editar-btn>
 
-</section><!-- End Hero -->
+      <app-editar-img-btn
+        class="mx-3"
+        *ngIf="authenticated"
+        [componentToOpen]="1"
+        matTooltip="editar imagen de fondo"
+        [matTooltipShowDelay]="100"
+        [matTooltipHideDelay]="200"
+      ></app-editar-img-btn>
+    </h1>
+    <ngx-typed-js
+      [strings]="[nombre + '.', ocupacion + '.', 'Creativo.']"
+      [loop]="true"
+      [typeSpeed]="100"
+      [backSpeed]="50"
+      [backDelay]="2000"
+    >
+      <p>Hola! bienvenido a mi portfolio soy <span class="typing"></span></p>
+    </ngx-typed-js>
+
+    <section class="p-0 py-3 social-links">
+      <a
+        *ngFor="let red of redes"
+        href="{{ red.url }}"
+        target="_blank"
+        class="{{ red.nombre }}"
+        matTooltip="{{ red.nombre }}"
+        [matTooltipShowDelay]="100"
+        [matTooltipHideDelay]="200"
+        aria-label="Boton que muestra un tooltip con un delay para mostrar y ocultar"
+      >
+        <i class="fa-brands {{ red.clase }} position-relative">
+          <app-borrar-btn *ngIf="authenticated" [red]="red"></app-borrar-btn></i
+      ></a>
+
+      <app-add-btn
+        *ngIf="authenticated"
+        [componentToOpen]="1"
+        matTooltip="agregar una red social"
+        [matTooltipShowDelay]="100"
+        [matTooltipHideDelay]="200"
+      ></app-add-btn>
+
+      <app-editar-btn
+        *ngIf="authenticated"
+        class="mx-3"
+        [componentToOpen]="2"
+        [redesActuales]="redes"
+        matTooltip="editar una red social"
+        [matTooltipShowDelay]="100"
+        [matTooltipHideDelay]="200"
+      ></app-editar-btn>
+    </section>
+  </div>
+
+  <!-- Scroll Down Mouse -->
+  <div class="mouse mx-auto"></div>
+</section>
+<!-- End Hero -->

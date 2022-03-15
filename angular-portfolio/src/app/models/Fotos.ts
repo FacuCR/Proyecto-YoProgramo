@@ -1,7 +1,7 @@
-class Fotos {
+export class Fotos {
     protected _ruta: string = '';
     protected _bg: string = '';
-    private _perfil: string = '';
+    protected _perfil: string = '';
 
     public constructor() {}
 
