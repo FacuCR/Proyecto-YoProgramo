@@ -92,6 +92,7 @@ public class PersonaController {
 
         return ResponseEntity.status(HttpStatus.OK).body(fileBg);
     }
+
     @GetMapping("/files/{filename:.+}")
     @ResponseBody
     public ResponseEntity<Resource> getFile(@PathVariable String filename) {
