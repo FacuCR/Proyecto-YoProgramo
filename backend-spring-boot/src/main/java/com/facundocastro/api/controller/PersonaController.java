@@ -94,10 +94,14 @@ public class PersonaController {
     }
 
     @GetMapping("/files/{filename:.+}")
-    @ResponseBody
     public ResponseEntity<Resource> getFile(@PathVariable String filename) {
         Resource file = storageService.load(filename);
         return ResponseEntity.ok()
                 .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + file.getFilename() + "\"").body(file);
+    }
+
+    @GetMapping("/funciono")
+    public String funciono() {
+        return "si funciono";
     }
 }
