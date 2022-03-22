@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
 import { Redes } from '../models/Redes';
 import { RedesService } from './redes.service';
 
-const API_URL = 'http://localhost:8080/api/persona/';
+const API_URL = 'https://gentle-earth-94368.herokuapp.com/api/persona/';
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
 };
