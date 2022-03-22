@@ -102,7 +102,12 @@ public class PersonaController {
 
     @GetMapping("/funciono")
     public String funciono() {
-        storageService.init();
-        return "si funciono";
+        try {
+            storageService.init();
+            return "si funciono";
+        } catch (Exception e) {
+            return e.getMessage();
+        }
+
     }
 }
