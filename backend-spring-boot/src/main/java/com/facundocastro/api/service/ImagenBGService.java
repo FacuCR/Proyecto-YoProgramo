@@ -10,6 +10,7 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.regex.Pattern;
 import java.util.stream.Stream;
 
 @Service
@@ -21,8 +22,10 @@ public class ImagenBGService implements IImagenBGService{
 
     @Override
     public ImagenBG store(MultipartFile file) throws IOException {
-        ImagenBG bg = imgRepo.findByNombre("hero-bg").orElse(new ImagenBG());
-        bg.setNombre("hero-bg");
+        String separador = Pattern.quote("/");
+        ImagenBG bg = imgRepo.findById(1L).orElse(new ImagenBG());
+        String type = "." + file.getContentType().split(separador)[1];
+        bg.setNombre("hero-bg" + type);
         bg.setTipo(file.getContentType());
         bg.setData(file.getBytes());
         Usuario usuario = usuarioRepository.findById(2L).orElseThrow();

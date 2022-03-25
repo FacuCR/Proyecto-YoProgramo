@@ -14,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.util.List;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
@@ -26,7 +27,7 @@ public class ImagenBGController {
     @PostMapping("/upload")
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<MessageResponse> uploadFile(@RequestParam("file") MultipartFile file) {
-        String message = "";
+        String message;
         try {
             imgBGService.store(file);
             message = "Se subio la imagen correctamente: " + file.getOriginalFilename();
@@ -37,12 +38,13 @@ public class ImagenBGController {
         }
     }
 
-    @GetMapping("/find/all")
-    public ResponseEntity<List<ResponseFile>> getListFiles() {
+    @GetMapping("/find")
+    public ResponseEntity<ResponseFile> getListFiles() {
+        ResponseFile fileBg = new ResponseFile();
         List<ResponseFile> files = imgBGService.getAllFiles().map(dbFile -> {
             String fileDownloadUri = ServletUriComponentsBuilder
                     .fromCurrentContextPath()
-                    .path("/api/img/find/")
+                    .path("/api/img/bg/find/")
                     .path(String.valueOf(dbFile.getNombre()))
                     .toUriString();
             return new ResponseFile(
@@ -51,14 +53,25 @@ public class ImagenBGController {
                     dbFile.getTipo(),
                     dbFile.getData().length);
         }).collect(Collectors.toList());
-        return ResponseEntity.status(HttpStatus.OK).body(files);
+
+        String separador = Pattern.quote("/");
+
+        for (ResponseFile file : files) {
+            String type = "." + file.getTipo().split(separador)[1];
+            if (file.getNombre().equalsIgnoreCase("hero-bg" + type))
+                fileBg = file;
+        }
+
+        return ResponseEntity.status(HttpStatus.OK).body(fileBg);
     }
 
     @GetMapping("/find/{nombre}")
     public ResponseEntity<byte[]> getFile(@PathVariable String nombre) {
+        String separador = Pattern.quote("/");
         ImagenBG imgBg = imgBGService.getFile(nombre);
+        String type = "." + imgBg.getTipo().split(separador)[1];
         return ResponseEntity.ok()
-                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + imgBg.getNombre() + "\"")
+                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + imgBg.getNombre() + type + "\"")
                 .body(imgBg.getData());
     }
 }
