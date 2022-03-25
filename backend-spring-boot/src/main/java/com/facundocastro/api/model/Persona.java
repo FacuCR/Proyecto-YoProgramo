@@ -4,6 +4,7 @@ import com.sun.istack.NotNull;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.io.File;
 import java.util.Date;
 import java.util.List;
 
@@ -19,8 +20,6 @@ public class Persona {
     private Date fechaNac;
     private String sobreMi;
     private String descripcion;
-    @Embedded
-    private Imagenes fotos;
     @Embedded
     private Localizacion localizacion;
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
