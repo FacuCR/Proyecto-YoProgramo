@@ -99,15 +99,4 @@ public class PersonaController {
         return ResponseEntity.ok()
                 .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + file.getFilename() + "\"").body(file);
     }
-
-    @GetMapping("/funciono")
-    public String funciono() {
-        try {
-            storageService.init();
-            return "si funciono";
-        } catch (Exception e) {
-            return e.getMessage();
-        }
-
-    }
 }
