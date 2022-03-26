@@ -27,7 +27,7 @@ export class HeroComponent implements OnInit {
       next: (data) => {
         this.apellido = data.persona.apellido;
         this.nombre = data.persona.nombre;
-        this.ocupacion = data.persona.ocupacion;
+        this.ocupacion = data.persona.ocupacion.split(' ')[0];
       },
       error: (err: Error) => {
         console.log(err.message);

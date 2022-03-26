@@ -16,9 +16,11 @@ public class Persona {
     @NotNull
     private String apellido;
     private String ocupacion;
-    private String disponibilidad;
+    private boolean disponibilidad;
     private Date fechaNac;
+    @Lob
     private String sobreMi;
+    @Lob
     private String descripcion;
     @Embedded
     private Localizacion localizacion;

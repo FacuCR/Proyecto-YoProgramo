@@ -1,8 +1,6 @@
-import { Fotos } from "./Fotos";
 import { Educacion } from "./Educacion";
 import { Localizacion } from "./Localizacion";
 import { Proyecto } from "./Proyecto";
-import { Redes } from "./Redes";
 import { Tecnologia } from "./Tecnologia";
 
 export class Persona {
@@ -13,9 +11,7 @@ export class Persona {
   private _disponible: boolean = false;
   private _sobreMi: string = '';
   private _descripcion: string = '';
-  private _fotos: Fotos = new Fotos();
   private _localizacion: Localizacion = new Localizacion();
-  private _redes: Redes[] = [];
   private _tecnologias: Tecnologia[] = [];
   private _educaciones: Educacion[] = [];
   private _proyectos: Proyecto[] = [];
@@ -71,25 +67,11 @@ export class Persona {
     this._descripcion = value;
   }
 
-  public get fotos(): Fotos {
-    return this._fotos;
-  }
-  public set fotos(value: Fotos) {
-    this._fotos = value;
-  }
-
   public get localizacion(): Localizacion {
     return this._localizacion;
   }
   public set localizacion(value: Localizacion) {
     this._localizacion = value;
-  }
-
-  public get redes(): Redes[] {
-    return this._redes;
-  }
-  public set redes(value: Redes[]) {
-    this._redes = value;
   }
 
   public get tecnologias(): Tecnologia[] {
