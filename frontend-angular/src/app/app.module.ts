@@ -37,6 +37,7 @@ import { AddRedSocialComponent } from './Components/add-red-social/add-red-socia
 import { EditarRedesComponent } from './Components/editar-redes/editar-redes.component';
 import { EditarRedSocialComponent } from './Components/editar-red-social/editar-red-social.component';
 import { EditarAboutComponent } from './Components/editar-about/editar-about.component';
+import { EditarFotoPerfilComponent } from './Components/editar-foto-perfil/editar-foto-perfil.component';
 
 @NgModule({
   declarations: [
@@ -62,6 +63,7 @@ import { EditarAboutComponent } from './Components/editar-about/editar-about.com
     EditarRedesComponent,
     EditarRedSocialComponent,
     EditarAboutComponent,
+    EditarFotoPerfilComponent,
   ],
   imports: [
     AppRoutingModule,

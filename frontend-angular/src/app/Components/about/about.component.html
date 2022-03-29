@@ -32,11 +32,7 @@
 
     <article class="sobremi-main row">
       <article class="img-perfil-sobremi col-lg-4">
-        <img
-          src="../../../assets/img/profile-img.jpg"
-          class="img-fluid"
-          alt="imagen de perfil"
-        />
+        <img [src]="fotoPerfilUrl" class="img-fluid" alt="imagen de perfil" />
       </article>
       <article class="main-content col-lg-8 pt-4 pt-lg-0 content">
         <h3 class="fst-italic">{{ persona.ocupacion }}</h3>
@@ -49,7 +45,8 @@
             <ul>
               <li>
                 <i class="bi bi-chevron-right"></i>
-                <strong>Cumpleaños:</strong> <span>{{ persona.fechaNac | date: 'dd/MM/yyyy':"UTC" }}</span>
+                <strong>Cumpleaños:</strong>
+                <span>{{ persona.fechaNac | date: "dd/MM/yyyy":"UTC" }}</span>
               </li>
               <li>
                 <i class="bi bi-chevron-right"></i> <strong>Ciudad:</strong>
@@ -68,7 +65,6 @@
               <li>
                 <i class="bi bi-chevron-right"></i> <strong>Estado:</strong>
                 <span>{{ textoDisponibilidad }}</span>
-                
               </li>
             </ul>
           </div>

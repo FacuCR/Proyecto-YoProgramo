@@ -8,11 +8,10 @@ import {
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Localizacion } from '../models/Localizacion';
 import { Redes } from '../models/Redes';
 
 const API_URL = 'http://localhost:8080/api/persona/';
-const API_URL_BG_IMG = 'http://localhost:8080/api/img/bg/';
+const API_URL_IMG = 'http://localhost:8080/api/img/';
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
 };
@@ -46,7 +45,7 @@ export class UserService {
   uploadBg(img: File): Observable<HttpEvent<any>> {
     const formData: FormData = new FormData();
     formData.append('file', img);
-    const req = new HttpRequest('POST', `${API_URL_BG_IMG}upload`, formData, {
+    const req = new HttpRequest('POST', `${API_URL_IMG}bg/upload`, formData, {
       reportProgress: true,
       responseType: 'json',
     });
@@ -54,7 +53,21 @@ export class UserService {
   }
 
   getBg(): Observable<any> {
-    return this.http.get(`${API_URL_BG_IMG}find`);
+    return this.http.get(`${API_URL_IMG}bg/find`);
+  }
+
+  uploadFotoPerfil(img: File): Observable<HttpEvent<any>> {
+    const formData: FormData = new FormData();
+    formData.append('file', img);
+    const req = new HttpRequest('POST', `${API_URL_IMG}perfil/upload`, formData, {
+      reportProgress: true,
+      responseType: 'json',
+    });
+    return this.http.request(req);
+  }
+
+  getFotoPerfil(): Observable<any> {
+    return this.http.get(`${API_URL_IMG}perfil/find`);
   }
 
   agregarRedSocial(

@@ -12,6 +12,7 @@ export class AboutComponent implements OnInit {
   persona: Persona = new Persona();
   authenticated: boolean = false;
   textoDisponibilidad: string = '';
+  fotoPerfilUrl: string = '';
 
   constructor(
     private userService: UserService,
@@ -35,6 +36,15 @@ export class AboutComponent implements OnInit {
 
   ngOnInit(): void {
     this.authenticated = this.tokenStorage.isAuthenticated();
+
+    this.userService.getFotoPerfil().subscribe({
+      next: (data) => {
+        this.fotoPerfilUrl = data.url;
+      },
+      error: (err: Error) => {
+        console.log(err.message);
+      },
+    });
   }
 
   public edad(): number {
