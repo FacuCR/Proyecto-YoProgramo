@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import {
   HttpClient,
   HttpEvent,
@@ -10,7 +11,7 @@ import { Observable } from 'rxjs';
 import { Redes } from '../models/Redes';
 
 const API_URL = 'http://localhost:8080/api/persona/';
-const API_URL_BG_IMG = 'http://localhost:8080/api/img/bg/';
+const API_URL_IMG = 'http://localhost:8080/api/img/';
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
 };
@@ -44,7 +45,7 @@ export class UserService {
   uploadBg(img: File): Observable<HttpEvent<any>> {
     const formData: FormData = new FormData();
     formData.append('file', img);
-    const req = new HttpRequest('POST', `${API_URL_BG_IMG}upload`, formData, {
+    const req = new HttpRequest('POST', `${API_URL_IMG}bg/upload`, formData, {
       reportProgress: true,
       responseType: 'json',
     });
@@ -52,7 +53,21 @@ export class UserService {
   }
 
   getBg(): Observable<any> {
-    return this.http.get(`${API_URL_BG_IMG}find`);
+    return this.http.get(`${API_URL_IMG}bg/find`);
+  }
+
+  uploadFotoPerfil(img: File): Observable<HttpEvent<any>> {
+    const formData: FormData = new FormData();
+    formData.append('file', img);
+    const req = new HttpRequest('POST', `${API_URL_IMG}perfil/upload`, formData, {
+      reportProgress: true,
+      responseType: 'json',
+    });
+    return this.http.request(req);
+  }
+
+  getFotoPerfil(): Observable<any> {
+    return this.http.get(`${API_URL_IMG}perfil/find`);
   }
 
   agregarRedSocial(
@@ -81,6 +96,30 @@ export class UserService {
         nombre,
         url,
         clase,
+      },
+      httpOptions
+    );
+  }
+
+  editarSobreMi(
+    sobreMi: string,
+    nuevaFechaNac: Date,
+    descripcion: string,
+    pais: string,
+    ciudad: string,
+    disponibilidad: boolean
+  ): Observable<any> {
+    let datePipe = new DatePipe('en-US');
+    let fechaNac = datePipe.transform(nuevaFechaNac, 'dd/MM/yyyy');
+    return this.http.put(
+      API_URL + 'editar/sobremi',
+      {
+        sobreMi,
+        fechaNac,
+        descripcion,
+        pais,
+        ciudad,
+        disponibilidad,
       },
       httpOptions
     );

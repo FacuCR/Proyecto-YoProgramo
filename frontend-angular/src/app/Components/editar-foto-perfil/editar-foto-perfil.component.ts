@@ -1,6 +1,6 @@
 import { HttpEventType, HttpResponse } from '@angular/common/http';
 import { Component, OnInit, Optional } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs';
@@ -8,12 +8,12 @@ import { UserService } from 'src/app/services/user.service';
 import { EditarImgBtnComponent } from '../editar-img-btn/editar-img-btn.component';
 
 @Component({
-  selector: 'app-editar-bg',
-  templateUrl: './editar-bg.component.html',
-  styleUrls: ['./editar-bg.component.css'],
+  selector: 'app-editar-foto-perfil',
+  templateUrl: './editar-foto-perfil.component.html',
+  styleUrls: ['./editar-foto-perfil.component.css'],
 })
-export class EditarBgComponent implements OnInit {
-  bgForm = this.formBuilder.group({
+export class EditarFotoPerfilComponent implements OnInit {
+  fotoPerfilForm = this.formBuilder.group({
     imagen: [],
   });
 
@@ -80,34 +80,34 @@ export class EditarBgComponent implements OnInit {
       }
     });
 
-  onSubmit(): void {
-    this.enviando = true;
-    this.mensaje = '';
-    if (this.archivoCapturado) {
-      this.userService.uploadBg(this.archivoCapturado).subscribe(
-        (event: any) => {
-          if (event.type === HttpEventType.UploadProgress) {
-            if (Math.round((100 * event.loaded) / event.total) == 100) {
-              this.enviando = false;
-              this.reloadPage();
+    onSubmit(): void {
+      this.enviando = true;
+      this.mensaje = '';
+      if (this.archivoCapturado) {
+        this.userService.uploadFotoPerfil(this.archivoCapturado).subscribe(
+          (event: any) => {
+            if (event.type === HttpEventType.UploadProgress) {
+              if (Math.round((100 * event.loaded) / event.total) == 100) {
+                this.enviando = false;
+                this.reloadPage();
+              }
+            } else if (event instanceof HttpResponse) {
+              this.mensaje = event.body.mensaje;
             }
-          } else if (event instanceof HttpResponse) {
-            this.mensaje = event.body.mensaje;
+            this.openSnackBar('Se cargo exitosamente', 'OK');
+          },
+          (err: any) => {
+            console.log(err);
+            this.enviando = false;
+            if (err.error && err.error.mensaje) {
+              this.mensaje = err.error.mensaje;
+            } else {
+              this.mensaje = 'No se pudo subir la imagen!';
+            }
+            this.archivoCapturado = undefined;
+            this.openSnackBar(this.mensaje, 'OK');
           }
-          this.openSnackBar('Se cargo exitosamente', 'OK');
-        },
-        (err: any) => {
-          console.log(err);
-          this.enviando = false;
-          if (err.error && err.error.mensaje) {
-            this.mensaje = err.error.mensaje;
-          } else {
-            this.mensaje = 'No se pudo subir la imagen!';
-          }
-          this.archivoCapturado = undefined;
-          this.openSnackBar(this.mensaje, 'OK');
-        }
-      );
+        );
+      }
     }
-  }
 }

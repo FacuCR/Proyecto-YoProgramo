@@ -1,0 +1,96 @@
+<article class="editar-hero-form">
+  <div class="d-flex justify-content-center">
+    <h1 class="h1">Editar Sobre Mi</h1>
+  </div>
+
+  <form [formGroup]="aboutForm" (ngSubmit)="onSubmit()" class="row p-3">
+    <mat-form-field
+      [ngClass]="{ 'mat-form-field-invalid': isInvalido }"
+      appearance="fill"
+      class="row mt-3 gx-0"
+    >
+      <mat-label>Presentación</mat-label>
+      <textarea
+        matInput
+        formControlName="presentacion"
+        required
+        placeholder="Ej. Soy de un lugar muy lejano..."
+      ></textarea>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Fecha de nacimiento</mat-label>
+      <input formControlName="fechaNac" matInput [matDatepicker]="picker" />
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker touchUi #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field
+      [ngClass]="{ 'mat-form-field-invalid': isInvalido }"
+      appearance="fill"
+      class="row mt-3 gx-0"
+    >
+      <mat-label>Descripción</mat-label>
+      <textarea
+        matInput
+        formControlName="descripcion"
+        required
+        placeholder="Ej. Mis caracteristicas principales son..."
+      ></textarea>
+    </mat-form-field>
+
+    <mat-form-field
+      [ngClass]="{ 'mat-form-field-invalid': isInvalido }"
+      appearance="fill"
+      class="row mt-3 gx-0"
+    >
+      <mat-label>Pais</mat-label>
+      <input
+        matInput
+        formControlName="pais"
+        required
+      />
+    </mat-form-field>
+
+    <mat-form-field
+      [ngClass]="{ 'mat-form-field-invalid': isInvalido }"
+      appearance="fill"
+      class="row mt-3 gx-0"
+    >
+      <mat-label>Ciudad</mat-label>
+      <input
+        matInput
+        formControlName="ciudad"
+        required
+      />
+    </mat-form-field>
+
+    <mat-checkbox
+      class="my-2 gx-0"
+      color="primary"
+      formControlName="disponible"
+      ngDefaultControl
+      >Disponible?</mat-checkbox
+    >
+
+    <div class="row mt-4 d-flex justify-content-between gx-0">
+      <button
+        mat-stroked-button
+        (click)="onCancelarClick()"
+        class="btn col-5"
+        color="primary"
+      >
+        Cancelar
+      </button>
+      <button
+        mat-raised-button
+        type="submit"
+        class="btn col-5"
+        color="primary"
+        [disabled]="!aboutForm.valid"
+      >
+        Guardar
+      </button>
+    </div>
+  </form>
+</article>

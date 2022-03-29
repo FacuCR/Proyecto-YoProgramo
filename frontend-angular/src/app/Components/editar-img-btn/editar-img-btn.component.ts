@@ -1,6 +1,7 @@
 import { Component, Input, OnInit, Optional } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { EditarBgComponent } from '../editar-bg/editar-bg.component';
+import { EditarFotoPerfilComponent } from '../editar-foto-perfil/editar-foto-perfil.component';
 
 @Component({
   selector: 'app-editar-img-btn',
@@ -24,6 +25,13 @@ export class EditarImgBtnComponent {
     switch (component) {
       case 1:
         this.dialogRef.open(EditarBgComponent, {
+          panelClass: ['animate__animated', 'animate__bounceIn'],
+          maxWidth: '19rem',
+          height: '90%',
+        });
+        break;
+      case 2:
+        this.dialogRef.open(EditarFotoPerfilComponent, {
           panelClass: ['animate__animated', 'animate__bounceIn'],
           maxWidth: '19rem',
           height: '90%',

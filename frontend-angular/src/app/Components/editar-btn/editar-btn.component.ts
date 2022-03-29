@@ -1,6 +1,7 @@
 import { Component, Input, OnInit, Optional } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Redes } from 'src/app/models/Redes';
+import { EditarAboutComponent } from '../editar-about/editar-about.component';
 import { EditarHeroComponent } from '../editar-hero/editar-hero.component';
 import { EditarRedSocialComponent } from '../editar-red-social/editar-red-social.component';
 
@@ -22,7 +23,7 @@ export class EditarBtnComponent {
   @Input() public componentToOpen: number = 0;
 
   @Input() public redesActuales: Redes[] = [];
-  
+
   constructor(@Optional() public dialogRef: MatDialog) {}
 
   openDialog(component: number) {
@@ -41,7 +42,14 @@ export class EditarBtnComponent {
           minWidth: '60%',
           maxHeight: '90%',
           autoFocus: false,
-          data: { redesActuales: this.redesActuales }
+          data: { redesActuales: this.redesActuales },
+        });
+        break;
+
+      case 3:
+        this.dialogRef.open(EditarAboutComponent, {
+          panelClass: ['animate__animated', 'animate__bounceIn'],
+          height: '90%',
         });
         break;
 
