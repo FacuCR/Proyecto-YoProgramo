@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import {
   HttpClient,
   HttpEvent,
@@ -8,9 +9,9 @@ import {
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Redes } from '../models/Redes';
-import { RedesService } from './redes.service';
 
 const API_URL = 'https://gentle-earth-94368.herokuapp.com/api/persona/';
+const API_URL_IMG = 'https://gentle-earth-94368.herokuapp.com/api/img/';
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
 };
@@ -44,7 +45,7 @@ export class UserService {
   uploadBg(img: File): Observable<HttpEvent<any>> {
     const formData: FormData = new FormData();
     formData.append('file', img);
-    const req = new HttpRequest('POST', `${API_URL}upload/bg`, formData, {
+    const req = new HttpRequest('POST', `${API_URL_IMG}bg/upload`, formData, {
       reportProgress: true,
       responseType: 'json',
     });
@@ -52,7 +53,21 @@ export class UserService {
   }
 
   getBg(): Observable<any> {
-    return this.http.get(`${API_URL}files/bg`);
+    return this.http.get(`${API_URL_IMG}bg/find`);
+  }
+
+  uploadFotoPerfil(img: File): Observable<HttpEvent<any>> {
+    const formData: FormData = new FormData();
+    formData.append('file', img);
+    const req = new HttpRequest('POST', `${API_URL_IMG}perfil/upload`, formData, {
+      reportProgress: true,
+      responseType: 'json',
+    });
+    return this.http.request(req);
+  }
+
+  getFotoPerfil(): Observable<any> {
+    return this.http.get(`${API_URL_IMG}perfil/find`);
   }
 
   agregarRedSocial(
@@ -81,6 +96,30 @@ export class UserService {
         nombre,
         url,
         clase,
+      },
+      httpOptions
+    );
+  }
+
+  editarSobreMi(
+    sobreMi: string,
+    nuevaFechaNac: Date,
+    descripcion: string,
+    pais: string,
+    ciudad: string,
+    disponibilidad: boolean
+  ): Observable<any> {
+    let datePipe = new DatePipe('en-US');
+    let fechaNac = datePipe.transform(nuevaFechaNac, 'dd/MM/yyyy');
+    return this.http.put(
+      API_URL + 'editar/sobremi',
+      {
+        sobreMi,
+        fechaNac,
+        descripcion,
+        pais,
+        ciudad,
+        disponibilidad,
       },
       httpOptions
     );
