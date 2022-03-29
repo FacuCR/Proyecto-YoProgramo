@@ -18,7 +18,7 @@ public class ImagenBGService implements IImagenBGService{
     @Autowired
     private ImagenBGRepository imgRepo;
     @Autowired
-    UsuarioRepository usuarioRepository;
+    private UsuarioRepository usuarioRepository;
 
     @Override
     public ImagenBG store(MultipartFile file) throws IOException {

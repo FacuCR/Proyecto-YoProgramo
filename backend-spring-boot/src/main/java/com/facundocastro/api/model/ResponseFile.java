@@ -11,5 +11,5 @@ public class ResponseFile {
     private String nombre;
     private String url;
     private String tipo;
-    private long tamanio    ;
+    private long tamanio;
 }

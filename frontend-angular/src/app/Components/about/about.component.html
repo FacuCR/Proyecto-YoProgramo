@@ -49,7 +49,7 @@
             <ul>
               <li>
                 <i class="bi bi-chevron-right"></i>
-                <strong>Cumpleaños:</strong> <span>{{ persona.fechaNac | date: 'dd/MM/yyyy' }}</span>
+                <strong>Cumpleaños:</strong> <span>{{ persona.fechaNac | date: 'dd/MM/yyyy':"UTC" }}</span>
               </li>
               <li>
                 <i class="bi bi-chevron-right"></i> <strong>Ciudad:</strong>
