@@ -10,8 +10,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Redes } from '../models/Redes';
 
-const API_URL = 'https://gentle-earth-94368.herokuapp.com/api/persona/';
-const API_URL_IMG = 'https://gentle-earth-94368.herokuapp.com/api/img/';
+const API_URL = 'http://localhost:8080/api/persona/';
+const API_URL_IMG = 'http://localhost:8080/api/img/';
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
 };

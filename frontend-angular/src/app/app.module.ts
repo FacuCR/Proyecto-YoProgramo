@@ -1,7 +1,7 @@
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 
 // ===== Angular Material ===== //
@@ -9,7 +9,7 @@ import { MaterialModule } from './material.module';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 // ===== ngx-typed.js ===== //
-import {NgxTypedJsModule} from 'ngx-typed-js';
+import { NgxTypedJsModule } from 'ngx-typed-js';
 
 import { AuthInterceptorProviders } from './helpers/auth.interceptor';
 
@@ -76,10 +76,10 @@ import { EditarFotoPerfilComponent } from './Components/editar-foto-perfil/edita
     ReactiveFormsModule,
   ],
   providers: [
-    { provide:MatDialogRef , useValue:{} },
+    { provide: MatDialogRef, useValue: {} },
     { provide: MAT_DIALOG_DATA, useValue: {} },
-    [ AuthInterceptorProviders ]
+    [AuthInterceptorProviders],
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
