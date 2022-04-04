@@ -38,6 +38,9 @@ import { EditarRedesComponent } from './Components/editar-redes/editar-redes.com
 import { EditarRedSocialComponent } from './Components/editar-red-social/editar-red-social.component';
 import { EditarAboutComponent } from './Components/editar-about/editar-about.component';
 import { EditarFotoPerfilComponent } from './Components/editar-foto-perfil/editar-foto-perfil.component';
+import { SubirCvComponent } from './Components/subir-cv/subir-cv.component';
+import { SubirCvBtnComponent } from './Components/subir-cv-btn/subir-cv-btn.component';
+import { BorrarCvBtnComponent } from './Components/borrar-cv-btn/borrar-cv-btn.component';
 
 @NgModule({
   declarations: [
@@ -64,6 +67,9 @@ import { EditarFotoPerfilComponent } from './Components/editar-foto-perfil/edita
     EditarRedSocialComponent,
     EditarAboutComponent,
     EditarFotoPerfilComponent,
+    SubirCvComponent,
+    SubirCvBtnComponent,
+    BorrarCvBtnComponent,
   ],
   imports: [
     AppRoutingModule,

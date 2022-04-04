@@ -73,6 +73,24 @@
         <p>
           {{ persona.descripcion }}
         </p>
+        <article class="d-flex justify-content-center">
+          <div class="btn-cv">
+            <button class="btn">DESCARGAR CV</button>
+          </div>
+          <app-subir-cv-btn
+            class="mx-2"
+            *ngIf="authenticated"
+            matTooltip="subir un cv"
+            [matTooltipShowDelay]="100"
+            [matTooltipHideDelay]="200"
+          ></app-subir-cv-btn>
+          <app-borrar-cv-btn
+            *ngIf="authenticated && true"
+            matTooltip="borrar cv"
+            [matTooltipShowDelay]="100"
+            [matTooltipHideDelay]="200"
+          ></app-borrar-cv-btn>
+        </article>
       </article>
     </article>
   </div>
