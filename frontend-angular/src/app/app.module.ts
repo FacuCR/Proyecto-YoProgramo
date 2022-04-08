@@ -40,7 +40,6 @@ import { EditarAboutComponent } from './Components/editar-about/editar-about.com
 import { EditarFotoPerfilComponent } from './Components/editar-foto-perfil/editar-foto-perfil.component';
 import { SubirCvComponent } from './Components/subir-cv/subir-cv.component';
 import { SubirCvBtnComponent } from './Components/subir-cv-btn/subir-cv-btn.component';
-import { BorrarCvBtnComponent } from './Components/borrar-cv-btn/borrar-cv-btn.component';
 
 @NgModule({
   declarations: [
@@ -69,7 +68,6 @@ import { BorrarCvBtnComponent } from './Components/borrar-cv-btn/borrar-cv-btn.c
     EditarFotoPerfilComponent,
     SubirCvComponent,
     SubirCvBtnComponent,
-    BorrarCvBtnComponent,
   ],
   imports: [
     AppRoutingModule,

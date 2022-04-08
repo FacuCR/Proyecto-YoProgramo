@@ -1,1 +1,39 @@
-<p>subir-cv works!</p>
+<section class="editar-foto-perfil-form">
+  <h1 class="h1">Subir un CV</h1>
+
+  <form [formGroup]="cvForm" (ngSubmit)="onSubmit()" class="row p-3">
+    <input
+      (change)="seleccionarArchivo($event)"
+      type="file"
+      formControlName="cv"
+      id="imagenUpload"
+    />
+    <mat-toolbar *ngIf="archivoCapturado">
+      <mat-progress-bar color="accent" [value]="progreso"></mat-progress-bar>
+      <span class="progress">{{ progreso }}%</span>
+    </mat-toolbar>
+
+    <section class="row mt-4 d-flex justify-content-between gx-0">
+      <button
+        mat-stroked-button
+        (click)="onCancelarClick()"
+        class="btn col-5"
+        color="primary"
+      >
+        Volver
+      </button>
+
+      <div class="button-container col-5">
+        <button
+          mat-raised-button
+          type="submit"
+          class="btn"
+          color="primary"
+          [disabled]="!cvForm.valid"
+        >
+          <span>Guardar</span>
+        </button>
+      </div>
+    </section>
+  </form>
+</section>
