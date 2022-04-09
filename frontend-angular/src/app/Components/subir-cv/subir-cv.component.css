@@ -1,0 +1,50 @@
+.button-container {
+  display: inline-block;
+  position: relative;
+}
+
+section {
+  background-color: #fbfeff00 !important;
+}
+
+label {
+  color: white;
+  border-radius: 1.3438rem;
+  background-color: #27a1f6;
+  box-shadow: 10px 16px 40px 0 #4b8def60;
+  padding: 0.5rem 1rem;
+}
+
+h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #38424c;
+}
+
+.progress-bar {
+  padding: 0;
+}
+.progress {
+  width: 50px;
+  height: 2rem !important;
+}
+
+.mat-toolbar-single-row {
+  height: auto !important;
+  background: transparent;
+  padding: 0;
+}
+.mat-toolbar-single-row button {
+  width: 100px;
+}
+.mat-form-field {
+  width: 100%;
+}
+.mensaje {
+  background-color: #ddd;
+  padding: 15px;
+  color: #333;
+  border: #aaa solid 1px;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}

@@ -3,8 +3,10 @@ package com.facundocastro.api.model;
 import com.sun.istack.NotNull;
 import lombok.Data;
 
-import javax.persistence.*;
-import java.util.Date;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Data
 @Entity
@@ -15,8 +17,6 @@ public class Tecnologia {
     @NotNull
     private String nombre;
     private String color;
-    @Temporal(TemporalType.DATE)
-    private Date fechaI;
-    @Temporal(TemporalType.DATE)
-    private Date fechaF;
+    @NotNull
+    private String clase;
 }

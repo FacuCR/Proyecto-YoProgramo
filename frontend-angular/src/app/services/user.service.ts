@@ -12,6 +12,7 @@ import { Redes } from '../models/Redes';
 
 const API_URL = 'http://localhost:8080/api/persona/';
 const API_URL_IMG = 'http://localhost:8080/api/img/';
+const API_URL_CV = 'http://localhost:8080/api/cv/';
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
 };
@@ -59,10 +60,15 @@ export class UserService {
   uploadFotoPerfil(img: File): Observable<HttpEvent<any>> {
     const formData: FormData = new FormData();
     formData.append('file', img);
-    const req = new HttpRequest('POST', `${API_URL_IMG}perfil/upload`, formData, {
-      reportProgress: true,
-      responseType: 'json',
-    });
+    const req = new HttpRequest(
+      'POST',
+      `${API_URL_IMG}perfil/upload`,
+      formData,
+      {
+        reportProgress: true,
+        responseType: 'json',
+      }
+    );
     return this.http.request(req);
   }
 
@@ -123,5 +129,62 @@ export class UserService {
       },
       httpOptions
     );
+  }
+
+  subirCv(cv: File): Observable<HttpEvent<any>> {
+    const formData: FormData = new FormData();
+    formData.append('file', cv);
+    const req = new HttpRequest('POST', `${API_URL_CV}upload`, formData, {
+      reportProgress: true,
+      responseType: 'json',
+    });
+    return this.http.request(req);
+  }
+
+  obtenerCv(): Observable<any> {
+    return this.http.get(`${API_URL_CV}find`);
+  }
+
+  borrarCv(): Observable<any> {
+    return this.http.delete(`${API_URL_CV}delete`);
+  }
+
+  getAllHabilidades(): Observable<any> {
+    return this.http.get(`${API_URL}habilidad/traer/todas`);
+  }
+
+  agregarHabilidad(
+    nombre: string,
+    color: string,
+    clase: string,
+    fechaInicio: Date
+  ): Observable<HttpEvent<any>> {
+    let datePipe = new DatePipe('en-US');
+    let fechaI = datePipe.transform(fechaInicio, 'dd/MM/yyyy');
+    return this.http.post<any>(
+      API_URL + 'habilidad/crear',
+      { nombre, color, clase, fechaI },
+      httpOptions
+    );
+  }
+
+  updateHabilidad(
+    nombre: string,
+    color: string,
+    clase: string,
+    fechaInicio: Date,
+    id: number
+  ): Observable<any> {
+    let datePipe = new DatePipe('en-US');
+    let fechaI = datePipe.transform(fechaInicio, 'dd/MM/yyyy');
+    return this.http.put<any>(
+      API_URL + 'habilidad/actualizar/' + id,
+      { nombre, color, clase, fechaI },
+      httpOptions
+    );
+  }
+
+  deleteHabilidad(id: number): Observable<any>{
+    return this.http.delete(`${API_URL}habilidad/borrar/${id}`);
   }
 }

@@ -28,6 +28,4 @@ public class Persona {
     private List<Proyecto> proyects;
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Educacion> educaciones;
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<Tecnologia> tecnologias;
 }

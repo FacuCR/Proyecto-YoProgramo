@@ -34,10 +34,14 @@ import { EditarBgComponent } from './Components/editar-bg/editar-bg.component';
 import { DndDirective } from './directives/dnd.directive';
 import { AddBtnComponent } from './Components/add-btn/add-btn.component';
 import { AddRedSocialComponent } from './Components/add-red-social/add-red-social.component';
-import { EditarRedesComponent } from './Components/editar-redes/editar-redes.component';
 import { EditarRedSocialComponent } from './Components/editar-red-social/editar-red-social.component';
 import { EditarAboutComponent } from './Components/editar-about/editar-about.component';
 import { EditarFotoPerfilComponent } from './Components/editar-foto-perfil/editar-foto-perfil.component';
+import { SubirCvComponent } from './Components/subir-cv/subir-cv.component';
+import { SubirCvBtnComponent } from './Components/subir-cv-btn/subir-cv-btn.component';
+import { AddHabilidadComponent } from './Components/add-habilidad/add-habilidad.component';
+import { BorrarHabilidadComponent } from './Components/borrar-habilidad/borrar-habilidad.component';
+import { EditarHabilidadComponent } from './Components/editar-habilidad/editar-habilidad.component';
 
 @NgModule({
   declarations: [
@@ -60,10 +64,14 @@ import { EditarFotoPerfilComponent } from './Components/editar-foto-perfil/edita
     DndDirective,
     AddBtnComponent,
     AddRedSocialComponent,
-    EditarRedesComponent,
     EditarRedSocialComponent,
     EditarAboutComponent,
     EditarFotoPerfilComponent,
+    SubirCvComponent,
+    SubirCvBtnComponent,
+    AddHabilidadComponent,
+    BorrarHabilidadComponent,
+    EditarHabilidadComponent,
   ],
   imports: [
     AppRoutingModule,

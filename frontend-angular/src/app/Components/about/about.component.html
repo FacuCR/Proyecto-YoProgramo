@@ -73,6 +73,30 @@
         <p>
           {{ persona.descripcion }}
         </p>
+        <article class="d-flex justify-content-center">
+          <div *ngIf="cvUrl != null" class="btn-cv">
+            <a [href]="cvUrl" target="_blank" class="btn">DESCARGAR CV</a>
+          </div>
+          <app-subir-cv-btn
+            class="mx-2"
+            *ngIf="authenticated"
+            matTooltip="subir un cv"
+            [matTooltipShowDelay]="100"
+            [matTooltipHideDelay]="200"
+          ></app-subir-cv-btn>
+          <button
+            (click)="onBorrar($event)"
+            *ngIf="authenticated && cvUrl != null"
+            mat-mini-fab
+            color="warn"
+            aria-label="Boton con un icono de un basurero"
+            matTooltip="borrar cv"
+            [matTooltipShowDelay]="100"
+            [matTooltipHideDelay]="200"
+          >
+            <mat-icon>delete</mat-icon>
+          </button>
+        </article>
       </article>
     </article>
   </div>

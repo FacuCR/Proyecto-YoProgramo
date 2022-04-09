@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { EditarRedesComponent } from './editar-redes.component';
+import { SubirCvComponent } from './subir-cv.component';
 
-describe('EditarRedesComponent', () => {
-  let component: EditarRedesComponent;
-  let fixture: ComponentFixture<EditarRedesComponent>;
+describe('SubirCvComponent', () => {
+  let component: SubirCvComponent;
+  let fixture: ComponentFixture<SubirCvComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ EditarRedesComponent ]
+      declarations: [ SubirCvComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(EditarRedesComponent);
+    fixture = TestBed.createComponent(SubirCvComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

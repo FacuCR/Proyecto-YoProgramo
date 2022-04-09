@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core';
 import { Redes } from 'src/app/models/Redes';
-import { RedSocialService } from 'src/app/services/red-social.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -11,7 +10,7 @@ import { UserService } from 'src/app/services/user.service';
       (click)="onBorrar($event)"
       mat-icon-button
       color="warn"
-      aria-label="Example icon button with a heart icon"
+      aria-label="icono de basurero"
     >
       <mat-icon>delete</mat-icon>
     </button>
@@ -33,14 +32,12 @@ export class BorrarBtnComponent {
       );
 
       if (borrar) {
-        this.userService
-          .borrarUnaRedSocialDeLaPersona(this.red.id)
-          .subscribe({
-            next: () => this.reloadPage(),
-            error: (err: Error) => {
-              console.log(err.message);
-            },
-          });
+        this.userService.borrarUnaRedSocialDeLaPersona(this.red.id).subscribe({
+          next: () => this.reloadPage(),
+          error: (err: Error) => {
+            console.log(err.message);
+          },
+        });
       }
     }
   }

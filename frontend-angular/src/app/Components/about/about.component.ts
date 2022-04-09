@@ -13,6 +13,7 @@ export class AboutComponent implements OnInit {
   authenticated: boolean = false;
   textoDisponibilidad: string = '';
   fotoPerfilUrl: string = '';
+  cvUrl: string = '';
 
   constructor(
     private userService: UserService,
@@ -26,7 +27,18 @@ export class AboutComponent implements OnInit {
         this.persona.descripcion = data.persona.descripcion;
         this.persona.localizacion.pais = data.persona.localizacion.pais;
         this.persona.localizacion.ciudad = data.persona.localizacion.ciudad;
-        this.textoDisponibilidad = (data.persona.disponibilidad ? "Disponible" : "Trabajando");
+        this.textoDisponibilidad = data.persona.disponibilidad
+          ? 'Disponible'
+          : 'Trabajando';
+      },
+      error: (err: Error) => {
+        console.log(err.message);
+      },
+    });
+
+    this.userService.obtenerCv().subscribe({
+      next: (data) => {
+        this.cvUrl = data.url;
       },
       error: (err: Error) => {
         console.log(err.message);
@@ -47,10 +59,29 @@ export class AboutComponent implements OnInit {
     });
   }
 
+  onBorrar(event: any): void {
+    if (this.cvUrl != '') {
+      const borrar: boolean = confirm('seguro que deseas borrar tu cv?');
+
+      if (borrar) {
+        this.userService.borrarCv().subscribe({
+          next: () => this.reloadPage(),
+          error: (err: Error) => {
+            console.log(err.message);
+          },
+        });
+      }
+    }
+  }
+
   public edad(): number {
     let parseFechaNac: Date = new Date(this.persona.fechaNac);
     let difTiempo: number = Math.abs(Date.now() - parseFechaNac.getTime());
     let edad: number = Math.floor(difTiempo / (1000 * 3600 * 24) / 365.25);
     return edad;
+  }
+
+  reloadPage(): void {
+    window.location.reload();
   }
 }
