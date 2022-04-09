@@ -131,18 +131,13 @@ export class UserService {
     );
   }
 
-  subirCv(cv: File): Observable<HttpEvent<any>>{
+  subirCv(cv: File): Observable<HttpEvent<any>> {
     const formData: FormData = new FormData();
     formData.append('file', cv);
-    const req = new HttpRequest(
-      'POST',
-      `${API_URL_CV}upload`,
-      formData,
-      {
-        reportProgress: true,
-        responseType: 'json',
-      }
-    );
+    const req = new HttpRequest('POST', `${API_URL_CV}upload`, formData, {
+      reportProgress: true,
+      responseType: 'json',
+    });
     return this.http.request(req);
   }
 
@@ -152,5 +147,44 @@ export class UserService {
 
   borrarCv(): Observable<any> {
     return this.http.delete(`${API_URL_CV}delete`);
+  }
+
+  getAllHabilidades(): Observable<any> {
+    return this.http.get(`${API_URL}habilidad/traer/todas`);
+  }
+
+  agregarHabilidad(
+    nombre: string,
+    color: string,
+    clase: string,
+    fechaInicio: Date
+  ): Observable<HttpEvent<any>> {
+    let datePipe = new DatePipe('en-US');
+    let fechaI = datePipe.transform(fechaInicio, 'dd/MM/yyyy');
+    return this.http.post<any>(
+      API_URL + 'habilidad/crear',
+      { nombre, color, clase, fechaI },
+      httpOptions
+    );
+  }
+
+  updateHabilidad(
+    nombre: string,
+    color: string,
+    clase: string,
+    fechaInicio: Date,
+    id: number
+  ): Observable<any> {
+    let datePipe = new DatePipe('en-US');
+    let fechaI = datePipe.transform(fechaInicio, 'dd/MM/yyyy');
+    return this.http.put<any>(
+      API_URL + 'habilidad/actualizar/' + id,
+      { nombre, color, clase, fechaI },
+      httpOptions
+    );
+  }
+
+  deleteHabilidad(id: number): Observable<any>{
+    return this.http.delete(`${API_URL}habilidad/borrar/${id}`);
   }
 }

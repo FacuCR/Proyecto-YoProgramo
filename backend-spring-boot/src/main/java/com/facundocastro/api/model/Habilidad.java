@@ -21,7 +21,6 @@ public class Habilidad {
     private String color;
     @NotNull
     private String clase;
-    @Temporal(TemporalType.DATE)
     private Date fechaI;
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "usuario_id", nullable = false)

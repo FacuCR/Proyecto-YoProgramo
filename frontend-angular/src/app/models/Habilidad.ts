@@ -1,8 +1,9 @@
-export class Tecnologia {
+export class Habilidad {
   protected _id: number = -1;
   protected _nombre: string = '';
   protected _color: string = '';
   protected _clase: string = '';
+  protected _fechaI: Date = new Date();
 
   public constructor() {}
 
@@ -32,5 +33,12 @@ export class Tecnologia {
   }
   public set clase(value: string) {
     this._clase = value;
+  }
+
+  public get fechaI(): Date {
+    return this._fechaI;
+  }
+  public set fechaI(value: Date) {
+    this._fechaI = value;
   }
 }
