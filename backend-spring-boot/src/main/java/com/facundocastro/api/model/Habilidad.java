@@ -10,12 +10,17 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Data
+@Entity
 public class Habilidad {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @NotNull
-    private Tecnologia tecnologia;
+    private String nombre;
+    @NotNull
+    private String color;
+    @NotNull
+    private String clase;
     @Temporal(TemporalType.DATE)
     private Date fechaI;
     @OneToOne(fetch = FetchType.LAZY)
