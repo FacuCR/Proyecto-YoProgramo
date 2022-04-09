@@ -16,7 +16,7 @@ export class TecnologiaService {
   }
 
   traerTecnologiaPorNombre(nombreTecnologia: string): Observable<any> {
-    const params = new HttpParams().set('red', nombreTecnologia);
+    const params = new HttpParams().set('nombreTecnologia', nombreTecnologia);
     return this.http.get(API_URL + 'traer', { params });
   }
 }
