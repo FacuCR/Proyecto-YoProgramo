@@ -15,6 +15,7 @@
       <app-editar-btn
         *ngIf="authenticated"
         class="mx-3"
+        [habilidadesActuales]="habilidades"
         [componentToOpen]="4"
         matTooltip="editar una habilidad"
         [matTooltipShowDelay]="100"

@@ -8,7 +8,7 @@
         <mat-label>Tecnologia</mat-label>
         <mat-select formControlName="tecnologia">
           <mat-option *ngFor="let tecnologia of tecnologias" [value]="tecnologia">
-            {{ tecnologia }}
+            {{ tecnologia | lowercase }}
           </mat-option>
         </mat-select>
       </mat-form-field>

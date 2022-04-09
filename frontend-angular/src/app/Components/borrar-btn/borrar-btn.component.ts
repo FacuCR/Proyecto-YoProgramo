@@ -5,7 +5,8 @@ import { UserService } from 'src/app/services/user.service';
 @Component({
   selector: 'app-borrar-btn',
   template: `
-    <button     
+    <button
+      class="position-absolute top-0 start-100 translate-middle"
       (click)="onBorrar($event)"
       mat-icon-button
       color="warn"

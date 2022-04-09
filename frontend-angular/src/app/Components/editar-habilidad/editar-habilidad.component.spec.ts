@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { EditarRedesComponent } from './editar-redes.component';
+import { EditarHabilidadComponent } from './editar-habilidad.component';
 
-describe('EditarRedesComponent', () => {
-  let component: EditarRedesComponent;
-  let fixture: ComponentFixture<EditarRedesComponent>;
+describe('EditarHabilidadComponent', () => {
+  let component: EditarHabilidadComponent;
+  let fixture: ComponentFixture<EditarHabilidadComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ EditarRedesComponent ]
+      declarations: [ EditarHabilidadComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(EditarRedesComponent);
+    fixture = TestBed.createComponent(EditarHabilidadComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

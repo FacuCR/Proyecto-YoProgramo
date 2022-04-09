@@ -1,0 +1,54 @@
+<section class="editar-habilidad">
+    <h1 class="title">Editar una habilidad</h1>
+  
+    <mat-accordion>
+      <mat-expansion-panel
+        *ngFor="let habilidad of habilidadesActuales"
+        (click)="idSeleccionada = habilidad.id"
+      >
+        <mat-expansion-panel-header class="d-flex align-items-center">
+          <mat-panel-title> {{ habilidad.nombre }} </mat-panel-title>
+          <mat-panel-description> Fecha de Inicio: {{ habilidad.fechaI | date: "dd/MM/yyyy":"UTC" }} </mat-panel-description>
+          <i class="devicon-{{ habilidad.clase }} pe-3"></i>
+        </mat-expansion-panel-header>
+  
+        <form
+          [formGroup]="habilidadActualizarForm"
+          (ngSubmit)="onSubmit()"
+          class="row p-3"
+        >
+        <mat-form-field appearance="fill">
+            <mat-label>Tecnologia</mat-label>
+            <mat-select formControlName="tecnologia">
+              <mat-option *ngFor="let tecnologia of tecnologias" [value]="tecnologia">
+                {{ tecnologia }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+      
+          <mat-form-field appearance="fill">
+            <mat-label>Fecha de Inicio</mat-label>
+            <input formControlName="fechaI" matInput [matDatepicker]="picker" />
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker touchUi #picker></mat-datepicker>
+          </mat-form-field>
+  
+          <button
+            mat-raised-button
+            type="submit"
+            class="btn col-5"
+            color="primary"
+            [disabled]="!habilidadActualizarForm.valid"
+          >
+            Guardar
+          </button>
+        </form>
+      </mat-expansion-panel>
+    </mat-accordion>
+  
+    <mat-dialog-actions>
+      <button mat-stroked-button class="btn" color="primary" mat-dialog-close>
+        Salir
+      </button>
+    </mat-dialog-actions>
+  </section>
