@@ -22,10 +22,7 @@
       ></app-editar-btn>
 
       <p>
-        Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex
-        aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos
-        quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat
-        sit in iste officiis commodi quidem hic quas.
+        Estas son las tecnologias en las que me eh capacitado por ahora y el tiempo que llevo utilizandolas.
       </p>
     </section>
 
@@ -34,11 +31,12 @@
         *ngFor="let habilidad of habilidades; let i = index"
         (mouseover)="mouseOver()"
         (mouseout)="mouseOut()"
-        class="col-lg-4 col-md-6 d-flex align-items-stretch"
+        class="col-lg-4 col-md-6 d-flex align-items-stretch mb-4"
         data-aos="zoom-in"
         [attr.data-aos-delay]="100 * i"
       >
         <div class="icon-box">
+          <app-borrar-habilidad [habilidad]="habilidad" class="position-absolute top-0 translate-middle"></app-borrar-habilidad>
           <div class="icon">
             <svg
               width="100"

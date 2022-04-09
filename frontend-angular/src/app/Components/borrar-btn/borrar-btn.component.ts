@@ -1,13 +1,11 @@
 import { Component, Input } from '@angular/core';
 import { Redes } from 'src/app/models/Redes';
-import { RedSocialService } from 'src/app/services/red-social.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-borrar-btn',
   template: `
-    <button
-      class="position-absolute top-0 start-100 translate-middle"
+    <button     
       (click)="onBorrar($event)"
       mat-icon-button
       color="warn"

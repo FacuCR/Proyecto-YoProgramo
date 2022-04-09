@@ -55,7 +55,7 @@ export class HabilidadesComponent implements OnInit {
       parseFechaInicio.getMonth() -
       FechaActual.getMonth() +
       12 * (FechaActual.getFullYear() - parseFechaInicio.getFullYear());
-    return meses;
+    return Math.abs(meses);
   }
 
   ngOnInit(): void {

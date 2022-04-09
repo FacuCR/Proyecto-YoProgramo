@@ -41,6 +41,7 @@ import { EditarFotoPerfilComponent } from './Components/editar-foto-perfil/edita
 import { SubirCvComponent } from './Components/subir-cv/subir-cv.component';
 import { SubirCvBtnComponent } from './Components/subir-cv-btn/subir-cv-btn.component';
 import { AddHabilidadComponent } from './Components/add-habilidad/add-habilidad.component';
+import { BorrarHabilidadComponent } from './Components/borrar-habilidad/borrar-habilidad.component';
 
 @NgModule({
   declarations: [
@@ -70,6 +71,7 @@ import { AddHabilidadComponent } from './Components/add-habilidad/add-habilidad.
     SubirCvComponent,
     SubirCvBtnComponent,
     AddHabilidadComponent,
+    BorrarHabilidadComponent,
   ],
   imports: [
     AppRoutingModule,
