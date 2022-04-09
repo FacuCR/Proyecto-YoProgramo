@@ -1,0 +1,43 @@
+<article class="agregar-red-form">
+  <section class="d-flex justify-content-center">
+    <h1 class="h1">Agregar nueva habilidad</h1>
+  </section>
+
+  <form [formGroup]="habilidadForm" (ngSubmit)="onSubmit()" class="row p-3">
+    <mat-form-field appearance="fill">
+        <mat-label>Tecnologia</mat-label>
+        <mat-select formControlName="nombre">
+          <mat-option *ngFor="let tecnologia of tecnologias" [value]="tecnologia">
+            {{ tecnologia }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+  
+      <mat-form-field appearance="fill">
+        <mat-label>Fecha de Inicio</mat-label>
+        <input formControlName="fechaI" matInput [matDatepicker]="picker" />
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker touchUi #picker></mat-datepicker>
+      </mat-form-field>
+  
+      <div class="row mt-4 d-flex justify-content-between gx-0">
+        <button
+          mat-stroked-button
+          (click)="onCancelarClick()"
+          class="btn col-5"
+          color="primary"
+        >
+          Cancelar
+        </button>
+        <button
+          mat-raised-button
+          type="submit"
+          class="btn col-5"
+          color="primary"
+          [disabled]="!habilidadForm.valid"
+        >
+          Guardar
+        </button>
+      </div>
+  </form>
+</article>

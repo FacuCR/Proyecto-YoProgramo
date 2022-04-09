@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable, observable } from 'rxjs';
 import { Redes } from 'src/app/models/Redes';
 import { RedSocialService } from 'src/app/services/red-social.service';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
