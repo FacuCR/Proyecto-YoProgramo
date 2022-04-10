@@ -51,14 +51,19 @@ export class HabilidadesComponent implements OnInit {
     return num % 2 === 0 ? this.svg1 : this.svg2;
   }
 
-  calcularMeses(fechaInicio: Date): number {
-    let FechaActual: Date = new Date();
+  calcularMeses(fechaInicio: Date): string {
+    let fechaActual: Date = new Date();
     let parseFechaInicio: Date = new Date(fechaInicio);
-    let meses: number =
-      parseFechaInicio.getMonth() -
-      FechaActual.getMonth() +
-      12 * (FechaActual.getFullYear() - parseFechaInicio.getFullYear());
-    return Math.abs(meses);
+    let diferencia: number = Math.floor(fechaActual.getTime() - parseFechaInicio.getTime());
+    let dia: number = 1000 * 60 * 60 * 24;
+    let dias: number = Math.floor(diferencia/dia);
+    let meses: number = Math.floor(dias/31);
+    let años: number = Math.floor(meses/12);
+    let mensaje: string = '';
+    //mensaje += " " + dias + " dias " 
+    mensaje += meses + " meses "
+    mensaje += años + " años"
+    return mensaje;
   }
 
   ngOnInit(): void {
