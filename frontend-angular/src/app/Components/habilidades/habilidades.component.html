@@ -32,12 +32,12 @@
         *ngFor="let habilidad of habilidades; let i = index"
         (mouseover)="mouseOver()"
         (mouseout)="mouseOut()"
-        class="col-lg-4 col-md-6 d-flex align-items-stretch mb-4"
+        class="col-lg-4 col-md-6 d-flex align-items-stretch justify-content-center mb-4"
         data-aos="zoom-in"
         [attr.data-aos-delay]="100 * i"
       >
         <div class="icon-box">
-          <app-borrar-habilidad [habilidad]="habilidad" class="position-absolute top-0 translate-middle"></app-borrar-habilidad>
+          <app-borrar-habilidad *ngIf="authenticated" [habilidad]="habilidad" class="position-absolute top-0 translate-middle"></app-borrar-habilidad>
           <div class="icon">
             <svg
               width="100"
