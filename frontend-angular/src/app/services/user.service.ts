@@ -187,4 +187,8 @@ export class UserService {
   deleteHabilidad(id: number): Observable<any>{
     return this.http.delete(`${API_URL}habilidad/borrar/${id}`);
   }
+
+  getAllProyectos(): Observable<any> {
+    return this.http.get(`${API_URL}proyecto/traer/todas`);
+  }
 }
