@@ -6,9 +6,15 @@
 
   <!-- Portfolio items -->
   <section class="portfolio-container">
-    <article *ngFor="let proyecto of proyectos" class="portfolio-container__card mat-elevation-z2 mb-4">
+    <article
+      *ngFor="let proyecto of proyectos"
+      class="portfolio-container__card mat-elevation-z2 mb-4"
+    >
       <h2 class="proyecto-title mt-3">{{ proyecto.titulo }}</h2>
-      <div class="pic"></div>
+      <div
+        class="pic"
+        [style.backgroundImage]="'url(' + proyecto.imagenUrl + ')'"
+      ></div>
       <p class="descripcion">{{ proyecto.descripcion }}</p>
       <section class="portfolio-container__card__btn">
         <i class="font-awesome-arrow fas fa-arrow-right"></i>

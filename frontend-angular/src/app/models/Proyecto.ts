@@ -1,8 +1,9 @@
 export class Proyecto {
-    protected _id: number = -1;
-    protected _titulo: string = '';
-    protected _descripcion: string = '';
-    protected _url: string = '';
+    private _id: number = -1;
+    private _titulo: string = '';
+    private _descripcion: string = '';
+    private _url: string = '';
+    private _imagenUrl: string = '';
 
     public constructor() {}
 
@@ -32,5 +33,12 @@ export class Proyecto {
     }
     public set url(value: string) {
         this._url = value;
+    }
+
+    public get imagenUrl(): string {
+        return this._imagenUrl;
+    }
+    public set imagenUrl(value: string) {
+        this._imagenUrl = value;
     }
 }
