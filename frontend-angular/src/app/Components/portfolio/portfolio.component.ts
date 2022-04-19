@@ -10,7 +10,6 @@ import { UserService } from 'src/app/services/user.service';
 export class PortfolioComponent implements OnInit {
 
   proyectos: Proyecto[] = [];
-  items = ["Prueba 1", "Prueba 2"];
 
   constructor(private userService: UserService) {
     userService.getAllProyectos().subscribe({
