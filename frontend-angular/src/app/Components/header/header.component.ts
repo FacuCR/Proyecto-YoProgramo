@@ -169,10 +169,4 @@ export class HeaderComponent implements AfterViewChecked, OnInit {
     this._snackBar.open(message, action, { duration: 5000 });
   }
 
-  /* Posible solucion para la posicion del active para cuando agregue elementos de forma dinamica *
-  @HostListener('window:resize', ['$event'])
-    onResize(event) {
-  * Aqui asigno el valor offset de los elementos de nuevo
-    }
-  */
 }
