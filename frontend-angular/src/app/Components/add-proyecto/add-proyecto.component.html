@@ -1,0 +1,42 @@
+<article class="agregar-proyecto-form">
+  <section class="d-flex justify-content-center">
+    <h1 class="h1">Agregar nuevo proyecto</h1>
+  </section>
+
+  <form [formGroup]="proyectoForm" (ngSubmit)="onSubmit()" class="row p-3">
+    <mat-form-field appearance="fill" class="row mt-3 gx-0">
+      <mat-label>Titulo</mat-label>
+      <input matInput formControlName="titulo" required />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="my-4">
+      <mat-label>Descripcion</mat-label>
+      <textarea matInput formControlName="descripcion" required></textarea>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="row mt-3 gx-0">
+      <mat-label>URL</mat-label>
+      <input matInput formControlName="url" required />
+    </mat-form-field>
+
+    <div class="row mt-4 d-flex justify-content-between gx-0">
+      <button
+        mat-stroked-button
+        (click)="onCancelarClick()"
+        class="btn col-5"
+        color="primary"
+      >
+        Cancelar
+      </button>
+      <button
+        mat-raised-button
+        type="submit"
+        class="btn col-5"
+        color="primary"
+        [disabled]="!proyectoForm.valid"
+      >
+        Guardar
+      </button>
+    </div>
+  </form>
+</article>
