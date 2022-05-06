@@ -26,6 +26,10 @@ public class ImagenProyectoService implements IImagenProyectoService {
         String type = "." + file.getContentType().split(separador)[1];
         Proyecto proyectoAAgregarImagen = proyectoRepository.findById(idProyecto).get();
 
+        if (imagenProyectoRepository.findByProyecto_Id(idProyecto).isPresent()){
+            imagenProyectoNuevo = imagenProyectoRepository.findByProyecto_Id(idProyecto).orElseThrow();
+        }
+
         imagenProyectoNuevo.setNombre(proyectoAAgregarImagen.getTitulo() + type);
         imagenProyectoNuevo.setTipo(file.getContentType());
         imagenProyectoNuevo.setData(file.getBytes());
