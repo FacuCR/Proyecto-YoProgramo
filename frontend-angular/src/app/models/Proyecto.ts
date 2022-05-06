@@ -1,11 +1,9 @@
-import { Imagen } from "./Imagen";
-
 export class Proyecto {
-    protected _id: number = -1;
-    protected _titulo: string = '';
-    protected _descripcion: string = '';
-    protected _url: string = '';
-    protected _imagen: Imagen = new Imagen();
+    private _id: number = -1;
+    private _titulo: string = '';
+    private _descripcion: string = '';
+    private _url: string = '';
+    private _imagenUrl: string = '';
 
     public constructor() {}
 
@@ -37,10 +35,10 @@ export class Proyecto {
         this._url = value;
     }
 
-    public get imagen(): Imagen {
-        return this._imagen;
+    public get imagenUrl(): string {
+        return this._imagenUrl;
     }
-    public set imagen(value: Imagen) {
-        this._imagen = value;
+    public set imagenUrl(value: string) {
+        this._imagenUrl = value;
     }
 }

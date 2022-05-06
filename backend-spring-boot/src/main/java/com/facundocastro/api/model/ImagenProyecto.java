@@ -1,28 +1,29 @@
 package com.facundocastro.api.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.sun.istack.NotNull;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 
-@Data
 @Entity
-public class Proyecto {
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class ImagenProyecto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @NotNull
-    private String titulo;
-    @NotNull
+    private String nombre;
+    private String tipo;
     @Lob
-    private String descripcion;
-    private String url;
+    private byte[] data;
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "usuario_id", nullable = false)
+    @JoinColumn(name = "proyecto_id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
-    private Usuario usuario;
+    private Proyecto proyecto;
 }
