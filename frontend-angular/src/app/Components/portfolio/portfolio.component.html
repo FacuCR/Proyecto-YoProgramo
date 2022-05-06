@@ -1,12 +1,12 @@
 <!-- ======= Portfolio Section ======= -->
-<section class="portfolio container" data-aos="fade-up">
+<section class="portfolio container">
   <div class="section-title">
     <h2 class="portfolio-title">Portfolio</h2>
 
     <app-add-btn
       *ngIf="authenticated"
       [componentToOpen]="3"
-      matTooltip="agregar una habilidad"
+      matTooltip="agregar un proyecto"
       [matTooltipShowDelay]="100"
       [matTooltipHideDelay]="200"
     ></app-add-btn>
@@ -15,29 +15,41 @@
       *ngIf="authenticated"
       class="mx-3"
       [componentToOpen]="5"
-      matTooltip="editar una habilidad"
+      [proyectosActuales]="proyectos"
+      matTooltip="editar un proyecto"
       [matTooltipShowDelay]="100"
       [matTooltipHideDelay]="200"
     ></app-editar-btn>
   </div>
 
   <!-- Portfolio items -->
-  <section class="portfolio-container">
+  <section class="portfolio-container" data-aos="fade-up">
     <article
-      *ngFor="let proyecto of proyectos"
-      class="portfolio-container__card mat-elevation-z2 mb-4"
+      *ngFor="let proyecto of proyectos; let i = index"
+      data-aos="zoom-in"
+      [attr.data-aos-delay]="100 * i"
     >
-      <h2 class="proyecto-title mt-3">{{ proyecto.titulo }}</h2>
-      <div
-        class="pic"
-        [style.backgroundImage]="'url(' + proyecto.imagenUrl + ')'"
-      ></div>
-      <p class="descripcion">{{ proyecto.descripcion }}</p>
-      <section class="portfolio-container__card__btn">
-        <i class="font-awesome-arrow fas fa-arrow-right"></i>
-        <p>ver proyecto</p>
-        <a [attr.href]="proyecto.url" target="_blank"></a>
-      </section>
+      <app-borrar-proyecto
+        *ngIf="authenticated"
+        [proyecto]="proyecto"
+        class="position-absolute start-50 translate-middle"
+      ></app-borrar-proyecto>
+      <div class="portfolio-container__card mat-elevation-z2 mb-4">
+        <div>
+          <h2 class="proyecto-title mt-3 w-100">{{ proyecto.titulo }}</h2>
+          <p class="descripcion">{{ proyecto.descripcion }}</p>
+        </div>
+        <div
+          class="pic"
+          [style.backgroundImage]="'url(' + proyecto.imagenUrl + ')'"
+        ></div>
+
+        <section class="portfolio-container__card__btn">
+          <i class="font-awesome-arrow fas fa-arrow-right"></i>
+          <p>ver proyecto</p>
+          <a [attr.href]="proyecto.url" target="_blank"></a>
+        </section>
+      </div>
     </article>
   </section>
 </section>

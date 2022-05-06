@@ -195,4 +195,24 @@ export class UserService {
   getImagenProyectoById(idProyecto: number): Observable<any> {
     return this.http.get(`${API_URL}proyecto/imagen/find/idProyecto/${idProyecto}`)
   }
+
+  agregarProyecto(titulo: string, descripcion: string, url: string): Observable<HttpEvent<any>> {
+    return this.http.post<any>(
+      API_URL + 'proyecto/crear',
+      { titulo, descripcion, url },
+      httpOptions
+    );
+  }
+
+  updateProyecto(titulo: string, descripcion: string, url: string, id: number): Observable<any> {
+    return this.http.put<any>(
+      API_URL + 'proyecto/actualizar/' + id,
+      { titulo, descripcion, url },
+      httpOptions
+    );
+  }
+
+  deleteProyecto(id: number): Observable<any>{
+    return this.http.delete(`${API_URL}proyecto/borrar/${id}`);
+  }
 }
