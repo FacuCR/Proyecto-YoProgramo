@@ -45,20 +45,22 @@ Lista de los frameworks/librerias usadas en el proyecto.
 Add-ons y plugins utilizados en este proyecto.
 
 * [MIT License](https://choosealicense.com/licenses/mit/)
+* [Bezkoder](https://www.bezkoder.com/)
 * [Font Awesome](https://fontawesome.com/)
 * [AOS](https://michalsnik.github.io/aos/)
 * [Firebase](https://firebase.google.com/)
 * [Heroku](https://heroku.com/)
 * [Bootstrap Made](https://bootstrapmade.com/)
+* [Animate.css](https://animate.style/)
 
 <p align="right">(<a href="#top">volver arriba</a>)</p>
 
 <!-- EJEMPLOS DE USOS -->
 ## Usos
 
-El proyecto cuenta con varios end-points que pueden ser usados para modificar el portfolio.(imagenes adicionales, codigos de ejemplos, demos proximamente)
+El proyecto cuenta con varios end-points que pueden ser usados para modificar el portfolio.(Cambiar imagenes, datos personales, proyectos, etc)
 
-_Para mas ejemplos, por favor dirigete a la documentación [Documentación](https://example.com)_
+_Para verlos mas en profundidad, por favor dirigete a la documentación [Documentación](https://github.com/FacuCR/Proyecto-YoProgramo/wiki)_
 
 <p align="right">(<a href="#top">volver arriba</a>)</p>
 

@@ -32,7 +32,7 @@ public class ImagenProyectoController {
         String message;
         try {
             imagenProyectoService.store(file, idProyecto);
-            message = "Se subio la imagen de perfil correctamente: " + file.getOriginalFilename();
+            message = "Se subio la imagen del proyecto correctamente: " + file.getOriginalFilename();
             return ResponseEntity.status(HttpStatus.OK).body(new MessageResponse(message));
         } catch (Exception e) {
             message = "No se pudo subir el archivo: " + file.getOriginalFilename() + "!";

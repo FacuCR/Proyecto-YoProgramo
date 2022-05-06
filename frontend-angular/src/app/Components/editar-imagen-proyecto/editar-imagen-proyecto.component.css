@@ -1,0 +1,58 @@
+.spinner-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0.5rem;
+    bottom: 0;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .button-container {
+    display: inline-block;
+    position: relative;
+  }
+  
+  .dropzone {
+    padding: 2rem;
+    text-align: center;
+    border: dashed .0625rem #979797;
+    position: relative;
+    margin: 0 auto;
+    word-wrap: break-word;
+  }
+  
+  section {
+    background-color: #fbfeff00 !important;
+  }
+  
+  input {
+    opacity: 0;
+    position: absolute;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+  }
+  
+  label {
+    color: white;
+    border-radius: 1.3438rem;
+    background-color: #27a1f6;
+    box-shadow: 10px 16px 40px 0 #4b8def60;
+    padding: .5rem 1rem;
+  }
+  
+  h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #38424c;
+  }
+  
+  .dropzone:hover {
+    background-color: #9ecbec36 !important;
+  }

@@ -122,7 +122,7 @@
   filter: grayscale(0);
 }
 
-app-borrar-proyecto {
+app-borrar-proyecto, app-editar-img-btn {
   z-index: 8;
 }
 

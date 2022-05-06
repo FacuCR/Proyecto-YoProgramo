@@ -32,8 +32,19 @@
       <app-borrar-proyecto
         *ngIf="authenticated"
         [proyecto]="proyecto"
-        class="position-absolute start-50 translate-middle"
+        class="position-absolute start-50 translate-middle ms-1"
       ></app-borrar-proyecto>
+
+      <app-editar-img-btn
+          class="position-absolute end-50 translate-middle me-1"
+          *ngIf="authenticated"
+          [componentToOpen]="3"
+          [idProyecto]="proyecto.id"
+          matTooltip="editar imagen del proyecto"
+          [matTooltipShowDelay]="100"
+          [matTooltipHideDelay]="200"
+        ></app-editar-img-btn>
+        
       <div class="portfolio-container__card mat-elevation-z2 mb-4">
         <div>
           <h2 class="proyecto-title mt-3 w-100">{{ proyecto.titulo }}</h2>
