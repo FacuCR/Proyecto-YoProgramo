@@ -34,7 +34,6 @@ export class PortfolioComponent implements OnInit {
           this.proyectos[cont] = proyecto;
           cont++;
         });
-        console.log(this.proyectos);
       },
     });
   }

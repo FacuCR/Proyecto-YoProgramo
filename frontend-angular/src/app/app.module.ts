@@ -42,6 +42,8 @@ import { SubirCvBtnComponent } from './Components/subir-cv-btn/subir-cv-btn.comp
 import { AddHabilidadComponent } from './Components/add-habilidad/add-habilidad.component';
 import { BorrarHabilidadComponent } from './Components/borrar-habilidad/borrar-habilidad.component';
 import { EditarHabilidadComponent } from './Components/editar-habilidad/editar-habilidad.component';
+import { AddProyectoComponent } from './Components/add-proyecto/add-proyecto.component';
+import { EditarProyectoComponent } from './Components/editar-proyecto/editar-proyecto.component';
 
 @NgModule({
   declarations: [
@@ -72,6 +74,8 @@ import { EditarHabilidadComponent } from './Components/editar-habilidad/editar-h
     AddHabilidadComponent,
     BorrarHabilidadComponent,
     EditarHabilidadComponent,
+    AddProyectoComponent,
+    EditarProyectoComponent,
   ],
   imports: [
     AppRoutingModule,

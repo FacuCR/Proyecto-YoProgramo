@@ -1,10 +1,12 @@
 import { Component, Input, OnInit, Optional } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Habilidad } from 'src/app/models/Habilidad';
+import { Proyecto } from 'src/app/models/Proyecto';
 import { Redes } from 'src/app/models/Redes';
 import { EditarAboutComponent } from '../editar-about/editar-about.component';
 import { EditarHabilidadComponent } from '../editar-habilidad/editar-habilidad.component';
 import { EditarHeroComponent } from '../editar-hero/editar-hero.component';
+import { EditarProyectoComponent } from '../editar-proyecto/editar-proyecto.component';
 import { EditarRedSocialComponent } from '../editar-red-social/editar-red-social.component';
 
 @Component({
@@ -26,6 +28,7 @@ export class EditarBtnComponent {
 
   @Input() public redesActuales: Redes[] = [];
   @Input() public habilidadesActuales: Habilidad[] = [];
+  @Input() public proyectosActuales: Proyecto[] = [];
 
   constructor(@Optional() public dialogRef: MatDialog) {}
 
@@ -63,6 +66,16 @@ export class EditarBtnComponent {
           maxHeight: '90%',
           autoFocus: false,
           data: { habilidadesActuales: this.habilidadesActuales },
+        });
+        break;
+
+        case 5:
+        this.dialogRef.open(EditarProyectoComponent, {
+          panelClass: ['animate__animated', 'animate__bounceIn'],
+          minWidth: '60%',
+          maxHeight: '90%',
+          autoFocus: false,
+          data: { proyectosActuales: this.proyectosActuales },
         });
         break;
 

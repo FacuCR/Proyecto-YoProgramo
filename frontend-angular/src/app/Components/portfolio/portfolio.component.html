@@ -6,7 +6,7 @@
     <app-add-btn
       *ngIf="authenticated"
       [componentToOpen]="3"
-      matTooltip="agregar una habilidad"
+      matTooltip="agregar un proyecto"
       [matTooltipShowDelay]="100"
       [matTooltipHideDelay]="200"
     ></app-add-btn>
@@ -15,7 +15,8 @@
       *ngIf="authenticated"
       class="mx-3"
       [componentToOpen]="5"
-      matTooltip="editar una habilidad"
+      [proyectosActuales]="proyectos"
+      matTooltip="editar un proyecto"
       [matTooltipShowDelay]="100"
       [matTooltipHideDelay]="200"
     ></app-editar-btn>
