@@ -211,4 +211,8 @@ export class UserService {
       httpOptions
     );
   }
+
+  deleteProyecto(id: number): Observable<any>{
+    return this.http.delete(`${API_URL}proyecto/borrar/${id}`);
+  }
 }
