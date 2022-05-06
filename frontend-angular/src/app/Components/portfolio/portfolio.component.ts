@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Proyecto } from 'src/app/models/Proyecto';
+import { TokenStorageService } from 'src/app/services/token-storage.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -9,8 +10,13 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class PortfolioComponent implements OnInit {
   proyectos: Proyecto[] = [];
+  authenticated: boolean = false;
+  urlDefaultImg: string = '../../../assets/img/default-img.png';
 
-  constructor(private userService: UserService) {
+  constructor(
+    private userService: UserService,
+    private tokenStorage: TokenStorageService
+  ) {
     userService.getAllProyectos().subscribe({
       next: (data) => {
         const proyectosData: Proyecto[] = data;
@@ -22,8 +28,7 @@ export class PortfolioComponent implements OnInit {
           userService.getImagenProyectoById(proyecto.id).subscribe({
             next: (data) => {
               if (data.url) proyecto.imagenUrl = data.url;
-              else
-                proyecto.imagenUrl = '../../../assets/img/default-img.png';
+              else proyecto.imagenUrl = this.urlDefaultImg;
             },
           });
           this.proyectos[cont] = proyecto;
@@ -34,5 +39,7 @@ export class PortfolioComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.authenticated = this.tokenStorage.isAuthenticated();
+  }
 }

@@ -74,8 +74,8 @@
 }
 .portfolio-container .portfolio-container__card .pic {
   z-index: 6;
-  width: 400px;
-  height: 100%;
+  width: auto;
+  height: 350px;
   background: no-repeat center center;
   background-size: cover;
   filter: grayscale(100%);
@@ -158,5 +158,10 @@
     bottom: 25px;
     font-size: 40px;
     color: #fff;
+  }
+
+  .portfolio-container .portfolio-container__card .pic {
+    width: 400px;
+    height: 100%;
   }
 }

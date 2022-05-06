@@ -2,6 +2,23 @@
 <section class="portfolio container" data-aos="fade-up">
   <div class="section-title">
     <h2 class="portfolio-title">Portfolio</h2>
+
+    <app-add-btn
+      *ngIf="authenticated"
+      [componentToOpen]="3"
+      matTooltip="agregar una habilidad"
+      [matTooltipShowDelay]="100"
+      [matTooltipHideDelay]="200"
+    ></app-add-btn>
+
+    <app-editar-btn
+      *ngIf="authenticated"
+      class="mx-3"
+      [componentToOpen]="5"
+      matTooltip="editar una habilidad"
+      [matTooltipShowDelay]="100"
+      [matTooltipHideDelay]="200"
+    ></app-editar-btn>
   </div>
 
   <!-- Portfolio items -->
