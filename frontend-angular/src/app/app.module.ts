@@ -45,6 +45,7 @@ import { EditarHabilidadComponent } from './Components/editar-habilidad/editar-h
 import { AddProyectoComponent } from './Components/add-proyecto/add-proyecto.component';
 import { EditarProyectoComponent } from './Components/editar-proyecto/editar-proyecto.component';
 import { BorrarProyectoComponent } from './Components/borrar-proyecto/borrar-proyecto.component';
+import { EditarImagenProyectoComponent } from './Components/editar-imagen-proyecto/editar-imagen-proyecto.component';
 
 @NgModule({
   declarations: [
@@ -78,6 +79,7 @@ import { BorrarProyectoComponent } from './Components/borrar-proyecto/borrar-pro
     AddProyectoComponent,
     EditarProyectoComponent,
     BorrarProyectoComponent,
+    EditarImagenProyectoComponent,
   ],
   imports: [
     AppRoutingModule,

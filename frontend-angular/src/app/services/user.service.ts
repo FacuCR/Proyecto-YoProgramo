@@ -215,4 +215,20 @@ export class UserService {
   deleteProyecto(id: number): Observable<any>{
     return this.http.delete(`${API_URL}proyecto/borrar/${id}`);
   }
+
+  uploadImgProyecto(img: File, idProyecto: number): Observable<HttpEvent<any>> {
+    const formData: FormData = new FormData();
+    formData.append('file', img);
+    formData.append('idProyecto', JSON.stringify(idProyecto));
+    const req = new HttpRequest(
+      'POST',
+      `${API_URL}proyecto/imagen/upload`,
+      formData,
+      {
+        reportProgress: true,
+        responseType: 'json',
+      }
+    );
+    return this.http.request(req);
+  }
 }
