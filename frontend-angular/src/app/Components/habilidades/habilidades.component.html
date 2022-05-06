@@ -30,14 +30,14 @@
     <section class="row">
       <article
         *ngFor="let habilidad of habilidades; let i = index"
-        (mouseover)="mouseOver()"
+        (mouseover)="mouseOver(i)"
         (mouseout)="mouseOut()"
-        class="col-lg-4 col-md-6 d-flex align-items-stretch mb-4"
+        class="col-lg-4 col-md-6 d-flex align-items-stretch justify-content-center mb-4"
         data-aos="zoom-in"
         [attr.data-aos-delay]="100 * i"
       >
         <div class="icon-box">
-          <app-borrar-habilidad [habilidad]="habilidad" class="position-absolute top-0 translate-middle"></app-borrar-habilidad>
+          <app-borrar-habilidad *ngIf="authenticated" [habilidad]="habilidad" class="position-absolute top-0 translate-middle"></app-borrar-habilidad>
           <div class="icon">
             <svg
               width="100"
@@ -49,14 +49,14 @@
                 stroke="none"
                 stroke-width="0"
                 [ngStyle]="{
-                  fill: colorFill(habilidad)
+                  fill: colorFill(habilidad, i)
                 }"
                 [attr.d]="svgBackground(i)"
               ></path>
             </svg>
             <i
               [ngStyle]="{
-                color: colorIcon(habilidad)
+                color: colorIcon(habilidad, i)
               }"
               [style.color]="'#' + habilidad.color"
               [class]="'devicon-' + habilidad.clase"
@@ -64,7 +64,7 @@
           </div>
           <h4>{{ habilidad.nombre | uppercase }}</h4>
           <p>
-            Experiencia de uso: <b> {{ calcularMeses(habilidad.fechaI) }} meses</b>
+            Experiencia de uso: <b> {{ calcularMeses(habilidad.fechaI) }} </b>
           </p>
         </div>
       </article>

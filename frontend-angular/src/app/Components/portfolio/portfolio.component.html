@@ -1,22 +1,43 @@
 <!-- ======= Portfolio Section ======= -->
 <section class="portfolio container" data-aos="fade-up">
-    <div class="section-title">
-        <h2>Portfolio</h2>
-    </div>
+  <div class="section-title">
+    <h2 class="portfolio-title">Portfolio</h2>
 
-    <!-- Portfolio items -->
-    <article>
-        <ul *ngFor="let item of items; index as i">
-            <li class="row">                
-                <div class="col-md-4 mb-4">
-                    <img src="../../../assets/img/default-img.png" alt="Descripcion de la imagen" class="img-fluid img-thumbnail">
-                </div>
-                <div class="col-md-8">
-                    <h3><span class="post-title">{{ i + 1 }}.</span> {{ item }}</h3>
-                    <p class="my-5">Ea culpa id enim nisi aliqua ea minim fugiat velit adipisicing ex aliqua velit. Officia aute sint velit sint ea adipisicing. Ut amet sit officia Lorem consectetur incididunt officia reprehenderit non amet excepteur cupidatat in. Esse et nulla culpa occaecat veniam. Incididunt reprehenderit nulla elit pariatur Lorem enim nisi cillum reprehenderit consequat sint deserunt officia labore. Mollit velit eiusmod amet anim deserunt deserunt officia ad aliquip veniam laboris sit.</p>
-                    <a href="#" mat-raised-button color="primary" class="btn-lg btn-demo">Ver Demo</a>
-                </div>
-            </li>
-        </ul>
+    <app-add-btn
+      *ngIf="authenticated"
+      [componentToOpen]="3"
+      matTooltip="agregar una habilidad"
+      [matTooltipShowDelay]="100"
+      [matTooltipHideDelay]="200"
+    ></app-add-btn>
+
+    <app-editar-btn
+      *ngIf="authenticated"
+      class="mx-3"
+      [componentToOpen]="5"
+      matTooltip="editar una habilidad"
+      [matTooltipShowDelay]="100"
+      [matTooltipHideDelay]="200"
+    ></app-editar-btn>
+  </div>
+
+  <!-- Portfolio items -->
+  <section class="portfolio-container">
+    <article
+      *ngFor="let proyecto of proyectos"
+      class="portfolio-container__card mat-elevation-z2 mb-4"
+    >
+      <h2 class="proyecto-title mt-3">{{ proyecto.titulo }}</h2>
+      <div
+        class="pic"
+        [style.backgroundImage]="'url(' + proyecto.imagenUrl + ')'"
+      ></div>
+      <p class="descripcion">{{ proyecto.descripcion }}</p>
+      <section class="portfolio-container__card__btn">
+        <i class="font-awesome-arrow fas fa-arrow-right"></i>
+        <p>ver proyecto</p>
+        <a [attr.href]="proyecto.url" target="_blank"></a>
+      </section>
     </article>
+  </section>
 </section>

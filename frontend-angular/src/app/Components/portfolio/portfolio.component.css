@@ -1,39 +1,167 @@
-/*--------------------------------------------------------------
-# Portfolio
---------------------------------------------------------------*/
-.portfolio {
-    display: block;
+.font-awesome-arrow {
+  opacity: 1;
+  font-size: 18px;
+  color: #0b89ff;
+  will-change: transform;
+  -webkit-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
 }
 
-.portfolio ul {
-    list-style: none;
+.proyecto-title {
+  pointer-events: none;
 }
 
-.portfolio ul li {
-    padding: 70px 20px 80px 20px;
-    transition: all ease-in-out 0.3s;
-    background: #fff;
-    box-shadow: 0px 5px 90px 0px rgba(110, 123, 131, 0.05);
+.portfolio-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
-.portfolio ul li:hover {
-    border-color: #fff;
-    box-shadow: 0px 0 35px 0 rgba(0, 0, 0, 0.08);
+.portfolio-container .portfolio-container__card {
+  position: relative;
+  width: 250px;
+  height: 500px;
+  background-color: #fff;
+  overflow: hidden;
+  margin-bottom: 4px;
+}
+.portfolio-container .portfolio-container__card h2 {
+  z-index: 5;
+  right: 110px;
+  position: absolute;
+  font-size: 30px;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 2px 2px 4px black;
 }
 
-.portfolio ul li h3 {
-    font-weight: 700;
-    font-size: 26px;
-    color: #728394;
+.portfolio-container .portfolio-container__card .fa-arrow-right {
+  z-index: 6;
+  position: absolute;
+  right: 50px;
+  bottom: 16px;
+  font-size: 25px;
+  cursor: pointer;
 }
-.portfolio ul li h3 .post-title {
-    color: #B5B9BD;
+.portfolio-container
+  .portfolio-container__card
+  .portfolio-container__card__btn
+  p {
+  z-index: 5;
+  position: absolute;
+  top: 400px;
+  right: 200px;
+  color: #0b89ff;
+  opacity: 0.7;
+  font-size: 13px;
+  letter-spacing: 1px;
+  writing-mode: vertical-lr;
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+.portfolio-container .portfolio-container__card .descripcion {
+  z-index: 7;
+  position: absolute;
+  color: white;
+  top: 50px;
+  padding: 1rem;
+  text-shadow: 2px 2px 4px black;
+}
+.portfolio-container .portfolio-container__card .pic {
+  z-index: 6;
+  width: auto;
+  height: 350px;
+  background: no-repeat center center;
+  background-size: cover;
+  filter: grayscale(100%);
 }
 
-.portfolio ul li img{
-    max-height: 25rem;
+.portfolio-container .portfolio-container__card:hover i {
+  opacity: 1;
+  -webkit-transform: scale(1);
+  transform: scale(1);
 }
 
-.btn-demo {
-    float: right !important;
+.portfolio-container .portfolio-container__card a {
+  position: absolute;
+  right: 14px;
+  bottom: 14px;
+  width: 30px;
+  height: 30px;
+  background-color: #2b26c3;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.3s ease;
+  mix-blend-mode: hard-light;
+}
+
+.portfolio-container .portfolio-container__card a i {
+  font-size: 3rem;
+}
+
+.portfolio-container .portfolio-container__card:hover a {
+  transform: scale(16.5);
+}
+
+.portfolio-container
+  .portfolio-container__card:hover
+  .portfolio-container__card__btn
+  p {
+  color: #fff;
+}
+
+.portfolio-container .portfolio-container__card:hover .pic {
+  filter: grayscale(0);
+}
+
+@media only screen and (min-width: 768px) {
+  .portfolio-container .portfolio-container__card {
+    width: 500px;
+    height: 200px;
+  }
+
+  .portfolio-container .portfolio-container__card h2 {
+    right: 130px;
+    bottom: 0;
+    font-size: 60px;
+  }
+
+  .portfolio-container
+    .portfolio-container__card
+    .portfolio-container__card__btn
+    p {
+    top: 20px;
+    right: 70px;
+  }
+
+  .portfolio-container .portfolio-container__card .descripcion {
+    top: 0;
+  }
+
+  .font-awesome-arrow {
+    opacity: 0;
+    font-size: 18px;
+    -webkit-transform: scale(0.1);
+    transform: scale(0.1);
+  }
+
+  .portfolio-container .portfolio-container__card .fa-arrow-right {
+    opacity: 0;
+    right: 75px;
+    bottom: 25px;
+    font-size: 40px;
+    color: #fff;
+  }
+
+  .portfolio-container .portfolio-container__card .pic {
+    width: 400px;
+    height: 100%;
+  }
 }
