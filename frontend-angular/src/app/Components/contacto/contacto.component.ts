@@ -7,6 +7,7 @@ import {
 } from '@angular/forms';
 import { Validators } from '@angular/forms';
 import { ContactoService } from 'src/app/services/contacto.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-contacto',
@@ -28,10 +29,12 @@ export class ContactoComponent implements OnInit {
   submitted: boolean = false;
   cargando: boolean = false;
   mensajeDeRespuesta: string = '';
+  emailPersona: string = '';
 
   constructor(
     private formBuilder: FormBuilder,
-    private contactoService: ContactoService
+    private contactoService: ContactoService,
+    private userService: UserService
   ) {
     this.formContacto = this.formBuilder.group({
       nombre: this.nombre,
@@ -39,6 +42,15 @@ export class ContactoComponent implements OnInit {
       mensaje: this.mensaje,
       antiSpam: this.antiSpam,
     });
+
+    userService.getPersona().subscribe({
+      next: (response) => {
+        this.emailPersona = response.email;
+      },
+      error: (err: Error) => {
+        this.emailPersona = '';
+      }
+    })
   }
 
   ngOnInit() {}

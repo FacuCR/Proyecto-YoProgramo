@@ -5,12 +5,12 @@
       <h2>Contacto</h2>
     </div>
     <form [formGroup]="formContacto" method="POST" (ngSubmit)="onSubmit()">
-      <div class="row">
+      <div *ngIf="emailPersona != ''" class="row">
         <div class="col-md-4 info mb-5">
           <div class="email">
             <i class="bi bi-envelope"></i>
             <h4>Email:</h4>
-            <p>info@example.com</p>
+            <p>{{ emailPersona }}</p>
           </div>
         </div>
 
