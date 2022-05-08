@@ -4,10 +4,9 @@
     <div class="section-title">
       <h2>Contacto</h2>
     </div>
-    <!-- Formulario Contacto -->
     <form [formGroup]="formContacto" method="POST" (ngSubmit)="onSubmit()">
       <div class="row">
-        <div class="col-md-4 info my-5">
+        <div class="col-md-4 info mb-5">
           <div class="email">
             <i class="bi bi-envelope"></i>
             <h4>Email:</h4>
@@ -15,9 +14,9 @@
           </div>
         </div>
 
-        <div class="row col-md-8">
+        <div class="row col-md-8 d-flex justify-content-center mx-auto">
           <div class="row">
-            <mat-form-field appearance="fill" class="col-md-6 my-4">
+            <mat-form-field appearance="fill" class="col-md-6 mb-3">
               <mat-label>Nombre</mat-label>
               <input
                 matInput
@@ -28,7 +27,7 @@
               <mat-error>{{ getMensajeDeError("nombre") }}</mat-error>
             </mat-form-field>
 
-            <mat-form-field appearance="fill" class="col-md-6 my-4">
+            <mat-form-field appearance="fill" class="col-md-6 mb-3">
               <mat-label>Email</mat-label>
               <input
                 matInput
@@ -41,7 +40,7 @@
           </div>
 
           <div class="row">
-            <mat-form-field appearance="fill" class="my-4">
+            <mat-form-field appearance="fill" class="mb-3">
               <mat-label>Mensaje</mat-label>
               <textarea
                 matInput
