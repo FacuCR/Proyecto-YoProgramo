@@ -1,15 +1,12 @@
 <!-- ======= Contacto Section ======= -->
 <section class="contacto">
   <div class="container" data-aos="fade-up">
-
     <div class="section-title">
       <h2>Contacto</h2>
     </div>
     <!-- Formulario Contacto -->
-    <form [formGroup]="contacto" (ngSubmit)="onSubmit()">
-
+    <form [formGroup]="formContacto" method="POST" (ngSubmit)="onSubmit()">
       <div class="row">
-
         <div class="col-md-4 info my-5">
           <div class="email">
             <i class="bi bi-envelope"></i>
@@ -17,47 +14,68 @@
             <p>info@example.com</p>
           </div>
         </div>
-        
+
         <div class="row col-md-8">
-
           <div class="row">
-              <mat-form-field appearance="fill" class="col-md-6 my-4">
-                <mat-label>Nombre</mat-label>
-                <input matInput placeholder="ej: Facundo" formControlName="nombre" required>
-                <mat-error>{{ getMensajeDeError('nombre') }}</mat-error>
-              </mat-form-field>
+            <mat-form-field appearance="fill" class="col-md-6 my-4">
+              <mat-label>Nombre</mat-label>
+              <input
+                matInput
+                placeholder="ej: Facundo"
+                formControlName="nombre"
+                required
+              />
+              <mat-error>{{ getMensajeDeError("nombre") }}</mat-error>
+            </mat-form-field>
 
-              <mat-form-field appearance="fill" class="col-md-6 my-4">
-                <mat-label>Email</mat-label>
-                <input matInput placeholder="ej: facucastro302@gmail.com" formControlName="email" required>
-                <mat-error>{{ getMensajeDeError('email') }}</mat-error>
-              </mat-form-field>
-          </div>
-
-          <div class="row">
-            <mat-form-field appearance="fill" class="my-4">
-              <mat-label>Asunto</mat-label>
-              <input matInput placeholder="ej: Tu pag es genial :)" formControlName="asunto" required>
-              <mat-error>{{ getMensajeDeError('asunto') }}</mat-error>
+            <mat-form-field appearance="fill" class="col-md-6 my-4">
+              <mat-label>Email</mat-label>
+              <input
+                matInput
+                placeholder="ej: facucastro302@gmail.com"
+                formControlName="email"
+                required
+              />
+              <mat-error>{{ getMensajeDeError("email") }}</mat-error>
             </mat-form-field>
           </div>
 
           <div class="row">
             <mat-form-field appearance="fill" class="my-4">
               <mat-label>Mensaje</mat-label>
-              <textarea matInput formControlName="mensaje"></textarea>
-              <mat-error>{{ getMensajeDeError('mensaje') }}</mat-error>
+              <textarea
+                matInput
+                maxlength="256"
+                formControlName="mensaje"
+              ></textarea>
+              <mat-hint>
+                {{ mensaje.value?.length || 0 }}/300</mat-hint
+              >
+              <mat-error>{{ getMensajeDeError("mensaje") }}</mat-error>
             </mat-form-field>
           </div>
 
           <div class="row d-flex justify-content-center">
-            <button mat-raised-button class="col-6 ms-3 btn-lg"color="primary" [disabled]="!contacto.valid">Enviar</button>
+            <button
+              type="submit"
+              mat-raised-button
+              class="col-6 ms-3 btn-lg"
+              color="primary"
+              [disabled]="!formContacto.valid"
+            >
+              Enviar
+            </button>
+            <input [formControl]="antiSpam" class="hidden" type="text" />
+            <div
+              [ngClass]="!submitted ? 'hidden' : 'visible'"
+              class="center-text"
+            >
+              <span>{{ mensajeDeRespuesta }}</span>
+            </div>
           </div>
-
         </div>
       </div>
-      
     </form>
-
   </div>
-</section><!-- Fin Contacto Section -->
+</section>
+<!-- Fin Contacto Section -->

@@ -31,3 +31,6 @@
   background: #0563bb;
   color: #fff;
 }
+.hidden {
+  visibility: hidden;
+}
