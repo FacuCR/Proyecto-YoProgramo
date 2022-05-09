@@ -31,3 +31,9 @@
   background: #0563bb;
   color: #fff;
 }
+.hidden {
+  visibility: hidden;
+}
+.contacto button {
+  border-radius: 1rem;
+}

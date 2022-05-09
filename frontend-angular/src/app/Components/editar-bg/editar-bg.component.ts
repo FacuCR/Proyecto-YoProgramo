@@ -23,8 +23,6 @@ export class EditarBgComponent implements OnInit {
   archivoCapturado?: File;
   enviando: boolean = false;
   mensaje = '';
-  fileName = 'Select File';
-  fileInfos?: Observable<any>;
 
   constructor(
     private formBuilder: FormBuilder,
