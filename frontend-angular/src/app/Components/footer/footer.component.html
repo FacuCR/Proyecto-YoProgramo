@@ -1,17 +1,32 @@
 <!-- ======= Footer ======= -->
 <footer id="footer">
-    <div class="container">
-      <h3>Facundo Castro</h3>
-      <p>Woow! gracias por llegar hasta aqui, espero que haya sido de tu agrado.</p>
-      <div class="social-links">
-        <a href="#" class="github"><i class="bx bxl-github"></i></a>
-        <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
-      </div>
-      <div class="copyright">
-        &copy; Copyright <strong><span>Facundo Castro</span></strong>. Todos los derechos reservados
-      </div>
+  <div class="container">
+    <h3>{{ nombreCompleto }}</h3>
+    <p>
+      Woow! gracias por llegar hasta aqui, espero que haya sido de tu agrado.
+    </p>
+    <div class="social-links">
+      <a
+        *ngFor="let red of redes"
+        href="{{ red.url }}"
+        target="_blank"
+        class="{{ red.nombre }}"
+        matTooltip="{{ red.nombre }}"
+        [matTooltipShowDelay]="100"
+        [matTooltipHideDelay]="200"
+        aria-label="Boton de la red social"
+        ><i class="fa-brands {{ red.clase }} position-relative"></i
+      ></a>
     </div>
-    <div class="credits">
-      Diseño inspirado en <a href="https://bootstrapmade.com/">BootstrapMade</a>
+    <div class="copyright">
+      &copy; Copyright
+      <strong
+        ><span>{{ nombreCompleto }}</span></strong
+      >. Todos los derechos reservados
     </div>
-  </footer><!-- End Footer -->
+  </div>
+  <div class="credits">
+    Diseño inspirado en <a href="https://bootstrapmade.com/">BootstrapMade</a>
+  </div>
+</footer>
+<!-- End Footer -->
