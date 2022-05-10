@@ -1,4 +1,6 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AddHabilidadComponent } from './add-habilidad.component';
 
@@ -8,9 +10,9 @@ describe('AddHabilidadComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AddHabilidadComponent ]
-    })
-    .compileComponents();
+      declarations: [AddHabilidadComponent],
+      imports: [ReactiveFormsModule, HttpClientTestingModule],
+    }).compileComponents();
   });
 
   beforeEach(() => {

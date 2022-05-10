@@ -6,6 +6,8 @@ import { DebugElement } from '@angular/core';
 import { FormularioLoginComponent } from './formulario-login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 describe('FormularioLoginComponent', () => {
   let component: FormularioLoginComponent;
@@ -14,19 +16,20 @@ describe('FormularioLoginComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        HttpClientTestingModule,
+        MatSnackBarModule,
       ],
-      declarations: [ FormularioLoginComponent ],
+      declarations: [FormularioLoginComponent],
       providers: [
         {
           provide: MatDialog,
           useValue: {
-            close: () => { }
-          }
+            close: () => {},
+          },
         },
-      ]
-    })
-    .compileComponents();
+      ],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

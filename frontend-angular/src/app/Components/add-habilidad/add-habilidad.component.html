@@ -6,7 +6,7 @@
   <form [formGroup]="habilidadForm" (ngSubmit)="onSubmit()" class="row p-3">
     <mat-form-field appearance="fill">
         <mat-label>Tecnologia</mat-label>
-        <mat-select formControlName="tecnologia">
+        <mat-select ngDefaultControl formControlName="tecnologia">
           <mat-option *ngFor="let tecnologia of tecnologias" [value]="tecnologia">
             {{ tecnologia | lowercase }}
           </mat-option>

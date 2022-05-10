@@ -1,3 +1,4 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { BorrarBtnComponent } from './borrar-btn.component';
@@ -8,9 +9,9 @@ describe('BorrarBtnComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ BorrarBtnComponent ]
-    })
-    .compileComponents();
+      declarations: [BorrarBtnComponent],
+      imports: [HttpClientTestingModule],
+    }).compileComponents();
   });
 
   beforeEach(() => {

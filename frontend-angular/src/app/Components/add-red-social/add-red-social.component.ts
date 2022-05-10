@@ -1,5 +1,5 @@
 import { Component, OnInit, Optional } from '@angular/core';
-import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { AddBtnComponent } from '../add-btn/add-btn.component';
 import { RedesService } from 'src/app/services/redes.service';

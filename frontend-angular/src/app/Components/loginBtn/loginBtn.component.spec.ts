@@ -13,18 +13,17 @@ describe('LoginBtnComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LoginBtnComponent ],
+      declarations: [LoginBtnComponent],
       providers: [
         {
           provide: MatDialog,
           useValue: {
-            open: () => { },
-            close: () => { }
-          }
+            open: () => {},
+            close: () => {},
+          },
         },
-      ]
-    })
-    .compileComponents();
+      ],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -37,10 +36,11 @@ describe('LoginBtnComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('debe llamar al #dialogRef open()',() => {
-    const spyObject = spyOn(component.dialogRef,'open').and.callThrough();
+  it('debe llamar al #dialogRef open()', () => {
+    const spyObject = spyOn(component.dialogRef, 'open').and.callThrough();
     component.openDialog();
-    expect(spyObject).toHaveBeenCalledWith(FormularioLoginComponent);
-
- })
+    expect(spyObject).toHaveBeenCalledWith(FormularioLoginComponent, {
+      panelClass: ['animate__animated', 'animate__bounceIn'],
+    });
+  });
 });

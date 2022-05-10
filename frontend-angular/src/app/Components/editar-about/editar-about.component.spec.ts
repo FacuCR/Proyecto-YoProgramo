@@ -1,4 +1,7 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { EditarAboutComponent } from './editar-about.component';
 
@@ -8,9 +11,13 @@ describe('EditarAboutComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ EditarAboutComponent ]
-    })
-    .compileComponents();
+      declarations: [EditarAboutComponent],
+      imports: [
+        ReactiveFormsModule,
+        HttpClientTestingModule,
+        MatSnackBarModule,
+      ],
+    }).compileComponents();
   });
 
   beforeEach(() => {

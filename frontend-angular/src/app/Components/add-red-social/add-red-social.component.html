@@ -6,7 +6,7 @@
   <form [formGroup]="redForm" (ngSubmit)="onSubmit()" class="row p-3">
     <mat-form-field appearance="fill">
       <mat-label>Nombre</mat-label>
-      <mat-select formControlName="nombre">
+      <mat-select ngDefaultControl formControlName="nombre">
         <mat-option *ngFor="let red of redes" [value]="red">
           {{ red }}
         </mat-option>

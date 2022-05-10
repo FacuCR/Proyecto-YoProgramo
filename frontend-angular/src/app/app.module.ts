@@ -1,7 +1,7 @@
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 
 // ===== Angular Material ===== //
@@ -95,6 +95,7 @@ import { EditarImagenProyectoComponent } from './Components/editar-imagen-proyec
     { provide: MatDialogRef, useValue: {} },
     { provide: MAT_DIALOG_DATA, useValue: {} },
     [AuthInterceptorProviders],
+    [HttpClient],
   ],
   bootstrap: [AppComponent],
 })

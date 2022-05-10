@@ -74,8 +74,8 @@ export class AboutComponent implements OnInit {
     }
   }
 
-  public edad(): number {
-    let parseFechaNac: Date = new Date(this.persona.fechaNac);
+  public edad(fechaDeNac: Date): number {
+    let parseFechaNac: Date = new Date(fechaDeNac);
     let difTiempo: number = Math.abs(Date.now() - parseFechaNac.getTime());
     let edad: number = Math.floor(difTiempo / (1000 * 3600 * 24) / 365.25);
     return edad;

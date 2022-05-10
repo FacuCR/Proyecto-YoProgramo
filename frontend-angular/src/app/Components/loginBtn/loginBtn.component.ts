@@ -17,6 +17,8 @@ export class LoginBtnComponent {
   constructor(@Optional() public dialogRef: MatDialog) {}
 
   openDialog() {
-    this.dialogRef.open(FormularioLoginComponent, { panelClass: ['animate__animated','animate__bounceIn'] });
+    this.dialogRef.open(FormularioLoginComponent, {
+      panelClass: ['animate__animated', 'animate__bounceIn'],
+    });
   }
 }

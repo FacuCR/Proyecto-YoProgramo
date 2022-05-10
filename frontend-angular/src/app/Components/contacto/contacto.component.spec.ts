@@ -5,6 +5,7 @@ import { DebugElement } from '@angular/core';
 
 import { ContactoComponent } from './contacto.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('ContactoComponent', () => {
   let component: ContactoComponent;
@@ -12,12 +13,9 @@ describe('ContactoComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [
-        ReactiveFormsModule
-      ],
-      declarations: [ ContactoComponent ]
-    })
-    .compileComponents();
+      imports: [ReactiveFormsModule, HttpClientTestingModule],
+      declarations: [ContactoComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {
