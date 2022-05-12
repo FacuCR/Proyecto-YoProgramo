@@ -119,7 +119,7 @@
 }
 
 .portfolio-container .portfolio-container__card:hover .pic {
-  filter: grayscale(0);
+  filter: brightness(.5);
 }
 
 app-borrar-proyecto, app-editar-img-btn {
@@ -128,8 +128,8 @@ app-borrar-proyecto, app-editar-img-btn {
 
 @media only screen and (min-width: 768px) {
   .portfolio-container .portfolio-container__card {
-    width: 500px;
-    height: 200px;
+    width: 700px;
+    height: 300px;
   }
 
   .portfolio-container .portfolio-container__card h2 {
@@ -168,7 +168,7 @@ app-borrar-proyecto, app-editar-img-btn {
   }
 
   .portfolio-container .portfolio-container__card .pic {
-    width: 400px;
+    width: 550px;
     height: 100%;
   }
 }
